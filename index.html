@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Terra Būve – Kalkulators</title>
+<style>
+body{margin:0;background:#17191c;color:#fff;font-family:Arial,sans-serif;padding:18px}
+h1{text-align:center;color:#d6ad55;margin:10px 0}
+.card{background:#22262b;border-radius:16px;padding:18px;margin:14px 0}
+label{display:block;margin-top:12px;color:#ccc}
+input,select,button{width:100%;box-sizing:border-box;padding:14px;margin-top:6px;border-radius:10px;border:1px solid #555;background:#101214;color:#fff;font-size:16px}
+button{background:#d6ad55;color:#111;font-weight:bold;border:0;margin-top:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total{font-size:25px;color:#d6ad55;text-align:center;margin-top:18px}
+.item{border-top:1px solid #444;margin-top:15px;padding-top:10px}
+.small{color:#aaa;font-size:13px}
+</style>
+</head>
+<body>
+
+<h1>🏠 TERRA BŪVE</h1>
+<div style="text-align:center;color:#aaa">No zemes gabala līdz gatavai mājai</div>
+
+<div class="card">
+<h2>📋 Ātra tāme</h2>
+
+<label>Klients</label>
+<input id="client" placeholder="Klienta vārds">
+
+<label>Adrese</label>
+<input id="address" placeholder="Objekta adrese">
+
+<label>Darbs</label>
+<select id="work">
+<option value="75">🚜 Ekskavators – 75 €/h</option>
+<option value="55">🚜 Mini ekskavators – 55 €/h</option>
+<option value="55">🚜 Bobcat – 55 €/h</option>
+<option value="22">🧱 Bruģa ieklāšana – 22 €/m²</option>
+<option value="38">🧱 Bruģēšana + pamatne – 38 €/m²</option>
+<option value="62">🧱 Pilna bruģēšana – 62 €/m²</option>
+<option value="75">🏗️ Rakšana pamatiem – 75 €/h</option>
+<option value="18">🏗️ Veidņu darbi – 18 €/m²</option>
+<option value="28">🏗️ Armatūras darbi – 28 €/m²</option>
+<option value="55">🏗️ Betonēšanas darbi – 55 €/m³</option>
+<option value="40">💧 Drenāža – 40 €/m</option>
+<option value="3">🌱 Zemes izlīdzināšana – 3 €/m²</option>
+<option value="10">🌱 Zāliena ierīkošana – 10 €/m²</option>
+<option value="65">🧱 Gāzbetona mūrēšana – 65 €/m³</option>
+<option value="75">🧱 Bloku mūrēšana – 75 €/m³</option>
+<option value="25">👷 Būvstrādnieks – 25 €/h</option>
+<option value="32">👷 Meistars – 32 €/h</option>
+<option value="50">🚚 Kravas auto – 50 €/h</option>
+<option value="150">🚚 Tehnikas transports – 150 €/reiss</option>
+</select>
+
+<div class="row">
+<div>
+<label>Daudzums</label>
+<input id="qty" type="number" value="1" min="0" oninput="calc()">
+</div>
+<div>
+<label>Atlaide %</label>
+<input id="discount" type="number" value="0" min="0" oninput="calc()">
+</div>
+</div>
+
+<button onclick="addItem()">➕ Pievienot darbam</button>
+
+<div id="items"></div>
+
+<div class="total">
+KOPĀ: <span id="total">0.00</span> €
+</div>
+
+<button onclick="window.print()">🖨️ Drukāt / Saglabāt PDF</button>
+</div>
+
+<div class="card">
+<h2>📞 Terra Būve</h2>
+<div class="small">Zemes darbi • Pamati • Bruģēšana • Labiekārtošana • Māju būvniecība</div>
+</div>
+
+<script>
+let items=[];
+function addItem(){
+let s=document.getElementById('work');
+let name=s.options[s.selectedIndex].text;
+let price=Number(s.value);
+let qty=Number(document.getElementById('qty').value)||0;
+items.push({name,price,qty});
+render();
+}
+function render(){
+let html='';
+let total=0;
+items.forEach((x,i)=>{
+let sum=x.price*x.qty; total+=sum;
+html+=`<div class="item"><b>${x.name}</b><br>
+${x.qty} × ${x.price.toFixed(2)} € = <b>${sum.toFixed(2)} €</b>
+<button onclick="items.splice(${i},1);render()">❌ Noņemt</button></div>`;
+});
+let d=Number(document.getElementById('discount').value)||0;
+total*=1-d/100;
+document.getElementById('items').innerHTML=html;
+document.getElementById('total').textContent=total.toFixed(2);
+}
+function calc(){render()}
+</script>
+
+</body>
+</html>
