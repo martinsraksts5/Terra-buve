@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Terra Būve – Objektu sistēma</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra Būve – Būvniecība un objektu sistēma</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+*{box-sizing:border-box}
 
-*{
-  box-sizing:border-box;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -26,25 +21,97 @@ body{
 
 header{
   background:#111317;
-  border-bottom:1px solid #2b2d31;
-  padding:18px;
+  border-bottom:1px solid #30343b;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:20;
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
 }
 
 .logo{
-  max-width:1100px;
-  margin:auto;
-  font-size:26px;
+  font-size:25px;
   font-weight:900;
   color:#f0c75e;
 }
 
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  padding:9px 11px;
+  border-radius:9px;
+}
+
+nav a:hover{
+  background:#252930;
+  color:#f0c75e;
+}
+
 .wrap{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
-  padding:20px;
+  padding:18px;
+}
+
+.hero{
+  padding:55px 22px;
+  border:1px solid #30343b;
+  border-radius:18px;
+  background:linear-gradient(135deg,#111317,#0d0f12);
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:42px;
+  line-height:1.05;
+  margin:0 0 12px;
+  color:#f0c75e;
+}
+
+.hero p{
+  font-size:19px;
+  color:#bbb;
+  max-width:720px;
+}
+
+.btn{
+  display:inline-block;
+  border:0;
+  border-radius:10px;
+  padding:13px 18px;
+  margin-top:12px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  background:#f0c75e;
+  color:#111;
+  text-decoration:none;
+}
+
+.btn2{
+  border:0;
+  border-radius:10px;
+  padding:13px 18px;
+  margin-top:12px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  background:#252930;
+  color:#fff;
 }
 
 .card{
@@ -55,12 +122,9 @@ header{
   margin-bottom:18px;
 }
 
-h1,h2,h3{
-  margin-top:0;
-}
-
-h1{
+h2{
   color:#f0c75e;
+  margin-top:0;
 }
 
 label{
@@ -91,25 +155,29 @@ textarea{
   resize:vertical;
 }
 
-button{
-  border:0;
-  border-radius:10px;
-  padding:13px 18px;
-  margin-top:14px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.btn{
-  background:#f0c75e;
-  color:#111;
-}
-
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:14px;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.service{
+  padding:18px;
+  border:1px solid #30343b;
+  border-radius:14px;
+  background:#0d0f12;
+}
+
+.service strong{
+  color:#f0c75e;
+  display:block;
+  margin-bottom:8px;
 }
 
 .item{
@@ -122,9 +190,16 @@ button{
 
 .price{
   color:#f0c75e;
-  font-size:20px;
+  font-size:21px;
   font-weight:bold;
   margin-top:8px;
+}
+
+.total{
+  font-size:28px;
+  color:#f0c75e;
+  font-weight:900;
+  margin-top:15px;
 }
 
 .status{
@@ -165,6 +240,34 @@ button{
   color:#f0c75e;
 }
 
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+}
+
+th,td{
+  border-bottom:1px solid #30343b;
+  padding:10px;
+  text-align:left;
+}
+
+th{
+  color:#f0c75e;
+}
+
+footer{
+  text-align:center;
+  color:#777;
+  padding:30px 10px;
+}
+
+@media(max-width:850px){
+  .services{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
 @media(max-width:700px){
 
   .grid{
@@ -175,35 +278,358 @@ button{
     padding:12px;
   }
 
-  header{
-    padding:14px;
+  .hero h1{
+    font-size:32px;
   }
 
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  nav{
+    display:none;
+  }
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-  <div class="logo">TERRA BŪVE</div>
+  <div class="nav">
+
+    <div class="logo">
+      TERRA BŪVE
+    </div>
+
+    <nav>
+      <a href="#sakums">Sākums</a>
+      <a href="#pakalpojumi">Piedāvājam</a>
+      <a href="#kalkulators">Kalkulators</a>
+      <a href="#objekti">Objekti</a>
+    </nav>
+
+  </div>
 </header>
 
 
 <div class="wrap">
 
 
-<div class="card">
+<section id="sakums" class="hero">
 
-  <h1>Objektu sistēma</h1>
+  <h1>
+    No zemes gabala līdz gatavai mājai
+  </h1>
 
-  <p class="small">
-    Objektu, papilddarbu un klientu saskaņošanas sistēma.
+  <p>
+    Terra Būve – zemes darbi, pamati,
+    labiekārtošana, bruģēšana un
+    māju būvniecība.
   </p>
 
-  <label>Supabase Publishable Key</label>
+  <a class="btn" href="#kalkulators">
+    Aprēķināt cenu
+  </a>
+
+</section>
+
+
+<section id="pakalpojumi" class="card">
+
+  <h2>Piedāvājam</h2>
+
+  <div class="services">
+
+    <div class="service">
+      <strong>🚜 Zemes darbi</strong>
+      Rakšana, planēšana, grunts izvešana
+      un teritorijas sagatavošana.
+    </div>
+
+    <div class="service">
+      <strong>🏗️ Pamati</strong>
+      Pamatu rakšana, veidņi, armatūra,
+      betons, hidroizolācija un siltināšana.
+    </div>
+
+    <div class="service">
+      <strong>🏡 Māju būvniecība</strong>
+      Celtniecības darbi no sagatavošanas
+      līdz gatavam objektam.
+    </div>
+
+    <div class="service">
+      <strong>🧱 Bruģēšana</strong>
+      Pamatnes izbūve, apmales un
+      bruģa ieklāšana.
+    </div>
+
+    <div class="service">
+      <strong>🌿 Labiekārtošana</strong>
+      Teritorijas izlīdzināšana, drenāža,
+      segumi un apzaļumošanas sagatavošana.
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="kalkulators" class="card">
+
+  <h2>🧮 Cenu kalkulators</h2>
+
+  <p class="small">
+    Izvēlies darbu, ievadi daudzumu un
+    izveido provizorisku piedāvājumu.
+  </p>
+
+
+  <div class="grid">
+
+    <div>
+
+      <label>Klients</label>
+
+      <input
+        id="quoteClient"
+        placeholder="Vārds, uzvārds"
+      >
+
+    </div>
+
+
+    <div>
+
+      <label>Objekts / adrese</label>
+
+      <input
+        id="quoteAddress"
+        placeholder="Objekta adrese"
+      >
+
+    </div>
+
+  </div>
+
+
+  <label>Darbs</label>
+
+  <select id="calcWork">
+
+    <option value="0">
+      -- Izvēlies darbu --
+    </option>
+
+    <option value="75"
+            data-unit="h"
+            data-name="Ekskavatora darbs">
+      Ekskavatora darbs – 75 €/h
+    </option>
+
+    <option value="55"
+            data-unit="h"
+            data-name="Mini ekskavators">
+      Mini ekskavators – 55 €/h
+    </option>
+
+    <option value="55"
+            data-unit="h"
+            data-name="Bobcat mini iekrāvējs">
+      Bobcat mini iekrāvējs – 55 €/h
+    </option>
+
+    <option value="2.5"
+            data-unit="m²"
+            data-name="Planēšana">
+      Planēšana – 2.50 €/m²
+    </option>
+
+    <option value="7"
+            data-unit="m"
+            data-name="Tranšeja">
+      Tranšeja – 7 €/m
+    </option>
+
+    <option value="12"
+            data-unit="m³"
+            data-name="Grunts apstrāde / pārvietošana">
+      Grunts apstrāde / pārvietošana – 12 €/m³
+    </option>
+
+    <option value="22"
+            data-unit="m³"
+            data-name="Grunts izvešana">
+      Grunts izvešana – 22 €/m³
+    </option>
+
+    <option value="35"
+            data-unit="m³"
+            data-name="Smilts / šķembu pamatne">
+      Smilts / šķembu pamatne – 35 €/m³
+    </option>
+
+    <option value="5"
+            data-unit="m²"
+            data-name="Ģeotekstils">
+      Ģeotekstils – 5 €/m²
+    </option>
+
+    <option value="35"
+            data-unit="m"
+            data-name="Drenāža">
+      Drenāža – 35 €/m
+    </option>
+
+    <option value="22"
+            data-unit="m²"
+            data-name="Bruģēšana – darbs">
+      Bruģēšana – darbs – 22 €/m²
+    </option>
+
+    <option value="38"
+            data-unit="m²"
+            data-name="Bruģēšana + pamatne">
+      Bruģēšana + pamatne – 38 €/m²
+    </option>
+
+    <option value="62"
+            data-unit="m²"
+            data-name="Bruģēšana ar materiāliem">
+      Bruģēšana ar materiāliem – 62 €/m²
+    </option>
+
+    <option value="17"
+            data-unit="m"
+            data-name="Gājēju apmale">
+      Gājēju apmale – 17 €/m
+    </option>
+
+    <option value="30"
+            data-unit="m"
+            data-name="Ceļa apmale">
+      Ceļa apmale – 30 €/m
+    </option>
+
+    <option value="18"
+            data-unit="m²"
+            data-name="Veidņi">
+      Veidņi – 18 €/m²
+    </option>
+
+    <option value="28"
+            data-unit="m²"
+            data-name="Armatūra">
+      Armatūra – 28 €/m²
+    </option>
+
+    <option value="55"
+            data-unit="m³"
+            data-name="Betona darbi">
+      Betona darbi – 55 €/m³
+    </option>
+
+    <option value="10"
+            data-unit="m²"
+            data-name="Hidroizolācija">
+      Hidroizolācija – 10 €/m²
+    </option>
+
+    <option value="12"
+            data-unit="m²"
+            data-name="Siltināšana">
+      Siltināšana – 12 €/m²
+    </option>
+
+    <option value="40"
+            data-unit="m"
+            data-name="Drenāža pie pamatiem">
+      Drenāža pie pamatiem – 40 €/m
+    </option>
+
+    <option value="230"
+            data-unit="m³"
+            data-name="Pamatu komplekss">
+      Pamatu komplekss – 230 €/m³
+    </option>
+
+  </select>
+
+
+  <div class="grid">
+
+    <div>
+
+      <label>Daudzums</label>
+
+      <input
+        id="calcQty"
+        type="number"
+        value="1"
+        min="0"
+        step="0.01"
+      >
+
+    </div>
+
+
+    <div>
+
+      <label>Atlaide (€)</label>
+
+      <input
+        id="calcDiscount"
+        type="number"
+        value="0"
+        min="0"
+        step="0.01"
+      >
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="btn"
+    onclick="addCalcItem()"
+  >
+    Pievienot aprēķinam
+  </button>
+
+
+  <div id="calcItems"></div>
+
+
+  <div class="total">
+    Kopā:
+    <span id="calcTotal">0.00</span> €
+  </div>
+
+
+  <button
+    class="btn2"
+    onclick="printQuote()"
+  >
+    Drukāt / Saglabāt PDF
+  </button>
+
+</section>
+
+
+<section id="objekti" class="card">
+
+  <h2>🏗️ Objektu sistēma</h2>
+
+  <p class="small">
+    Objekti, papilddarbi un foto.
+    Šī daļa izmanto tavu Supabase projektu.
+  </p>
+
+  <label>
+    Supabase Publishable Key
+  </label>
 
   <input
     id="supabaseKey"
@@ -223,13 +649,13 @@ button{
     class="small"
   ></div>
 
-</div>
+</section>
 
 
 <div id="system" class="hidden">
 
 
-<div class="card">
+<section class="card">
 
   <h2>Jauns objekts</h2>
 
@@ -275,10 +701,10 @@ button{
     Izveidot objektu
   </button>
 
-</div>
+</section>
 
 
-<div class="card">
+<section class="card">
 
   <h2>Izvēlētais objekts</h2>
 
@@ -295,12 +721,12 @@ button{
 
   <div id="objectInfo"></div>
 
-</div>
+</section>
 
 
-<div class="card">
+<section class="card">
 
-  <h2>Papilddarbs</h2>
+  <h2>➕ Papilddarbs</h2>
 
   <label>Darba nosaukums</label>
 
@@ -338,13 +764,11 @@ button{
       <label>Mērvienība</label>
 
       <select id="workUnit">
-
         <option>gab.</option>
         <option>m²</option>
         <option>m³</option>
         <option>m</option>
         <option>h</option>
-
       </select>
 
     </div>
@@ -404,8 +828,7 @@ button{
   >
 
   <p class="small">
-    Nospied šeit, lai nofotografētu objektu
-    vai izvēlētos foto no telefona.
+    Nofotografē objektu vai izvēlies foto no telefona.
   </p>
 
 
@@ -419,10 +842,10 @@ button{
 
   <div id="workMessage"></div>
 
-</div>
+</section>
 
 
-<div class="card">
+<section class="card">
 
   <h2>Papilddarbi</h2>
 
@@ -434,911 +857,950 @@ button{
 
   </div>
 
-</div>
+</section>
 
 
 </div>
 
 </div>
+
+
+<footer>
+  © Terra Būve
+</footer>
 
 
 <script>
+const URL="https://nmxdvvagdanajplzgyju.supabase.co";
+
+let sb=null;
+let objects=[];
+let calc=[];
+
+const esc=v=>String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+/* =========================
+   KALKULATORS
+========================= */
+
+function addCalc(){
+
+    let s=document.getElementById('calcWork');
+    let p=+s.value;
+    let q=+document.getElementById('calcQty').value||0;
+
+    if(!p || q<=0){
+        return alert('Izvēlies darbu un daudzumu.');
+    }
+
+    let o=s.options[s.selectedIndex];
+
+    calc.push({
+        name:o.textContent,
+        u:o.dataset.u,
+        q:q,
+        p:p
+    });
+
+    renderCalc();
+}
 
 
-const SUPABASE_URL =
-  "https://nmxdvvagdanajplzgyju.supabase.co";
+function renderCalc(){
+
+    let b=document.getElementById('calcItems');
+    let d=+document.getElementById('calcDiscount').value||0;
+    let t=0;
+
+    b.innerHTML='';
+
+    calc.forEach((x,i)=>{
+
+        let z=x.q*x.p;
+        t+=z;
+
+        b.innerHTML+=`
+        <div class="item calc-row">
+
+            <span>
+                <b>${esc(x.name)}</b><br>
+                ${x.q} ${esc(x.u)} × ${x.p.toFixed(2)} €
+                =
+                <b class="price">${z.toFixed(2)} €</b>
+            </span>
+
+            <button
+                class="btn2"
+                onclick="calc.splice(${i},1);renderCalc()">
+                Noņemt
+            </button>
+
+        </div>
+        `;
+    });
+
+    let total=Math.max(0,t-d);
+
+    document.getElementById('calcTotal').textContent=
+        total.toFixed(2);
+}
 
 
-let supabaseClient = null;
+document.getElementById('calcDiscount')
+.addEventListener('input',renderCalc);
 
-let objects = [];
 
+/* =========================
+   PIEDĀVĀJUMA DRUKĀŠANA
+========================= */
+
+function printQuote(){
+
+    if(!calc.length){
+        return alert('Pievieno vismaz vienu darbu.');
+    }
+
+    let d=
+        +document.getElementById('calcDiscount').value||0;
+
+    let total=
+        document.getElementById('calcTotal').textContent;
+
+    let rows=calc.map(x=>{
+
+        return `
+        <tr>
+            <td>${esc(x.name)}</td>
+            <td>${x.q} ${esc(x.u)}</td>
+            <td>${x.p.toFixed(2)} €</td>
+            <td>${(x.q*x.p).toFixed(2)} €</td>
+        </tr>
+        `;
+
+    }).join('');
+
+    let client=
+        document.getElementById('qClient').value;
+
+    let address=
+        document.getElementById('qAddress').value;
+
+    let w=open('','_blank');
+
+    w.document.write(`
+
+    <html>
+
+    <head>
+
+        <title>
+            Terra Būve – Piedāvājums
+        </title>
+
+        <style>
+
+            body{
+                font-family:Arial;
+                padding:30px;
+                color:#222;
+            }
+
+            h1{
+                color:#9b7615;
+            }
+
+            table{
+                width:100%;
+                border-collapse:collapse;
+                margin-top:20px;
+            }
+
+            td,th{
+                border:1px solid #ccc;
+                padding:8px;
+                text-align:left;
+            }
+
+            .total{
+                font-size:24px;
+                font-weight:bold;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h1>TERRA BŪVE</h1>
+
+        <h2>Piedāvājums</h2>
+
+        <p>
+            <b>Klients:</b>
+            ${esc(client)}
+            <br>
+
+            <b>Objekts:</b>
+            ${esc(address)}
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Darbs</th>
+                <th>Daudzums</th>
+                <th>Vienības cena</th>
+                <th>Summa</th>
+            </tr>
+
+            ${rows}
+
+        </table>
+
+        <p>
+            Atlaide:
+            ${d.toFixed(2)} €
+        </p>
+
+        <p class="total">
+            Kopā:
+            ${total} €
+        </p>
+
+        <hr>
+
+        <p>
+            No zemes gabala līdz gatavai mājai
+        </p>
+
+    </body>
+
+    </html>
+
+    `);
+
+    w.document.close();
+
+    w.print();
+}
+
+
+/* =========================
+   SUPABASE SAVIENOJUMS
+========================= */
 
 function connectSupabase(){
 
-  const key =
-    document
-      .getElementById("supabaseKey")
-      .value
-      .trim();
+    let k=
+        document.getElementById('supabaseKey')
+        .value.trim();
 
+    if(!k){
 
-  if(!key){
+        return status(
+            'Ievieto Publishable Key.',
+            1
+        );
+    }
 
-    showConnection(
-      "Ievieto Supabase Publishable Key.",
-      true
-    );
+    try{
 
-    return;
-  }
+        sb=
+            supabase.createClient(
+                URL,
+                k
+            );
 
+        localStorage.setItem(
+            'terra_supabase_key',
+            k
+        );
 
-  try{
+        status(
+            'Supabase savienojums izveidots.',
+            0
+        );
 
-    supabaseClient =
-      supabase.createClient(
-        SUPABASE_URL,
-        key
-      );
+        document
+            .getElementById('system')
+            .classList
+            .remove('hidden');
 
+        loadObjects();
 
-    localStorage.setItem(
-      "terra_supabase_key",
-      key
-    );
+    }catch(e){
 
+        status(e.message,1);
 
-    showConnection(
-      "Supabase savienojums izveidots.",
-      false
-    );
-
-
-    document
-      .getElementById("system")
-      .classList
-      .remove("hidden");
-
-
-    loadObjects();
-
-
-  }catch(error){
-
-    showConnection(
-      "Kļūda: " + error.message,
-      true
-    );
-
-  }
-
+    }
 }
 
 
-function showConnection(text,error){
+function status(t,e){
 
-  const el =
-    document
-      .getElementById("connectionStatus");
+    let x=
+        document.getElementById(
+            'connectionStatus'
+        );
 
+    x.textContent=t;
 
-  el.textContent = text;
-
-
-  el.className =
-    error
-      ? "small error"
-      : "small success";
-
+    x.className=
+        e
+        ? 'small error'
+        : 'small success';
 }
 
+
+/* =========================
+   OBJEKTI
+========================= */
 
 async function loadObjects(){
 
-  if(!supabaseClient){
-    return;
-  }
+    let r=
+        await sb
+        .from('objekti')
+        .select('*')
+        .order(
+            'created_at',
+            {ascending:false}
+        );
 
+    if(r.error){
 
-  const {data,error} =
-    await supabaseClient
-      .from("objekti")
-      .select("*")
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
+        return alert(
+            r.error.message
+        );
 
+    }
 
-  if(error){
+    objects=
+        r.data||[];
 
-    alert(
-      "Neizdevās ielādēt objektus:\n"
-      + error.message
-    );
+    let s=
+        document.getElementById(
+            'objectSelect'
+        );
 
-    return;
-  }
+    s.innerHTML=
+        '<option value="">-- Izvēlies objektu --</option>';
 
+    objects.forEach(o=>{
 
-  objects = data || [];
+        s.innerHTML+=`
+        <option value="${o.id}">
+            ${esc(o.nosaukums)}
+        </option>
+        `;
 
-
-  const select =
-    document
-      .getElementById("objectSelect");
-
-
-  select.innerHTML =
-    '<option value="">-- Izvēlies objektu --</option>';
-
-
-  objects.forEach(obj => {
-
-    const option =
-      document.createElement("option");
-
-
-    option.value =
-      obj.id;
-
-
-    option.textContent =
-      obj.nosaukums;
-
-
-    select.appendChild(option);
-
-  });
-
+    });
 }
 
 
 async function createObject(){
 
-  const name =
-    document
-      .getElementById("objName")
-      .value
-      .trim();
+    let n=
+        document
+        .getElementById('objName')
+        .value.trim();
 
+    if(!n){
 
-  if(!name){
+        return alert(
+            'Ievadi objekta nosaukumu.'
+        );
 
-    alert(
-      "Ievadi objekta nosaukumu."
-    );
+    }
 
-    return;
-  }
+    let v={
 
+        nosaukums:n,
 
-  const client =
-    document
-      .getElementById("clientName")
-      .value
-      .trim();
+        klients:
+            document
+            .getElementById('clientName')
+            .value.trim(),
 
+        telefons:
+            document
+            .getElementById('clientPhone')
+            .value.trim(),
 
-  const phone =
-    document
-      .getElementById("clientPhone")
-      .value
-      .trim();
+        adrese:
+            document
+            .getElementById('objAddress')
+            .value.trim(),
 
+        piezimes:
+            document
+            .getElementById('objNotes')
+            .value.trim(),
 
-  const address =
-    document
-      .getElementById("objAddress")
-      .value
-      .trim();
+        statuss:'Aktīvs'
 
+    };
 
-  const notes =
-    document
-      .getElementById("objNotes")
-      .value
-      .trim();
+    let r=
+        await sb
+        .from('objekti')
+        .insert([v])
+        .select()
+        .single();
 
+    if(r.error){
 
-  const {data,error} =
-    await supabaseClient
-      .from("objekti")
-      .insert([{
+        return alert(
+            r.error.message
+        );
 
-        nosaukums:name,
-
-        klients:client,
-
-        telefons:phone,
-
-        adrese:address,
-
-        piezimes:notes,
-
-        statuss:"Aktīvs"
-
-      }])
-      .select()
-      .single();
-
-
-  if(error){
+    }
 
     alert(
-      "Kļūda izveidojot objektu:\n"
-      + error.message
+        'Objekts izveidots!'
     );
 
-    return;
-  }
+    await loadObjects();
 
+    document
+        .getElementById('objectSelect')
+        .value=r.data.id;
 
-  alert(
-    "Objekts izveidots!"
-  );
-
-
-  document.getElementById("objName").value="";
-  document.getElementById("clientName").value="";
-  document.getElementById("clientPhone").value="";
-  document.getElementById("objAddress").value="";
-  document.getElementById("objNotes").value="";
-
-
-  await loadObjects();
-
-
-  document
-    .getElementById("objectSelect")
-    .value = data.id;
-
-
-  loadObject();
-
+    loadObject();
 }
 
+
+/* =========================
+   OBJEKTA INFORMĀCIJA
+========================= */
 
 async function loadObject(){
 
-  const id =
-    document
-      .getElementById("objectSelect")
-      .value;
-
-
-  const info =
-    document
-      .getElementById("objectInfo");
-
-
-  if(!id){
-
-    info.innerHTML="";
-
-
-    document
-      .getElementById("worksList")
-      .innerHTML =
-        '<p class="small">Izvēlies objektu.</p>';
-
-
-    return;
-  }
-
-
-  const obj =
-    objects.find(
-      x => x.id === id
-    );
-
-
-  if(obj){
-
-    info.innerHTML = `
-
-      <div class="item">
-
-        <h3>
-          ${escapeHtml(obj.nosaukums)}
-        </h3>
-
-        <div>
-          Klients:
-          ${escapeHtml(obj.klients || "-")}
-        </div>
-
-        <div>
-          Telefons:
-          ${escapeHtml(obj.telefons || "-")}
-        </div>
-
-        <div>
-          Adrese:
-          ${escapeHtml(obj.adrese || "-")}
-        </div>
-
-        <div class="small">
-          ${escapeHtml(obj.piezimes || "")}
-        </div>
-
-      </div>
-
-    `;
-
-  }
-
-
-  await loadWorks(id);
-
-}
-
-
-async function loadWorks(objectId){
-
-  const list =
-    document
-      .getElementById("worksList");
-
-
-  list.innerHTML =
-    '<p class="small">Ielādē...</p>';
-
-
-  const {data,error} =
-    await supabaseClient
-      .from("papilddarbi")
-      .select("*")
-      .eq(
-        "objekts_id",
-        objectId
-      )
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
-
-
-  if(error){
-
-    list.innerHTML =
-      '<p class="error">'
-      + escapeHtml(error.message)
-      + '</p>';
-
-    return;
-  }
-
-
-  if(!data || !data.length){
-
-    list.innerHTML =
-      '<p class="small">Papilddarbu vēl nav.</p>';
-
-    return;
-  }
-
-
-  list.innerHTML = "";
-
-
-  for(const work of data){
-
-    const total =
-      Number(work.daudzums || 0)
-      *
-      Number(work.cena || 0);
-
-
-    const div =
-      document.createElement("div");
-
-
-    div.className = "item";
-
-
-    div.innerHTML = `
-
-      <h3>
-        ${escapeHtml(work.nosaukums)}
-      </h3>
-
-      <div>
-        ${escapeHtml(work.apraksts || "")}
-      </div>
-
-      <p>
-        Daudzums:
-        <b>${work.daudzums}</b>
-        ${escapeHtml(work.vienibas || "")}
-      </p>
-
-      <div class="price">
-        ${total.toFixed(2)} €
-      </div>
-
-      <div>
-        Materiāli:
-        ${Number(work.materials || 0).toFixed(2)} €
-      </div>
-
-      <div>
-        Darbs:
-        ${Number(work.darbs || 0).toFixed(2)} €
-      </div>
-
-      <div class="status">
-        ${escapeHtml(work.statuss || "")}
-      </div>
-
-      <div
-        id="photos-${work.id}"
-      >
-        <p class="small">
-          Foto tiek ielādēts...
-        </p>
-      </div>
-
-    `;
-
-
-    list.appendChild(div);
-
-
-    await loadWorkPhotos(
-      work.id,
-      objectId
-    );
-
-  }
-
-}
-
-
-async function loadWorkPhotos(
-  workId,
-  objectId
-){
-
-  const container =
-    document.getElementById(
-      "photos-" + workId
-    );
-
-
-  if(!container){
-    return;
-  }
-
-
-  const {data,error} =
-    await supabaseClient
-      .from("foto")
-      .select("*")
-      .eq(
-        "papilddarbs_id",
-        workId
-      )
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
-
-
-  if(error){
-
-    container.innerHTML =
-      '<p class="error">'
-      + escapeHtml(error.message)
-      + '</p>';
-
-    return;
-  }
-
-
-  if(!data || !data.length){
-
-    container.innerHTML =
-      '<p class="small">Foto nav pievienots.</p>';
-
-    return;
-  }
-
-
-  container.innerHTML = "";
-
-
-  for(const photo of data){
-
-    const {data:urlData,error:urlError} =
-      await supabaseClient
-        .storage
-        .from("objekta-foto")
-        .createSignedUrl(
-          photo.faila_url,
-          3600
+    let id=
+        document
+        .getElementById('objectSelect')
+        .value;
+
+    if(!id){
+
+        document
+        .getElementById('objectInfo')
+        .innerHTML='';
+
+        document
+        .getElementById('worksList')
+        .innerHTML=
+            '<p class="small">Izvēlies objektu.</p>';
+
+        return;
+    }
+
+    let o=
+        objects.find(
+            x=>x.id===id
         );
 
+    document
+    .getElementById('objectInfo')
+    .innerHTML=o?`
 
-    if(urlError){
+        <div class="item">
 
-      const errorText =
-        document.createElement("p");
+            <h3>
+                ${esc(o.nosaukums)}
+            </h3>
 
-      errorText.className =
-        "error";
+            Klients:
+            ${esc(o.klients||'-')}
+            <br>
 
-      errorText.textContent =
-        "Foto saiti neizdevās izveidot.";
+            Telefons:
+            ${esc(o.telefons||'-')}
+            <br>
 
-      container.appendChild(
-        errorText
-      );
+            Adrese:
+            ${esc(o.adrese||'-')}
 
-      continue;
-    }
+            <p class="small">
+                ${esc(o.piezimes||'')}
+            </p>
 
+        </div>
 
-    if(urlData && urlData.signedUrl){
+    `:'';
 
-      const img =
-        document.createElement("img");
-
-
-      img.className = "photo";
-
-
-      img.src =
-        urlData.signedUrl;
-
-
-      img.alt =
-        "Objekta foto";
-
-
-      container.appendChild(img);
-
-    }
-
-  }
-
+    loadWorks(id);
 }
 
+
+/* =========================
+   PAPILDDARBI
+========================= */
+
+async function loadWorks(id){
+
+    let box=
+        document.getElementById(
+            'worksList'
+        );
+
+    box.innerHTML=
+        '<p class="small">Ielādē...</p>';
+
+    let r=
+        await sb
+        .from('papilddarbi')
+        .select('*')
+        .eq('objekts_id',id)
+        .order(
+            'created_at',
+            {ascending:false}
+        );
+
+    if(r.error){
+
+        box.innerHTML=
+            '<p class="error">'+
+            esc(r.error.message)+
+            '</p>';
+
+        return;
+    }
+
+    if(!r.data?.length){
+
+        box.innerHTML=
+            '<p class="small">Papilddarbu vēl nav.</p>';
+
+        return;
+    }
+
+    box.innerHTML='';
+
+    for(let w of r.data){
+
+        let d=
+            document.createElement('div');
+
+        d.className='item';
+
+        d.innerHTML=`
+
+            <h3>
+                ${esc(w.nosaukums)}
+            </h3>
+
+            <div>
+                ${esc(w.apraksts||'')}
+            </div>
+
+            <p>
+                Daudzums:
+                <b>${w.daudzums}</b>
+                ${esc(w.vienibas||'')}
+            </p>
+
+            <div class="price">
+                ${
+                    (
+                        +w.daudzums*
+                        +w.cena
+                    ).toFixed(2)
+                } €
+            </div>
+
+            <div>
+                Materiāli:
+                ${
+                    (+w.materials||0)
+                    .toFixed(2)
+                } €
+            </div>
+
+            <div>
+                Darbs:
+                ${
+                    (+w.darbs||0)
+                    .toFixed(2)
+                } €
+            </div>
+
+            <div class="status">
+                ${esc(w.statuss||'')}
+            </div>
+
+            <div id="p-${w.id}">
+                <p class="small">
+                    Foto ielādē...
+                </p>
+            </div>
+
+        `;
+
+        box.appendChild(d);
+
+        loadPhotos(w.id);
+    }
+}
+
+
+/* =========================
+   FOTO IELĀDE
+========================= */
+
+async function loadPhotos(wid){
+
+    let c=
+        document.getElementById(
+            'p-'+wid
+        );
+
+    let r=
+        await sb
+        .from('foto')
+        .select('*')
+        .eq(
+            'papilddarbs_id',
+            wid
+        )
+        .order(
+            'created_at',
+            {ascending:false}
+        );
+
+    if(r.error){
+
+        c.innerHTML=
+            '<p class="error">'+
+            esc(r.error.message)+
+            '</p>';
+
+        return;
+    }
+
+    if(!r.data?.length){
+
+        c.innerHTML=
+            '<p class="small">
+                Foto nav pievienots.
+            </p>';
+
+        return;
+    }
+
+    c.innerHTML='';
+
+    for(let p of r.data){
+
+        let u=
+            await sb
+            .storage
+            .from('objekta-foto')
+            .createSignedUrl(
+                p.faila_url,
+                3600
+            );
+
+        if(u.data?.signedUrl){
+
+            let im=
+                document.createElement('img');
+
+            im.className='photo';
+
+            im.src=
+                u.data.signedUrl;
+
+            c.appendChild(im);
+        }
+    }
+}
+
+
+/* =========================
+   PAPILDDARBA IZVEIDE
+========================= */
 
 async function createWork(){
 
-  const objectId =
-    document
-      .getElementById("objectSelect")
-      .value;
+    let oid=
+        document
+        .getElementById('objectSelect')
+        .value;
 
+    if(!oid){
 
-  if(!objectId){
-
-    alert(
-      "Vispirms izvēlies objektu."
-    );
-
-    return;
-  }
-
-
-  const name =
-    document
-      .getElementById("workName")
-      .value
-      .trim();
-
-
-  if(!name){
-
-    alert(
-      "Ievadi papilddarba nosaukumu."
-    );
-
-    return;
-  }
-
-
-  const description =
-    document
-      .getElementById("workDescription")
-      .value
-      .trim();
-
-
-  const qty =
-    Number(
-      document
-        .getElementById("workQty")
-        .value
-    ) || 0;
-
-
-  const unit =
-    document
-      .getElementById("workUnit")
-      .value;
-
-
-  const price =
-    Number(
-      document
-        .getElementById("workPrice")
-        .value
-    ) || 0;
-
-
-  const materials =
-    Number(
-      document
-        .getElementById("workMaterials")
-        .value
-    ) || 0;
-
-
-  const labor =
-    Number(
-      document
-        .getElementById("workLabor")
-        .value
-    ) || 0;
-
-
-  const photoInput =
-    document
-      .getElementById("workPhoto");
-
-
-  const photoFile =
-    photoInput.files[0];
-
-
-  document
-    .getElementById("workMessage")
-    .innerHTML =
-      '<p class="loading">Saglabā papilddarbu...</p>';
-
-
-  const {data:workData,error} =
-    await supabaseClient
-      .from("papilddarbi")
-      .insert([{
-
-        objekts_id:objectId,
-
-        nosaukums:name,
-
-        apraksts:description,
-
-        daudzums:qty,
-
-        vienibas:unit,
-
-        cena:price,
-
-        materials:materials,
-
-        darbs:labor,
-
-        statuss:"Gaida saskaņošanu"
-
-      }])
-      .select()
-      .single();
-
-
-  if(error){
-
-    document
-      .getElementById("workMessage")
-      .innerHTML =
-        '<p class="error">'
-        + escapeHtml(error.message)
-        + '</p>';
-
-    return;
-  }
-
-
-  if(photoFile){
-
-    document
-      .getElementById("workMessage")
-      .innerHTML =
-        '<p class="loading">Augšupielādē foto...</p>';
-
-
-    const safeName =
-      photoFile.name.replace(
-        /[^a-zA-Z0-9._-]/g,
-        "_"
-      );
-
-
-    const filePath =
-      "objekti/"
-      + objectId
-      + "/"
-      + workData.id
-      + "-"
-      + Date.now()
-      + "-"
-      + safeName;
-
-
-    const {error:uploadError} =
-      await supabaseClient
-        .storage
-        .from("objekta-foto")
-        .upload(
-          filePath,
-          photoFile,
-          {
-            cacheControl:"3600",
-            upsert:false
-          }
+        return alert(
+            'Vispirms izvēlies objektu.'
         );
 
-
-    if(uploadError){
-
-      document
-        .getElementById("workMessage")
-        .innerHTML =
-          '<p class="error">'
-          + 'Papilddarbs saglabāts, '
-          + 'bet foto neizdevās augšupielādēt:<br>'
-          + escapeHtml(uploadError.message)
-          + '</p>';
-
-      return;
     }
 
+    let n=
+        document
+        .getElementById('workName')
+        .value.trim();
 
-    const {error:photoError} =
-      await supabaseClient
-        .from("foto")
+    if(!n){
+
+        return alert(
+            'Ievadi papilddarba nosaukumu.'
+        );
+
+    }
+
+    let q=
+        +document
+        .getElementById('workQty')
+        .value||0;
+
+    let p=
+        +document
+        .getElementById('workPrice')
+        .value||0;
+
+    let m=
+        +document
+        .getElementById('workMaterials')
+        .value||0;
+
+    let l=
+        +document
+        .getElementById('workLabor')
+        .value||0;
+
+    let desc=
+        document
+        .getElementById('workDescription')
+        .value.trim();
+
+    let unit=
+        document
+        .getElementById('workUnit')
+        .value;
+
+    let file=
+        document
+        .getElementById('workPhoto')
+        .files[0];
+
+    document
+        .getElementById('workMessage')
+        .innerHTML=
+        '<p class="small">Saglabā...</p>';
+
+
+    /* Saglabā papilddarbu */
+
+    let r=
+        await sb
+        .from('papilddarbi')
         .insert([{
 
-          objekts_id:objectId,
+            objekts_id:oid,
 
-          papilddarbs_id:workData.id,
+            nosaukums:n,
 
-          faila_url:filePath,
+            apraksts:desc,
 
-          apraksts:description
+            daudzums:q,
 
-        }]);
+            vienibas:unit,
+
+            cena:p,
+
+            materials:m,
+
+            darbs:l,
+
+            statuss:
+                'Gaida saskaņošanu'
+
+        }])
+        .select()
+        .single();
 
 
-    if(photoError){
+    if(r.error){
 
-      document
-        .getElementById("workMessage")
-        .innerHTML =
-          '<p class="error">'
-          + 'Foto augšupielādēts, '
-          + 'bet ierakstu neizdevās saglabāt:<br>'
-          + escapeHtml(photoError.message)
-          + '</p>';
+        document
+        .getElementById('workMessage')
+        .innerHTML=
+            '<p class="error">'+
+            esc(r.error.message)+
+            '</p>';
 
-      return;
+        return;
     }
 
-  }
+
+    /* =========================
+       FOTO AUGŠUPIELĀDE
+    ========================= */
+
+    if(file){
+
+        let fn=
+            file.name.replace(
+                /[^a-zA-Z0-9._-]/g,
+                '_'
+            );
+
+        let path=
+            'objekti/' +
+            oid +
+            '/' +
+            r.data.id +
+            '-' +
+            Date.now() +
+            '-' +
+            fn;
 
 
-  document
-    .getElementById("workMessage")
-    .innerHTML =
-      '<p class="success">'
-      + 'Papilddarbs'
-      + (photoFile ? ' un foto' : '')
-      + ' pievienots!'
-      + '</p>';
+        let u=
+            await sb
+            .storage
+            .from('objekta-foto')
+            .upload(
+                path,
+                file,
+                {
+                    cacheControl:'3600',
+                    upsert:false
+                }
+            );
 
 
-  document.getElementById(
-    "workName"
-  ).value = "";
+        if(u.error){
+
+            document
+            .getElementById('workMessage')
+            .innerHTML=
+                '<p class="error">' +
+                'Darbs saglabāts, foto kļūda: '+
+                esc(u.error.message)+
+                '</p>';
+
+            return;
+        }
 
 
-  document.getElementById(
-    "workDescription"
-  ).value = "";
+        /* Foto ieraksts datubāzē */
+
+        let f=
+            await sb
+            .from('foto')
+            .insert([{
+
+                objekts_id:oid,
+
+                papilddarbs_id:
+                    r.data.id,
+
+                faila_url:path,
+
+                apraksts:desc
+
+            }]);
 
 
-  document.getElementById(
-    "workQty"
-  ).value = "1";
+        if(f.error){
+
+            document
+            .getElementById('workMessage')
+            .innerHTML=
+                '<p class="error">' +
+                'Foto augšupielādēts, bet ieraksta kļūda: '+
+                esc(f.error.message)+
+                '</p>';
+
+            return;
+        }
+
+    }
 
 
-  document.getElementById(
-    "workPrice"
-  ).value = "0";
+    document
+    .getElementById('workMessage')
+    .innerHTML=
+        '<p class="success">' +
+        'Papilddarbs' +
+        (file?' un foto':'') +
+        ' pievienots!' +
+        '</p>';
 
 
-  document.getElementById(
-    "workMaterials"
-  ).value = "0";
+    /* Notīra formu */
+
+    [
+        'workName',
+        'workDescription'
+    ].forEach(id=>{
+
+        document
+        .getElementById(id)
+        .value='';
+
+    });
 
 
-  document.getElementById(
-    "workLabor"
-  ).value = "0";
+    [
+        'workPrice',
+        'workMaterials',
+        'workLabor'
+    ].forEach(id=>{
+
+        document
+        .getElementById(id)
+        .value='0';
+
+    });
 
 
-  document.getElementById(
-    "workPhoto"
-  ).value = "";
+    document
+    .getElementById('workQty')
+    .value='1';
 
 
-  await loadWorks(objectId);
+    document
+    .getElementById('workPhoto')
+    .value='';
 
+
+    loadWorks(oid);
 }
 
 
-function escapeHtml(value){
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
+/* =========================
+   START
+========================= */
 
 window.addEventListener(
-  "load",
-  () => {
+    'load',
+    ()=>{
 
-    const saved =
-      localStorage.getItem(
-        "terra_supabase_key"
-      );
+        let k=
+            localStorage.getItem(
+                'terra_supabase_key'
+            );
 
+        if(k){
 
-    if(saved){
+            document
+            .getElementById('supabaseKey')
+            .value=k;
 
-      document
-        .getElementById(
-          "supabaseKey"
-        )
-        .value = saved;
+        }
+
+        renderCalc();
 
     }
-
-  }
 );
 
 </script>
