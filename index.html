@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
 <title>Terra Būve – Objektu sistēma</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -63,7 +70,9 @@ label{
   color:#bbb;
 }
 
-input,textarea,select{
+input,
+textarea,
+select{
   width:100%;
   padding:13px;
   border-radius:10px;
@@ -71,6 +80,10 @@ input,textarea,select{
   background:#090a0c;
   color:#fff;
   font-size:16px;
+}
+
+input[type="file"]{
+  padding:10px;
 }
 
 textarea{
@@ -93,11 +106,6 @@ button{
   color:#111;
 }
 
-.btn2{
-  background:#252930;
-  color:#fff;
-}
-
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -116,6 +124,7 @@ button{
   color:#f0c75e;
   font-size:20px;
   font-weight:bold;
+  margin-top:8px;
 }
 
 .status{
@@ -143,7 +152,21 @@ button{
   display:none;
 }
 
+.photo{
+  width:100%;
+  max-width:500px;
+  margin-top:14px;
+  border-radius:12px;
+  border:1px solid #30343b;
+  display:block;
+}
+
+.loading{
+  color:#f0c75e;
+}
+
 @media(max-width:700px){
+
   .grid{
     grid-template-columns:1fr;
   }
@@ -155,8 +178,11 @@ button{
   header{
     padding:14px;
   }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -165,142 +191,249 @@ button{
   <div class="logo">TERRA BŪVE</div>
 </header>
 
+
 <div class="wrap">
 
+
 <div class="card">
+
   <h1>Objektu sistēma</h1>
+
   <p class="small">
     Objektu, papilddarbu un klientu saskaņošanas sistēma.
   </p>
 
   <label>Supabase Publishable Key</label>
-  <input id="supabaseKey"
-         type="password"
-         placeholder="Ievieto savu Publishable Key">
 
-  <button class="btn" onclick="connectSupabase()">
+  <input
+    id="supabaseKey"
+    type="password"
+    placeholder="Ievieto savu Publishable Key"
+  >
+
+  <button
+    class="btn"
+    onclick="connectSupabase()"
+  >
     Pieslēgt Supabase
   </button>
 
-  <div id="connectionStatus" class="small"></div>
+  <div
+    id="connectionStatus"
+    class="small"
+  ></div>
+
 </div>
 
 
 <div id="system" class="hidden">
 
+
 <div class="card">
+
   <h2>Jauns objekts</h2>
 
   <label>Objekta nosaukums</label>
-  <input id="objName" placeholder="Piemēram: Privātmāja Ādažos">
+
+  <input
+    id="objName"
+    placeholder="Piemēram: Privātmāja Ādažos"
+  >
 
   <label>Klients</label>
-  <input id="clientName" placeholder="Klienta vārds, uzvārds">
+
+  <input
+    id="clientName"
+    placeholder="Klienta vārds, uzvārds"
+  >
 
   <label>Telefons</label>
-  <input id="clientPhone" placeholder="+371 ...">
+
+  <input
+    id="clientPhone"
+    placeholder="+371 ..."
+  >
 
   <label>Adrese</label>
-  <input id="objAddress" placeholder="Objekta adrese">
+
+  <input
+    id="objAddress"
+    placeholder="Objekta adrese"
+  >
 
   <label>Piezīmes</label>
-  <textarea id="objNotes"
-            placeholder="Papildu informācija"></textarea>
 
-  <button class="btn" onclick="createObject()">
+  <textarea
+    id="objNotes"
+    placeholder="Papildu informācija"
+  ></textarea>
+
+  <button
+    class="btn"
+    onclick="createObject()"
+  >
     Izveidot objektu
   </button>
+
 </div>
 
 
 <div class="card">
+
   <h2>Izvēlētais objekts</h2>
 
-  <select id="objectSelect" onchange="loadObject()">
-    <option value="">-- Izvēlies objektu --</option>
+  <select
+    id="objectSelect"
+    onchange="loadObject()"
+  >
+
+    <option value="">
+      -- Izvēlies objektu --
+    </option>
+
   </select>
 
   <div id="objectInfo"></div>
+
 </div>
 
 
 <div class="card">
+
   <h2>Papilddarbs</h2>
 
   <label>Darba nosaukums</label>
-  <input id="workName"
-         placeholder="Piemēram: Papildu grunts izvešana">
+
+  <input
+    id="workName"
+    placeholder="Piemēram: Papildu grunts izvešana"
+  >
 
   <label>Apraksts</label>
-  <textarea id="workDescription"
-            placeholder="Apraksti, kas jāizdara"></textarea>
+
+  <textarea
+    id="workDescription"
+    placeholder="Apraksti, kas jāizdara"
+  ></textarea>
+
 
   <div class="grid">
 
     <div>
+
       <label>Daudzums</label>
-      <input id="workQty"
-             type="number"
-             value="1"
-             step="0.01">
+
+      <input
+        id="workQty"
+        type="number"
+        value="1"
+        step="0.01"
+      >
+
     </div>
 
+
     <div>
+
       <label>Mērvienība</label>
+
       <select id="workUnit">
+
         <option>gab.</option>
         <option>m²</option>
         <option>m³</option>
         <option>m</option>
         <option>h</option>
+
       </select>
+
     </div>
 
   </div>
 
+
   <label>Cena par vienību (€)</label>
-  <input id="workPrice"
-         type="number"
-         value="0"
-         step="0.01">
+
+  <input
+    id="workPrice"
+    type="number"
+    value="0"
+    step="0.01"
+  >
+
 
   <div class="grid">
 
     <div>
+
       <label>Materiāli (€)</label>
-      <input id="workMaterials"
-             type="number"
-             value="0"
-             step="0.01">
+
+      <input
+        id="workMaterials"
+        type="number"
+        value="0"
+        step="0.01"
+      >
+
     </div>
 
+
     <div>
+
       <label>Darbs (€)</label>
-      <input id="workLabor"
-             type="number"
-             value="0"
-             step="0.01">
-        </div>
+
+      <input
+        id="workLabor"
+        type="number"
+        value="0"
+        step="0.01"
+      >
+
+    </div>
+
   </div>
 
-  <label>Objekta foto</label>
-  <input id="workPhoto" type="file" accept="image/*" capture="environment">
-  <p class="small">Vari nofotografēt objektu vai izvēlēties foto no telefona.</p>
 
-  <button class="btn" onclick="createWork()">
+  <label>Objekta foto</label>
+
+  <input
+    id="workPhoto"
+    type="file"
+    accept="image/*"
+    capture="environment"
+  >
+
+  <p class="small">
+    Nospied šeit, lai nofotografētu objektu
+    vai izvēlētos foto no telefona.
+  </p>
+
+
+  <button
+    class="btn"
+    onclick="createWork()"
+  >
     Pievienot papilddarbu
   </button>
 
+
   <div id="workMessage"></div>
+
 </div>
 
 
 <div class="card">
+
   <h2>Papilddarbi</h2>
 
   <div id="worksList">
-    <p class="small">Izvēlies objektu.</p>
+
+    <p class="small">
+      Izvēlies objektu.
+    </p>
+
   </div>
+
 </div>
 
 
@@ -311,25 +444,35 @@ button{
 
 <script>
 
+
 const SUPABASE_URL =
-"https://nmxdvvagdanajplzgyju.supabase.co";
+  "https://nmxdvvagdanajplzgyju.supabase.co";
+
 
 let supabaseClient = null;
+
 let objects = [];
 
 
 function connectSupabase(){
 
   const key =
-    document.getElementById("supabaseKey").value.trim();
+    document
+      .getElementById("supabaseKey")
+      .value
+      .trim();
+
 
   if(!key){
+
     showConnection(
       "Ievieto Supabase Publishable Key.",
       true
     );
+
     return;
   }
+
 
   try{
 
@@ -339,21 +482,27 @@ function connectSupabase(){
         key
       );
 
+
     localStorage.setItem(
       "terra_supabase_key",
       key
     );
+
 
     showConnection(
       "Supabase savienojums izveidots.",
       false
     );
 
+
     document
       .getElementById("system")
-      .classList.remove("hidden");
+      .classList
+      .remove("hidden");
+
 
     loadObjects();
+
 
   }catch(error){
 
@@ -363,30 +512,46 @@ function connectSupabase(){
     );
 
   }
+
 }
 
 
 function showConnection(text,error){
 
   const el =
-    document.getElementById("connectionStatus");
+    document
+      .getElementById("connectionStatus");
+
 
   el.textContent = text;
 
+
   el.className =
-    error ? "small error" : "small success";
+    error
+      ? "small error"
+      : "small success";
+
 }
 
 
 async function loadObjects(){
 
-  if(!supabaseClient) return;
+  if(!supabaseClient){
+    return;
+  }
+
 
   const {data,error} =
     await supabaseClient
       .from("objekti")
       .select("*")
-      .order("created_at",{ascending:false});
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
 
   if(error){
 
@@ -398,23 +563,32 @@ async function loadObjects(){
     return;
   }
 
+
   objects = data || [];
 
+
   const select =
-    document.getElementById("objectSelect");
+    document
+      .getElementById("objectSelect");
+
 
   select.innerHTML =
     '<option value="">-- Izvēlies objektu --</option>';
 
-  objects.forEach(obj=>{
+
+  objects.forEach(obj => {
 
     const option =
       document.createElement("option");
 
-    option.value = obj.id;
+
+    option.value =
+      obj.id;
+
 
     option.textContent =
       obj.nosaukums;
+
 
     select.appendChild(option);
 
@@ -426,43 +600,67 @@ async function loadObjects(){
 async function createObject(){
 
   const name =
-    document.getElementById("objName")
-      .value.trim();
+    document
+      .getElementById("objName")
+      .value
+      .trim();
+
 
   if(!name){
 
-    alert("Ievadi objekta nosaukumu.");
+    alert(
+      "Ievadi objekta nosaukumu."
+    );
 
     return;
   }
 
+
   const client =
-    document.getElementById("clientName")
-      .value.trim();
+    document
+      .getElementById("clientName")
+      .value
+      .trim();
+
 
   const phone =
-    document.getElementById("clientPhone")
-      .value.trim();
+    document
+      .getElementById("clientPhone")
+      .value
+      .trim();
+
 
   const address =
-    document.getElementById("objAddress")
-      .value.trim();
+    document
+      .getElementById("objAddress")
+      .value
+      .trim();
+
 
   const notes =
-    document.getElementById("objNotes")
-      .value.trim();
+    document
+      .getElementById("objNotes")
+      .value
+      .trim();
 
 
   const {data,error} =
     await supabaseClient
       .from("objekti")
       .insert([{
+
         nosaukums:name,
+
         klients:client,
+
         telefons:phone,
+
         adrese:address,
+
         piezimes:notes,
+
         statuss:"Aktīvs"
+
       }])
       .select()
       .single();
@@ -479,7 +677,10 @@ async function createObject(){
   }
 
 
-  alert("Objekts izveidots!");
+  alert(
+    "Objekts izveidots!"
+  );
+
 
   document.getElementById("objName").value="";
   document.getElementById("clientName").value="";
@@ -487,10 +688,14 @@ async function createObject(){
   document.getElementById("objAddress").value="";
   document.getElementById("objNotes").value="";
 
+
   await loadObjects();
 
-  document.getElementById("objectSelect").value =
-    data.id;
+
+  document
+    .getElementById("objectSelect")
+    .value = data.id;
+
 
   loadObject();
 
@@ -500,38 +705,70 @@ async function createObject(){
 async function loadObject(){
 
   const id =
-    document.getElementById("objectSelect").value;
+    document
+      .getElementById("objectSelect")
+      .value;
+
 
   const info =
-    document.getElementById("objectInfo");
+    document
+      .getElementById("objectInfo");
+
 
   if(!id){
 
     info.innerHTML="";
 
-    document.getElementById("worksList").innerHTML =
-      '<p class="small">Izvēlies objektu.</p>';
+
+    document
+      .getElementById("worksList")
+      .innerHTML =
+        '<p class="small">Izvēlies objektu.</p>';
+
 
     return;
   }
 
 
   const obj =
-    objects.find(x=>x.id===id);
+    objects.find(
+      x => x.id === id
+    );
+
 
   if(obj){
 
     info.innerHTML = `
+
       <div class="item">
-        <h3>${escapeHtml(obj.nosaukums)}</h3>
-        <div>Klients: ${escapeHtml(obj.klients || "-")}</div>
-        <div>Telefons: ${escapeHtml(obj.telefons || "-")}</div>
-        <div>Adrese: ${escapeHtml(obj.adrese || "-")}</div>
+
+        <h3>
+          ${escapeHtml(obj.nosaukums)}
+        </h3>
+
+        <div>
+          Klients:
+          ${escapeHtml(obj.klients || "-")}
+        </div>
+
+        <div>
+          Telefons:
+          ${escapeHtml(obj.telefons || "-")}
+        </div>
+
+        <div>
+          Adrese:
+          ${escapeHtml(obj.adrese || "-")}
+        </div>
+
         <div class="small">
           ${escapeHtml(obj.piezimes || "")}
         </div>
+
       </div>
+
     `;
+
   }
 
 
@@ -543,7 +780,9 @@ async function loadObject(){
 async function loadWorks(objectId){
 
   const list =
-    document.getElementById("worksList");
+    document
+      .getElementById("worksList");
+
 
   list.innerHTML =
     '<p class="small">Ielādē...</p>';
@@ -553,8 +792,16 @@ async function loadWorks(objectId){
     await supabaseClient
       .from("papilddarbi")
       .select("*")
-      .eq("objekts_id",objectId)
-      .order("created_at",{ascending:false});
+      .eq(
+        "objekts_id",
+        objectId
+      )
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
 
   if(error){
@@ -577,24 +824,29 @@ async function loadWorks(objectId){
   }
 
 
-  list.innerHTML="";
+  list.innerHTML = "";
 
 
-  data.forEach(work=>{
+  for(const work of data){
 
     const total =
-      Number(work.daudzums || 0) *
+      Number(work.daudzums || 0)
+      *
       Number(work.cena || 0);
 
 
     const div =
       document.createElement("div");
 
-    div.className="item";
 
-    div.innerHTML=`
+    div.className = "item";
 
-      <h3>${escapeHtml(work.nosaukums)}</h3>
+
+    div.innerHTML = `
+
+      <h3>
+        ${escapeHtml(work.nosaukums)}
+      </h3>
 
       <div>
         ${escapeHtml(work.apraksts || "")}
@@ -624,11 +876,138 @@ async function loadWorks(objectId){
         ${escapeHtml(work.statuss || "")}
       </div>
 
+      <div
+        id="photos-${work.id}"
+      >
+        <p class="small">
+          Foto tiek ielādēts...
+        </p>
+      </div>
+
     `;
+
 
     list.appendChild(div);
 
-  });
+
+    await loadWorkPhotos(
+      work.id,
+      objectId
+    );
+
+  }
+
+}
+
+
+async function loadWorkPhotos(
+  workId,
+  objectId
+){
+
+  const container =
+    document.getElementById(
+      "photos-" + workId
+    );
+
+
+  if(!container){
+    return;
+  }
+
+
+  const {data,error} =
+    await supabaseClient
+      .from("foto")
+      .select("*")
+      .eq(
+        "papilddarbs_id",
+        workId
+      )
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+  if(error){
+
+    container.innerHTML =
+      '<p class="error">'
+      + escapeHtml(error.message)
+      + '</p>';
+
+    return;
+  }
+
+
+  if(!data || !data.length){
+
+    container.innerHTML =
+      '<p class="small">Foto nav pievienots.</p>';
+
+    return;
+  }
+
+
+  container.innerHTML = "";
+
+
+  for(const photo of data){
+
+    const {data:urlData,error:urlError} =
+      await supabaseClient
+        .storage
+        .from("objekta-foto")
+        .createSignedUrl(
+          photo.faila_url,
+          3600
+        );
+
+
+    if(urlError){
+
+      const errorText =
+        document.createElement("p");
+
+      errorText.className =
+        "error";
+
+      errorText.textContent =
+        "Foto saiti neizdevās izveidot.";
+
+      container.appendChild(
+        errorText
+      );
+
+      continue;
+    }
+
+
+    if(urlData && urlData.signedUrl){
+
+      const img =
+        document.createElement("img");
+
+
+      img.className = "photo";
+
+
+      img.src =
+        urlData.signedUrl;
+
+
+      img.alt =
+        "Objekta foto";
+
+
+      container.appendChild(img);
+
+    }
+
+  }
 
 }
 
@@ -636,57 +1015,99 @@ async function loadWorks(objectId){
 async function createWork(){
 
   const objectId =
-    document.getElementById("objectSelect").value;
+    document
+      .getElementById("objectSelect")
+      .value;
+
 
   if(!objectId){
 
-    alert("Vispirms izvēlies objektu.");
+    alert(
+      "Vispirms izvēlies objektu."
+    );
 
     return;
   }
 
 
   const name =
-    document.getElementById("workName")
-      .value.trim();
+    document
+      .getElementById("workName")
+      .value
+      .trim();
+
 
   if(!name){
 
-    alert("Ievadi papilddarba nosaukumu.");
+    alert(
+      "Ievadi papilddarba nosaukumu."
+    );
 
     return;
   }
 
 
   const description =
-    document.getElementById("workDescription")
-      .value.trim();
+    document
+      .getElementById("workDescription")
+      .value
+      .trim();
+
 
   const qty =
     Number(
-      document.getElementById("workQty").value
+      document
+        .getElementById("workQty")
+        .value
     ) || 0;
 
+
   const unit =
-    document.getElementById("workUnit").value;
+    document
+      .getElementById("workUnit")
+      .value;
+
 
   const price =
     Number(
-      document.getElementById("workPrice").value
+      document
+        .getElementById("workPrice")
+        .value
     ) || 0;
+
 
   const materials =
     Number(
-      document.getElementById("workMaterials").value
+      document
+        .getElementById("workMaterials")
+        .value
     ) || 0;
+
 
   const labor =
     Number(
-      document.getElementById("workLabor").value
+      document
+        .getElementById("workLabor")
+        .value
     ) || 0;
 
 
-  const {error} =
+  const photoInput =
+    document
+      .getElementById("workPhoto");
+
+
+  const photoFile =
+    photoInput.files[0];
+
+
+  document
+    .getElementById("workMessage")
+    .innerHTML =
+      '<p class="loading">Saglabā papilddarbu...</p>';
+
+
+  const {data:workData,error} =
     await supabaseClient
       .from("papilddarbi")
       .insert([{
@@ -709,32 +1130,155 @@ async function createWork(){
 
         statuss:"Gaida saskaņošanu"
 
-      }]);
+      }])
+      .select()
+      .single();
 
 
   if(error){
 
-    document.getElementById("workMessage")
+    document
+      .getElementById("workMessage")
       .innerHTML =
-      '<p class="error">'
-      + escapeHtml(error.message)
-      + '</p>';
+        '<p class="error">'
+        + escapeHtml(error.message)
+        + '</p>';
 
     return;
   }
 
 
-  document.getElementById("workMessage")
+  if(photoFile){
+
+    document
+      .getElementById("workMessage")
+      .innerHTML =
+        '<p class="loading">Augšupielādē foto...</p>';
+
+
+    const safeName =
+      photoFile.name.replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
+
+
+    const filePath =
+      "objekti/"
+      + objectId
+      + "/"
+      + workData.id
+      + "-"
+      + Date.now()
+      + "-"
+      + safeName;
+
+
+    const {error:uploadError} =
+      await supabaseClient
+        .storage
+        .from("objekta-foto")
+        .upload(
+          filePath,
+          photoFile,
+          {
+            cacheControl:"3600",
+            upsert:false
+          }
+        );
+
+
+    if(uploadError){
+
+      document
+        .getElementById("workMessage")
+        .innerHTML =
+          '<p class="error">'
+          + 'Papilddarbs saglabāts, '
+          + 'bet foto neizdevās augšupielādēt:<br>'
+          + escapeHtml(uploadError.message)
+          + '</p>';
+
+      return;
+    }
+
+
+    const {error:photoError} =
+      await supabaseClient
+        .from("foto")
+        .insert([{
+
+          objekts_id:objectId,
+
+          papilddarbs_id:workData.id,
+
+          faila_url:filePath,
+
+          apraksts:description
+
+        }]);
+
+
+    if(photoError){
+
+      document
+        .getElementById("workMessage")
+        .innerHTML =
+          '<p class="error">'
+          + 'Foto augšupielādēts, '
+          + 'bet ierakstu neizdevās saglabāt:<br>'
+          + escapeHtml(photoError.message)
+          + '</p>';
+
+      return;
+    }
+
+  }
+
+
+  document
+    .getElementById("workMessage")
     .innerHTML =
-    '<p class="success">Papilddarbs pievienots!</p>';
+      '<p class="success">'
+      + 'Papilddarbs'
+      + (photoFile ? ' un foto' : '')
+      + ' pievienots!'
+      + '</p>';
 
 
-  document.getElementById("workName").value="";
-  document.getElementById("workDescription").value="";
-  document.getElementById("workQty").value="1";
-  document.getElementById("workPrice").value="0";
-  document.getElementById("workMaterials").value="0";
-  document.getElementById("workLabor").value="0";
+  document.getElementById(
+    "workName"
+  ).value = "";
+
+
+  document.getElementById(
+    "workDescription"
+  ).value = "";
+
+
+  document.getElementById(
+    "workQty"
+  ).value = "1";
+
+
+  document.getElementById(
+    "workPrice"
+  ).value = "0";
+
+
+  document.getElementById(
+    "workMaterials"
+  ).value = "0";
+
+
+  document.getElementById(
+    "workLabor"
+  ).value = "0";
+
+
+  document.getElementById(
+    "workPhoto"
+  ).value = "";
 
 
   await loadWorks(objectId);
@@ -745,30 +1289,57 @@ async function createWork(){
 function escapeHtml(value){
 
   return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
-window.addEventListener("load",()=>{
+window.addEventListener(
+  "load",
+  () => {
 
-  const saved =
-    localStorage.getItem(
-      "terra_supabase_key"
-    );
+    const saved =
+      localStorage.getItem(
+        "terra_supabase_key"
+      );
 
-  if(saved){
 
-    document.getElementById("supabaseKey")
-      .value=saved;
+    if(saved){
+
+      document
+        .getElementById(
+          "supabaseKey"
+        )
+        .value = saved;
+
+    }
 
   }
-
-});
+);
 
 </script>
 
