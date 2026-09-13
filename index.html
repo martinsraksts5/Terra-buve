@@ -293,18 +293,15 @@ box.innerHTML=`
 <div class="dash-number">${money(profit)}</div>
 <div class="dash-sub">Ieņēmumi − izmaksas</div>
 </div>
+</div>
+`;
+
+box.innerHTML+=`
 <div class="card object-summary">
 <h3>🏗️ Objektu pārskats</h3>
-
 ${objs.length?objs.map(o=>{
 const x=byObj.get(o.id)||{
-total:0,
-cost:0,
-profit:0,
-waiting:0,
-approved:0,
-rejected:0,
-count:0
+total:0,cost:0,profit:0,waiting:0,approved:0,rejected:0,count:0
 };
 
 return `
@@ -654,9 +651,7 @@ let d=document.createElement('div');
 d.className='card';
 
 let total=(+w.daudzums||0)*(+w.cena||0);
-
 let costs=(+w.materials||0)+(+w.darbs||0);
-
 let profit=total-costs;
 
 d.innerHTML=`
@@ -806,10 +801,9 @@ upsert:false
 if(up.error){
 
 $('workMessage').innerHTML=
-'<p class="err">
-Darbs saglabāts, foto kļūda:
-${esc(up.error.message)}
-</p>';
+'<p class="err">Darbs saglabāts, foto kļūda: '+
+esc(up.error.message)+
+'</p>';
 
 await loadWorks(oid);
 return;
@@ -827,10 +821,9 @@ apraksts:desc
 if(fr.error){
 
 $('workMessage').innerHTML=
-'<p class="err">
-Foto augšupielādēts, bet ieraksta kļūda:
-${esc(fr.error.message)}
-</p>';
+'<p class="err">Foto augšupielādēts, bet ieraksta kļūda: '+
+esc(fr.error.message)+
+'</p>';
 
 await loadWorks(oid);
 return;
@@ -889,10 +882,10 @@ prompt('Nokopē šo saiti:',url);
 
 async function loadClientApproval(wid){
 
-document.getElementById('services').classList.add('hidden');
-document.getElementById('calculator').classList.add('hidden');
-document.getElementById('system').classList.add('hidden');
-document.getElementById('clientApproval').classList.remove('hidden');
+$('services').classList.add('hidden');
+$('calculator').classList.add('hidden');
+$('system').classList.add('hidden');
+$('clientApproval').classList.remove('hidden');
 
 const box=$('clientApprovalContent');
 
@@ -906,9 +899,7 @@ let key=localStorage.getItem('terra_supabase_key')||'';
 
 if(!key){
 box.innerHTML=
-'<p class="err">
-Saskaņošanas saite nav pieejama, jo Supabase atslēga nav saglabāta šajā pārlūkā.
-</p>';
+'<p class="err">Saskaņošanas saite nav pieejama, jo Supabase atslēga nav saglabāta šajā pārlūkā.</p>';
 return;
 }
 
@@ -1006,9 +997,7 @@ Statuss: ${esc(current)}
 ${
 decided
 ?
-`<p class="small">
-Šis papilddarbs jau ir ${current.toLowerCase()}.
-</p>`
+`<p class="small">Šis papilddarbs jau ir ${current.toLowerCase()}.</p>`
 :
 `
 <div class="grid">
@@ -1183,4 +1172,3 @@ connectSupabase();
 </script>
 </body>
 </html>
-</div>
