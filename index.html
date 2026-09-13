@@ -1,416 +1,104 @@
 <!doctype html>
 <html lang="lv">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Terra Būve — Būvniecība un objektu sistēma</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 *{box-sizing:border-box}
-
-body{
-margin:0;
-background:#0b0d10;
-color:#f4f4f4;
-font-family:Arial,sans-serif
-}
-
-header{
-background:#111419;
-border-bottom:1px solid #333;
-padding:24px 18px;
-text-align:center
-}
-
-.logo{
-font-size:34px;
-font-weight:900;
-color:#f3c64e
-}
-
-.tag{
-color:#aaa;
-margin-top:6px
-}
-
-nav{
-display:flex;
-gap:8px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:18px
-}
-
-nav a,
-.btn2{
-background:#272c34;
-color:#fff;
-text-decoration:none;
-border:0;
-border-radius:11px;
-padding:11px 14px
-}
-
-.container{
-max-width:1050px;
-margin:auto;
-padding:18px
-}
-
-.hero{
-padding:28px 0
-}
-
-.hero h1{
-font-size:40px;
-color:#f3c64e;
-margin:0 0 10px
-}
-
-.hero p{
-font-size:19px;
-color:#bbb;
-line-height:1.5
-}
-
-.section{
-background:#111419;
-border:1px solid #30343b;
-border-radius:20px;
-padding:22px;
-margin:20px 0
-}
-
-.section h2{
-color:#f3c64e;
-margin-top:0
-}
-
-.grid{
-display:grid;
-grid-template-columns:
-repeat(2,minmax(0,1fr));
-gap:14px
-}
-
-@media(max-width:720px){
-
-.grid{
-grid-template-columns:1fr
-}
-
-.hero h1{
-font-size:31px
-}
-
-.calcline{
-grid-template-columns:1fr!important
-}
-
-}
-
-label{
-display:block;
-color:#ccc;
-font-weight:700;
-margin-bottom:6px
-}
-
-input,
-select,
-textarea{
-width:100%;
-background:#080a0d;
-color:#fff;
-border:1px solid #3b414a;
-border-radius:11px;
-padding:13px;
-font-size:16px
-}
-
-textarea{
-min-height:90px
-}
-
-.btn{
-background:#f3c64e;
-color:#111;
-border:0;
-border-radius:12px;
-padding:13px 17px;
-font-weight:900;
-font-size:16px;
-margin-top:12px
-}
-
-.services{
-display:grid;
-grid-template-columns:
-repeat(2,1fr);
-gap:12px
-}
-
-@media(max-width:720px){
-
-.services{
-grid-template-columns:1fr
-}
-
-}
-
-.service,
-.card{
-background:#191d23;
-border:1px solid #343943;
-border-radius:14px;
-padding:17px
-}
-
-.service h3{
-color:#f3c64e;
-margin:0 0 7px
-}
-
-.muted,
-.small{
-color:#999;
-font-size:14px
-}
-
-.calcline{
-display:grid;
-grid-template-columns:
-2fr 1fr 1fr 1fr auto;
-gap:8px;
-align-items:end
-}
-
-.calcitem{
-margin-top:10px
-}
-
-.money{
-color:#f3c64e;
-font-weight:900
-}
-
-.summary{
-display:grid;
-grid-template-columns:
-repeat(3,1fr);
-gap:10px;
-margin-top:18px
-}
-
-@media(max-width:720px){
-
-.summary{
-grid-template-columns:1fr
-}
-
-}
-
-.summary .card{
-font-size:17px
-}
-
-.big{
-font-size:27px;
-font-weight:900;
-color:#f3c64e
-}
-
-.ok{
-color:#6fe38b
-}
-
-.err{
-color:#ff7474
-}
-
-.status{
-display:inline-block;
-padding:7px 10px;
-border-radius:8px;
-background:#34302a;
-color:#f3c64e
-}
-
-.photo{
-width:100%;
-max-width:520px;
-border-radius:12px;
-margin-top:10px
-}
-
-.hidden{
-display:none!important
-}
-
-.footer{
-text-align:center;
-color:#777;
-padding:35px
-}
-
-.row{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-align-items:center
-}
-
-.right{
-text-align:right
-}
+body{margin:0;background:#0b0d10;color:#f4f4f4;font-family:Arial,sans-serif}
+header{background:#111419;border-bottom:1px solid #333;padding:24px 18px;text-align:center}
+.logo{font-size:34px;font-weight:900;color:#f3c64e}
+.tag{color:#aaa;margin-top:6px}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+nav a,.btn2{background:#272c34;color:#fff;text-decoration:none;border:0;border-radius:11px;padding:11px 14px}
+.container{max-width:1050px;margin:auto;padding:18px}
+.hero{padding:28px 0}
+.hero h1{font-size:40px;color:#f3c64e;margin:0 0 10px}
+.hero p{font-size:19px;color:#bbb;line-height:1.5}
+.section{background:#111419;border:1px solid #30343b;border-radius:20px;padding:22px;margin:20px 0}
+.section h2{color:#f3c64e;margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.hero h1{font-size:31px}.calcline{grid-template-columns:1fr!important}}
+label{display:block;color:#ccc;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;background:#080a0d;color:#fff;border:1px solid #3b414a;border-radius:11px;padding:13px;font-size:16px}
+textarea{min-height:90px}
+.btn{background:#f3c64e;color:#111;border:0;border-radius:12px;padding:13px 17px;font-weight:900;font-size:16px;margin-top:12px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:720px){.services{grid-template-columns:1fr}}
+.service,.card{background:#191d23;border:1px solid #343943;border-radius:14px;padding:17px}
+.service h3{color:#f3c64e;margin:0 0 7px}
+.muted,.small{color:#999;font-size:14px}
+.calcline{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:end}
+.calcitem{margin-top:10px}
+.money{color:#f3c64e;font-weight:900}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+@media(max-width:720px){.summary{grid-template-columns:1fr}}
+.summary .card{font-size:17px}
+.big{font-size:27px;font-weight:900;color:#f3c64e}
+.ok{color:#6fe38b}
+.err{color:#ff7474}
+.status{display:inline-block;padding:7px 10px;border-radius:8px;background:#34302a;color:#f3c64e}
+.photo{width:100%;max-width:520px;border-radius:12px;margin-top:10px}
+.hidden{display:none!important}
+.footer{text-align:center;color:#777;padding:35px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.right{text-align:right}
 </style>
 
 <style>
+.dashboard{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.dash-card{background:#191d23;border:1px solid #343943;border-radius:14px;padding:16px}
+.dash-label{color:#aaa;font-size:14px}
+.dash-number{font-size:28px;font-weight:900;color:#f3c64e;margin-top:4px}
+.dash-sub{color:#999;font-size:13px;margin-top:3px}
+.activity{margin-top:14px}
+.activity-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #30343b}
+.activity-row:last-child{border-bottom:0}
+.activity-title{font-weight:800}
+.activity-meta{font-size:13px;color:#999;margin-top:2px}
+@media(max-width:720px){.dashboard{grid-template-columns:1fr 1fr}.activity-row{display:block}}
+@media(max-width:430px){.dashboard{grid-template-columns:1fr}}
+</style>
 
-.dashboard{
-display:grid;
-grid-template-columns:
-repeat(3,1fr);
-gap:12px;
-margin:18px 0
-}
-
-.dash-card{
-background:#191d23;
-border:1px solid #343943;
-border-radius:14px;
-padding:16px
-}
-
-.dash-label{
-color:#aaa;
-font-size:14px
-}
-
-.dash-number{
-font-size:28px;
-font-weight:900;
-color:#f3c64e;
-margin-top:4px
-}
-
-.dash-sub{
-color:#999;
-font-size:13px;
-margin-top:3px
-}
-
-.activity{
-margin-top:14px
-}
-
-.activity-row{
-display:flex;
-justify-content:space-between;
-gap:12px;
-align-items:center;
-padding:11px 0;
-border-bottom:1px solid #30343b
-}
-
-.activity-row:last-child{
-border-bottom:0
-}
-
-.activity-title{
-font-weight:800
-}
-
-.activity-meta{
-font-size:13px;
-color:#999;
-margin-top:2px
-}
-
-@media(max-width:720px){
-
-.dashboard{
-grid-template-columns:1fr 1fr
-}
-
-.activity-row{
-display:block
-}
-
-}
-
-@media(max-width:430px){
-
-.dashboard{
-grid-template-columns:1fr
-}
-
-}
-
+<style>
+.object-summary{margin-top:14px;display:grid;gap:10px}
+.object-summary-row{background:#191d23;border:1px solid #343943;border-radius:14px;padding:15px}
+.object-summary-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.object-summary-name{font-weight:900;color:#f3c64e;font-size:18px}
+.object-summary-meta{font-size:13px;color:#999;margin-top:3px}
+.object-summary-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.object-summary-stat{background:#101316;border-radius:10px;padding:9px}
+.object-summary-stat span{display:block;color:#999;font-size:12px}
+.object-summary-stat b{display:block;margin-top:2px}
+@media(max-width:720px){.object-summary-top{display:block}.object-summary-stats{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-TERRA BŪVE
-</div>
-
-<div class="tag">
-No zemes gabala līdz gatavai mājai
-</div>
+<div class="logo">TERRA BŪVE</div>
+<div class="tag">No zemes gabala līdz gatavai mājai</div>
 
 <nav>
-
-<a href="#dashboard">
-📊 Panelis
-</a>
-
-<a href="#services">
-Pakalpojumi
-</a>
-
-<a href="#calculator">
-Kalkulators
-</a>
-
-<a href="#system">
-Objektu sistēma
-</a>
-
+<a href="#dashboard">📊 Panelis</a>
+<a href="#services">Pakalpojumi</a>
+<a href="#calculator">Kalkulators</a>
+<a href="#system">Objektu sistēma</a>
 </nav>
-
 </header>
 
 <div class="container">
 
 <section class="hero">
-
-<h1>
-Būvniecība vienuviet
-</h1>
-
-<p>
-Zemes darbi, pamati,
-labiekārtošana, kanalizācija,
-bruģēšana, māju būvniecība
-un dzīvokļu remonts.
-</p>
-
+<h1>Būvniecība vienuviet</h1>
+<p>Zemes darbi, pamati, labiekārtošana, kanalizācija, bruģēšana, māju būvniecība un dzīvokļu remonts.</p>
 </section>
 
-<section
-class="section"
-id="dashboard">
+<section class="section" id="dashboard">
 
-<h2>
-📊 Terra Būve — Vadības panelis
-</h2>
+<h2>📊 Terra Būve — Vadības panelis</h2>
 
 <p class="small">
 Kopsavilkums no Supabase datiem.
@@ -421,8 +109,7 @@ Kopsavilkums no Supabase datiem.
 <div class="card">
 
 <p class="small">
-Pieslēdz Supabase,
-lai ielādētu vadības paneli.
+Pieslēdz Supabase, lai ielādētu vadības paneli.
 </p>
 
 </div>
@@ -431,154 +118,84 @@ lai ielādētu vadības paneli.
 
 </section>
 
-<section
-class="section"
-id="services">
+<section class="section" id="services">
 
-<h2>
-🏗️ Ko piedāvājam
-</h2>
+<h2>🏗️ Ko piedāvājam</h2>
 
 <div class="services">
 
 <div class="service">
-
-<h3>
-🚜 Zemes darbi
-</h3>
-
+<h3>🚜 Zemes darbi</h3>
 <p>
-Rakšana, planēšana,
-grunts pārvietošana,
-tranšejas un teritorijas
-sagatavošana.
+Rakšana, planēšana, grunts pārvietošana,
+tranšejas un teritorijas sagatavošana.
 </p>
-
 </div>
 
 <div class="service">
-
-<h3>
-🏗️ Pamatu izbūve
-</h3>
-
+<h3>🏗️ Pamatu izbūve</h3>
 <p>
-Pamatu rakšana, veidņi,
-armatūra, betonēšana,
-hidroizolācija un siltināšana.
+Pamatu rakšana, veidņi, armatūra,
+betonēšana, hidroizolācija un siltināšana.
 </p>
-
 </div>
 
 <div class="service">
-
-<h3>
-🌳 Labiekārtošana
-</h3>
-
+<h3>🌳 Labiekārtošana</h3>
 <p>
-Teritorijas planēšana,
-drenāža, grunts, smilts,
-šķembas un kanalizācijas
-risinājumi.
+Teritorijas planēšana, drenāža, grunts,
+smilts, šķembas un kanalizācijas risinājumi.
 </p>
-
 </div>
 
 <div class="service">
-
-<h3>
-🚰 Kanalizācijas sistēmas izbūve
-</h3>
-
+<h3>🚰 Kanalizācijas sistēmas izbūve</h3>
 <p>
-Kanalizācijas cauruļvadi,
-tranšejas, pieslēgumi,
-izvadi un teritorijas
-sakārtošana.
+Kanalizācijas cauruļvadi, tranšejas,
+pieslēgumi, izvadi un teritorijas sakārtošana.
 </p>
-
 </div>
 
 <div class="service">
-
-<h3>
-🏠 Māju būvniecība
-</h3>
-
+<h3>🏠 Māju būvniecība</h3>
 <p>
-Būvniecības darbi
-no pamatiem līdz
-gatavai mājai.
+Būvniecības darbi no pamatiem līdz gatavai mājai.
 </p>
-
 </div>
 
 <div class="service">
-
-<h3>
-🛠️ Dzīvokļa remonts
-</h3>
-
+<h3>🛠️ Dzīvokļa remonts</h3>
 <p>
-Dzīvokļu remonts,
-iekšdarbi, telpu atjaunošana
-un pilna remonta darbu
-organizēšana.
+Dzīvokļu remonts, iekšdarbi, telpu atjaunošana
+un pilna remonta darbu organizēšana.
 </p>
-
 </div>
 
 <div class="service">
-
-<h3>
-🧱 Bruģēšana
-</h3>
-
+<h3>🧱 Bruģēšana</h3>
 <p>
-Bruģa segumi, pamatnes
-sagatavošana, apmales,
-pagalmi un celiņi.
+Bruģa segumi, pamatnes sagatavošana,
+apmales, pagalmi un celiņi.
 </p>
-
 </div>
 
 </div>
-
 </section>
 
-<section
-class="section"
-id="calculator">
+<section class="section" id="calculator">
 
-<h2>
-🧮 Cenu kalkulators
-</h2>
+<h2>🧮 Cenu kalkulators</h2>
 
 <div class="grid">
 
 <div>
-
-<label>
-Klients
-</label>
-
-<input
-id="qClient"
-placeholder="Klienta vārds">
-
+<label>Klients</label>
+<input id="qClient" placeholder="Klienta vārds">
 </div>
 
 <div>
-
-<label>
-Objekta adrese
-</label>
-
-<input
-id="qAddress"
-placeholder="Adrese">
-
+<label>Objekta adrese</label>
+<input id="qAddress" placeholder="Adrese">
 </div>
 
 </div>
@@ -587,120 +204,54 @@ placeholder="Adrese">
 
 <div class="card">
 
-<div
-class="calcline"
-style="grid-template-columns:
-2fr 1fr 1fr 1fr auto">
+<div class="calcline">
 
 <div>
-
-<label>
-Darbs
-</label>
-
+<label>Darbs</label>
 <select id="calcWork">
-
-<option value="">
-— Izvēlies darbu —
-</option>
-
+<option value="">— Izvēlies darbu —</option>
 </select>
-
 </div>
 
 <div>
-
-<label>
-Daudzums
-</label>
-
-<input
-id="calcQty"
-type="number"
-min="0"
-step="0.01"
-value="1">
-
+<label>Daudzums</label>
+<input id="calcQty" type="number" min="0" step="0.01" value="1">
 </div>
 
 <div>
-
-<label>
-Klienta cena €/vien.
-</label>
-
-<input
-id="calcPrice"
-type="number"
-min="0"
-step="0.01"
-value="0">
-
+<label>Klienta cena €/vien.</label>
+<input id="calcPrice" type="number" min="0" step="0.01" value="0">
 </div>
 
 <div>
-
-<label>
-Izmaksas €/vien.
-</label>
-
-<input
-id="calcCost"
-type="number"
-min="0"
-step="0.01"
-value="0">
-
+<label>Izmaksas €/vien.</label>
+<input id="calcCost" type="number" min="0" step="0.01" value="0">
 </div>
 
-<button
-class="btn"
-onclick="addCalc()">
-
+<button class="btn" onclick="addCalc()">
 Pievienot
-
 </button>
 
 </div>
 
 <p class="small">
-Izmaksas ir tikai tev;
-klienta PDF tās nerāda.
+Izmaksas ir tikai tev; klienta PDF tās nerāda.
 </p>
 
 </div>
 
 <div id="calcItems"></div>
 
-<div
-class="grid"
-style="margin-top:14px">
+<div class="grid" style="margin-top:14px">
 
 <div>
-
-<label>
-Atlaide €
-</label>
-
-<input
-id="calcDiscount"
-type="number"
-min="0"
-step="0.01"
-value="0">
-
+<label>Atlaide €</label>
+<input id="calcDiscount" type="number" min="0" step="0.01" value="0">
 </div>
 
 <div>
-
-<label>
-Piezīme piedāvājumam
-</label>
-
-<input
-id="qNote"
-placeholder="Piemēram, cena spēkā 14 dienas">
-
+<label>Piezīme piedāvājumam</label>
+<input id="qNote" placeholder="Piemēram, cena spēkā 14 dienas">
 </div>
 
 </div>
@@ -708,77 +259,33 @@ placeholder="Piemēram, cena spēkā 14 dienas">
 <div class="summary">
 
 <div class="card">
-
 Klientam
-
-<div
-class="big"
-id="calcTotal">
-
-0.00 €
-
-</div>
-
+<div class="big" id="calcTotal">0.00 €</div>
 </div>
 
 <div class="card">
-
 Pašizmaksa
-
-<div
-class="big"
-id="calcCosts">
-
-0.00 €
-
-</div>
-
+<div class="big" id="calcCosts">0.00 €</div>
 </div>
 
 <div class="card">
-
 Peļņa
-
-<div
-class="big"
-id="calcProfit">
-
-0.00 €
-
-</div>
-
-<div
-id="calcMargin"
-class="small">
-
-0%
-
+<div class="big" id="calcProfit">0.00 €</div>
+<div id="calcMargin" class="small">0%</div>
 </div>
 
 </div>
 
-</div>
-
-<button
-class="btn"
-onclick="printQuote()">
-
+<button class="btn" onclick="printQuote()">
 📄 Drukāt / Saglabāt PDF klientam
-
 </button>
-<section
-class="section"
-id="system">
+<section class="section" id="system">
 
-<h2>
-📁 Objektu sistēma
-</h2>
+<h2>📁 Objektu sistēma</h2>
 
 <div class="card">
 
-<h3>
-🔌 Supabase savienojums
-</h3>
+<h3>🔌 Supabase savienojums</h3>
 
 <p class="small">
 Ievadi savu Supabase Publishable Key.
@@ -817,17 +324,13 @@ Savienojums nav pārbaudīts.
 
 <div class="card">
 
-<h3>
-➕ Izveidot objektu
-</h3>
+<h3>➕ Izveidot objektu</h3>
 
 <div class="grid">
 
 <div>
 
-<label>
-Objekta nosaukums
-</label>
+<label>Objekta nosaukums</label>
 
 <input
 id="objName"
@@ -837,9 +340,7 @@ placeholder="Piemēram, Māja Salaspils">
 
 <div>
 
-<label>
-Klients
-</label>
+<label>Klients</label>
 
 <input
 id="clientName"
@@ -849,9 +350,7 @@ placeholder="Klienta vārds">
 
 <div>
 
-<label>
-Telefons
-</label>
+<label>Telefons</label>
 
 <input
 id="clientPhone"
@@ -861,9 +360,7 @@ placeholder="Telefona numurs">
 
 <div>
 
-<label>
-Adrese
-</label>
+<label>Adrese</label>
 
 <input
 id="objAddress"
@@ -875,9 +372,7 @@ placeholder="Objekta adrese">
 
 <br>
 
-<label>
-Piezīmes
-</label>
+<label>Piezīmes</label>
 
 <textarea
 id="objNotes"
@@ -886,9 +381,7 @@ placeholder="Piezīmes par objektu"></textarea>
 <button
 class="btn"
 onclick="createObject()">
-
 Izveidot objektu
-
 </button>
 
 <div
@@ -901,13 +394,9 @@ style="margin-top:10px">
 
 <div class="card">
 
-<h3>
-📋 Objekti
-</h3>
+<h3>📋 Objekti</h3>
 
-<label>
-Izvēlies objektu
-</label>
+<label>Izvēlies objektu</label>
 
 <select
 id="objectSelect"
@@ -927,8 +416,7 @@ style="margin-top:15px">
 </div>
 
 
-<div id="objectDetails">
-</div>
+<div id="objectDetails"></div>
 
 </section>
 
@@ -943,31 +431,31 @@ style="margin-top:15px">
 
 <script>
 
-const SUPABASE_URL=
+const SUPABASE_URL =
 "https://nmxdvvagdanajplzgyju.supabase.co";
 
-let sb=null;
-let currentObject=null;
+let sb = null;
+let currentObject = null;
 
-const calcRows=[];
+const calcRows = [];
 
 
 function money(n){
 
-return Number(n||0).toLocaleString(
+return Number(n || 0).toLocaleString(
 "lv-LV",
 {
 minimumFractionDigits:2,
 maximumFractionDigits:2
 }
-)+" €";
+) + " €";
 
 }
 
 
 function esc(v){
 
-return String(v??"")
+return String(v ?? "")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -979,7 +467,7 @@ return String(v??"")
 
 function initSupabase(){
 
-const key=
+const key =
 localStorage.getItem(
 "terra_supabase_key"
 );
@@ -987,10 +475,11 @@ localStorage.getItem(
 if(
 key &&
 window.supabase &&
-typeof window.supabase.createClient==="function"
+typeof window.supabase.createClient ===
+"function"
 ){
 
-sb=
+sb =
 window.supabase.createClient(
 SUPABASE_URL,
 key
@@ -1007,7 +496,7 @@ return false;
 
 function saveSupabaseKey(){
 
-const key=
+const key =
 document.getElementById(
 "supabaseKey"
 ).value.trim();
@@ -1016,7 +505,7 @@ if(!key){
 
 document.getElementById(
 "supabaseStatus"
-).innerHTML=
+).innerHTML =
 '<span class="err">Ievadi Publishable Key.</span>';
 
 return;
@@ -1032,7 +521,7 @@ if(initSupabase()){
 
 document.getElementById(
 "supabaseStatus"
-).innerHTML=
+).innerHTML =
 '<span class="ok">✓ Supabase savienojums izveidots.</span>';
 
 loadObjects();
@@ -1055,14 +544,14 @@ if(!sb){
 
 document.getElementById(
 "supabaseStatus"
-).innerHTML=
+).innerHTML =
 '<span class="err">Vispirms pieslēdz Supabase.</span>';
 
 return;
 
 }
 
-const result=
+const result =
 await sb
 .from("objekti")
 .select("id")
@@ -1072,9 +561,9 @@ if(result.error){
 
 document.getElementById(
 "supabaseStatus"
-).innerHTML=
-'<span class="err">Supabase kļūda: '+
-esc(result.error.message)+
+).innerHTML =
+'<span class="err">Supabase kļūda: ' +
+esc(result.error.message) +
 '</span>';
 
 return;
@@ -1083,7 +572,7 @@ return;
 
 document.getElementById(
 "supabaseStatus"
-).innerHTML=
+).innerHTML =
 '<span class="ok">✓ Supabase darbojas.</span>';
 
 loadObjects();
@@ -1110,7 +599,7 @@ return;
 
 }
 
-const name=
+const name =
 document.getElementById(
 "objName"
 ).value.trim();
@@ -1125,7 +614,7 @@ return;
 
 }
 
-const payload={
+const payload = {
 
 nosaukums:name,
 
@@ -1158,7 +647,7 @@ console.log(
 payload
 );
 
-const result=
+const result =
 await sb
 .from("objekti")
 .insert([payload])
@@ -1167,14 +656,14 @@ await sb
 
 if(result.error){
 
-const e=result.error;
+const e = result.error;
 
 alert(
-"SUPABASE KĻŪDA\n\n"+
-"Code: "+(e.code||"")+
-"\n\nMessage: "+(e.message||"")+
-"\n\nDetails: "+(e.details||"")+
-"\n\nHint: "+(e.hint||"")
+"SUPABASE KĻŪDA\n\n" +
+"Code: " + (e.code || "") +
+"\n\nMessage: " + (e.message || "") +
+"\n\nDetails: " + (e.details || "") +
+"\n\nHint: " + (e.hint || "")
 );
 
 return;
@@ -1183,29 +672,30 @@ return;
 
 document.getElementById(
 "objName"
-).value="";
+).value = "";
 
 document.getElementById(
 "clientName"
-).value="";
+).value = "";
 
 document.getElementById(
 "clientPhone"
-).value="";
+).value = "";
 
 document.getElementById(
 "objAddress"
-).value="";
+).value = "";
 
 document.getElementById(
 "objNotes"
-).value="";
+).value = "";
 
 await loadObjects();
 
 document.getElementById(
 "objectSelect"
-).value=result.data.id;
+).value =
+result.data.id;
 
 await loadObject();
 
@@ -1213,7 +703,7 @@ await loadDashboard();
 
 document.getElementById(
 "objectCreateStatus"
-).innerHTML=
+).innerHTML =
 '<span class="ok">✓ Objekts izveidots!</span>';
 
 }
@@ -1223,7 +713,7 @@ async function loadObjects(){
 
 if(!sb)return;
 
-const result=
+const result =
 await sb
 .from("objekti")
 .select("*")
@@ -1234,65 +724,62 @@ await sb
 
 if(result.error){
 
-console.error(
-result.error
-);
+console.error(result.error);
 
 return;
 
 }
 
-const objects=
-result.data||[];
+const objects =
+result.data || [];
 
-const select=
+const select =
 document.getElementById(
 "objectSelect"
 );
 
-select.innerHTML=
+select.innerHTML =
 '<option value="">— izvēlies objektu —</option>';
 
 objects.forEach(o=>{
 
-const option=
+const option =
 document.createElement(
 "option"
 );
 
-option.value=o.id;
+option.value = o.id;
 
-option.textContent=
-(o.nosaukums||"Bez nosaukuma")+
+option.textContent =
+(o.nosaukums || "Bez nosaukuma") +
 (
 o.klients
 ?
-" — "+o.klients
+" — " + o.klients
 :
 ""
 );
 
-select.appendChild(
-option
-);
+select.appendChild(option);
 
 });
 
-const list=
+
+const list =
 document.getElementById(
 "objectsList"
 );
 
 if(!objects.length){
 
-list.innerHTML=
+list.innerHTML =
 '<p class="small">Objektu vēl nav.</p>';
 
 return;
 
 }
 
-list.innerHTML=
+list.innerHTML =
 objects.map(o=>`
 
 <div class="card">
@@ -1303,21 +790,21 @@ ${esc(o.nosaukums)}
 
 <div>
 <strong>Klients:</strong>
-${esc(o.klients||"—")}
+${esc(o.klients || "—")}
 </div>
 
 <div>
 <strong>Telefons:</strong>
-${esc(o.telefons||"—")}
+${esc(o.telefons || "—")}
 </div>
 
 <div>
 <strong>Adrese:</strong>
-${esc(o.adrese||"—")}
+${esc(o.adrese || "—")}
 </div>
 
 <div class="status">
-${esc(o.statuss||"Aktīvs")}
+${esc(o.statuss || "Aktīvs")}
 </div>
 
 </div>
@@ -1329,7 +816,7 @@ ${esc(o.statuss||"Aktīvs")}
 
 async function loadObject(){
 
-const id=
+const id =
 document.getElementById(
 "objectSelect"
 ).value;
@@ -1338,15 +825,15 @@ if(!id){
 
 document.getElementById(
 "objectDetails"
-).innerHTML="";
+).innerHTML = "";
 
-currentObject=null;
+currentObject = null;
 
 return;
 
 }
 
-const result=
+const result =
 await sb
 .from("objekti")
 .select("*")
@@ -1357,16 +844,16 @@ if(result.error){
 
 document.getElementById(
 "objectDetails"
-).innerHTML=
-'<div class="card err">'+
-esc(result.error.message)+
+).innerHTML =
+'<div class="card err">' +
+esc(result.error.message) +
 '</div>';
 
 return;
 
 }
 
-currentObject=
+currentObject =
 result.data;
 
 await renderObject();
@@ -1378,7 +865,7 @@ async function renderObject(){
 
 if(!currentObject)return;
 
-const result=
+const result =
 await sb
 .from("papilddarbi")
 .select("*")
@@ -1395,21 +882,21 @@ if(result.error){
 
 document.getElementById(
 "objectDetails"
-).innerHTML=
-'<div class="card err">'+
-esc(result.error.message)+
+).innerHTML =
+'<div class="card err">' +
+esc(result.error.message) +
 '</div>';
 
 return;
 
 }
 
-const works=
-result.data||[];
+const works =
+result.data || [];
 
 document.getElementById(
 "objectDetails"
-).innerHTML=`
+).innerHTML = `
 
 <div class="section">
 
@@ -1421,17 +908,17 @@ document.getElementById(
 
 <div>
 <strong>Klients:</strong>
-${esc(currentObject.klients||"—")}
+${esc(currentObject.klients || "—")}
 </div>
 
 <div>
 <strong>Telefons:</strong>
-${esc(currentObject.telefons||"—")}
+${esc(currentObject.telefons || "—")}
 </div>
 
 <div>
 <strong>Adrese:</strong>
-${esc(currentObject.adrese||"—")}
+${esc(currentObject.adrese || "—")}
 </div>
 
 </div>
@@ -1447,9 +934,7 @@ ${esc(currentObject.adrese||"—")}
 
 <div>
 
-<label>
-Nosaukums
-</label>
+<label>Nosaukums</label>
 
 <input
 id="workName"
@@ -1459,9 +944,7 @@ placeholder="Piemēram, papildu kanalizācija">
 
 <div>
 
-<label>
-Daudzums
-</label>
+<label>Daudzums</label>
 
 <input
 id="workQty"
@@ -1474,9 +957,7 @@ step="0.01">
 
 <div>
 
-<label>
-Vienība
-</label>
+<label>Vienība</label>
 
 <select id="workUnit">
 
@@ -1553,9 +1034,7 @@ step="0.01">
 
 <br>
 
-<label>
-Apraksts
-</label>
+<label>Apraksts</label>
 
 <textarea
 id="workDescription"
@@ -1563,9 +1042,7 @@ placeholder="Darba apraksts klientam"></textarea>
 
 <br>
 
-<label>
-Objekta foto
-</label>
+<label>Objekta foto</label>
 
 <input
 id="workPhoto"
@@ -1581,9 +1058,7 @@ Pievienot papilddarbu
 
 </button>
 
-<div
-id="workStatus">
-</div>
+<div id="workStatus"></div>
 
 </div>
 
@@ -1617,19 +1092,19 @@ works.map(renderWork).join("")
 
 function renderWork(w){
 
-const total=
-Number(w.daudzums||0)*
-Number(w.cena||0);
+const total =
+Number(w.daudzums || 0) *
+Number(w.cena || 0);
 
-const costs=
-Number(w.daudzums||0)*
+const costs =
+Number(w.daudzums || 0) *
 (
-Number(w.materials||0)+
-Number(w.darbs||0)
+Number(w.materials || 0) +
+Number(w.darbs || 0)
 );
 
-const profit=
-total-costs;
+const profit =
+total - costs;
 
 return `
 
@@ -1640,7 +1115,7 @@ ${esc(w.nosaukums)}
 </h3>
 
 <p>
-${esc(w.apraksts||"Bez apraksta")}
+${esc(w.apraksts || "Bez apraksta")}
 </p>
 
 <p>
@@ -1669,7 +1144,7 @@ ${money(profit)}
 </div>
 
 <div class="status">
-${esc(w.statuss||"Gaida saskaņošanu")}
+${esc(w.statuss || "Gaida saskaņošanu")}
 </div>
 
 <div class="row">
@@ -1692,13 +1167,9 @@ onclick="showPhotos('${w.id}')">
 
 </div>
 
-<div
-id="approval-${w.id}">
-</div>
+<div id="approval-${w.id}"></div>
 
-<div
-id="photos-${w.id}">
-</div>
+<div id="photos-${w.id}"></div>
 
 </div>
 
@@ -1719,7 +1190,7 @@ return;
 
 }
 
-const name=
+const name =
 document.getElementById(
 "workName"
 ).value.trim();
@@ -1734,7 +1205,7 @@ return;
 
 }
 
-const payload={
+const payload = {
 
 objekts_id:
 currentObject.id,
@@ -1750,7 +1221,7 @@ daudzums:
 Number(
 document.getElementById(
 "workQty"
-).value||0
+).value || 0
 ),
 
 vienibas:
@@ -1762,21 +1233,21 @@ cena:
 Number(
 document.getElementById(
 "workPrice"
-).value||0
+).value || 0
 ),
 
 materials:
 Number(
 document.getElementById(
 "workMaterials"
-).value||0
+).value || 0
 ),
 
 darbs:
 Number(
 document.getElementById(
 "workLabor"
-).value||0
+).value || 0
 ),
 
 statuss:
@@ -1784,7 +1255,7 @@ statuss:
 
 };
 
-const result=
+const result =
 await sb
 .from("papilddarbi")
 .insert([payload])
@@ -1795,16 +1266,16 @@ if(result.error){
 
 document.getElementById(
 "workStatus"
-).innerHTML=
-'<span class="err">'+
-esc(result.error.message)+
+).innerHTML =
+'<span class="err">' +
+esc(result.error.message) +
 '</span>';
 
 return;
 
 }
 
-const file=
+const file =
 document.getElementById(
 "workPhoto"
 ).files[0];
@@ -1821,7 +1292,7 @@ result.data.id
 
 document.getElementById(
 "workStatus"
-).innerHTML=
+).innerHTML =
 '<span class="ok">✓ Papilddarbs saglabāts.</span>';
 
 await renderObject();
@@ -1837,19 +1308,20 @@ objectId,
 workId
 ){
 
-const filename=
+const filename =
 file.name.replace(
 /[^a-zA-Z0-9._-]/g,
 "_"
 );
 
-const path=
-objectId+
-"/"+
-Date.now()+
-"_"+filename;
+const path =
+objectId +
+"/" +
+Date.now() +
+"_" +
+filename;
 
-const upload=
+const upload =
 await sb.storage
 .from("objekta-foto")
 .upload(
@@ -1863,15 +1335,13 @@ contentType:file.type
 
 if(upload.error){
 
-console.error(
-upload.error
-);
+console.error(upload.error);
 
 return;
 
 }
 
-const save=
+const save =
 await sb
 .from("foto")
 .insert([{
@@ -1892,30 +1362,26 @@ file.name
 
 if(save.error){
 
-console.error(
-save.error
-);
+console.error(save.error);
 
 }
 
 }
 
 
-async function showPhotos(
-workId
-){
+async function showPhotos(workId){
 
-const box=
+const box =
 document.getElementById(
-"photos-"+workId
+"photos-" + workId
 );
 
 if(!box)return;
 
-box.innerHTML=
+box.innerHTML =
 '<p class="small">Ielādē foto...</p>';
 
-const result=
+const result =
 await sb
 .from("foto")
 .select("*")
@@ -1930,34 +1396,34 @@ workId
 
 if(result.error){
 
-box.innerHTML=
-'<p class="err">'+
-esc(result.error.message)+
+box.innerHTML =
+'<p class="err">' +
+esc(result.error.message) +
 '</p>';
 
 return;
 
 }
 
-const photos=
-result.data||[];
+const photos =
+result.data || [];
 
 if(!photos.length){
 
-box.innerHTML=
+box.innerHTML =
 '<p class="small">Foto vēl nav.</p>';
 
 return;
 
 }
 
-let html="";
+let html = "";
 
 for(
 const photo of photos
 ){
 
-const signed=
+const signed =
 await sb.storage
 .from("objekta-foto")
 .createSignedUrl(
@@ -1969,7 +1435,7 @@ if(
 signed.data?.signedUrl
 ){
 
-html+=`
+html += `
 
 <img
 class="photo"
@@ -1984,17 +1450,16 @@ alt="Objekta foto">
 
 }
 
-box.innerHTML=html||
+box.innerHTML =
+html ||
 '<p class="small">Foto nav pieejami.</p>';
 
 }
 
 
-async function createApproval(
-workId
-){
+async function createApproval(workId){
 
-const existing=
+const existing =
 await sb
 .from("saskanojumi")
 .select("*")
@@ -2018,12 +1483,12 @@ return;
 
 }
 
-let approval=
+let approval =
 existing.data?.[0];
 
 if(!approval){
 
-const result=
+const result =
 await sb
 .from("saskanojumi")
 .insert([{
@@ -2040,7 +1505,7 @@ statuss:"Gaida"
 if(result.error){
 
 alert(
-"Neizdevās izveidot saskaņošanu:\n"+
+"Neizdevās izveidot saskaņošanu:\n" +
 result.error.message
 );
 
@@ -2048,25 +1513,25 @@ return;
 
 }
 
-approval=
+approval =
 result.data;
 
 }
 
-const link=
-window.location.origin+
-window.location.pathname+
-"?saskano="+
+const link =
+window.location.origin +
+window.location.pathname +
+"?saskano=" +
 encodeURIComponent(
 approval.id
 );
 
-const box=
+const box =
 document.getElementById(
-"approval-"+workId
+"approval-" + workId
 );
 
-box.innerHTML=`
+box.innerHTML = `
 
 <div class="card">
 
@@ -2105,9 +1570,7 @@ onclick="window.open('${esc(link)}','_blank')">
 }
 
 
-async function copyLink(
-text
-){
+async function copyLink(text){
 
 try{
 
@@ -2115,129 +1578,84 @@ await navigator.clipboard.writeText(
 text
 );
 
-alert(
-"Saite nokopēta!"
-);
+alert("Saite nokopēta!");
 
 }catch(e){
 
-const t=
+const t =
 document.createElement(
 "textarea"
 );
 
-t.value=text;
+t.value = text;
 
 document.body.appendChild(t);
 
 t.select();
 
-document.execCommand(
-"copy"
-);
+document.execCommand("copy");
 
 t.remove();
 
-alert(
-"Saite nokopēta!"
-);
+alert("Saite nokopēta!");
 
 }
 
 }
+<script>
 
 async function loadDashboard(){
 
-const box=
-document.getElementById(
-"dashboardContent"
-);
+const box=document.getElementById("dashboardContent");
 
-if(!box||!sb)return;
+if(!box || !sb)return;
 
-box.innerHTML=
-'<p class="small">Ielādē...</p>';
+box.innerHTML='<p class="small">Ielādē vadības paneli...</p>';
 
 try{
 
-const objects=
-await sb
+const objects=await sb
 .from("objekti")
 .select("*")
-.order(
-"created_at",
-{ascending:false}
-);
+.order("created_at",{ascending:false});
 
-const works=
-await sb
+const works=await sb
 .from("papilddarbi")
 .select("*")
-.order(
-"created_at",
-{ascending:false}
-);
+.order("created_at",{ascending:false});
 
-const approvals=
-await sb
+const approvals=await sb
 .from("saskanojumi")
 .select("*")
-.order(
-"created_at",
-{ascending:false}
-);
+.order("created_at",{ascending:false});
 
-if(objects.error)
-throw objects.error;
+if(objects.error)throw objects.error;
+if(works.error)throw works.error;
+if(approvals.error)throw approvals.error;
 
-if(works.error)
-throw works.error;
+const obj=objects.data||[];
+const work=works.data||[];
+const appr=approvals.data||[];
 
-if(approvals.error)
-throw approvals.error;
-
-const obj=
-objects.data||[];
-
-const work=
-works.data||[];
-
-const appr=
-approvals.data||[];
-
-const active=
-obj.filter(
-o=>(o.statuss||"Aktīvs")
-==="Aktīvs"
+const active=obj.filter(o=>
+(o.statuss||"Aktīvs")==="Aktīvs"
 ).length;
 
-const waiting=
-work.filter(
-w=>
-(w.statuss||"")
-==="Gaida saskaņošanu"
+const waiting=work.filter(w=>
+(w.statuss||"")==="Gaida saskaņošanu"
 ).length;
 
-const approved=
-work.filter(
-w=>
-(w.statuss||"")
-==="Apstiprināts"
+const approved=work.filter(w=>
+(w.statuss||"")==="Apstiprināts"
 ).length;
 
-const rejected=
-work.filter(
-w=>
-(w.statuss||"")
-==="Noraidīts"
+const rejected=work.filter(w=>
+(w.statuss||"")==="Noraidīts"
 ).length;
 
-const revenue=
-work
-.filter(
-w=>
-(w.statuss||"")
-==="Apstiprināts"
+const revenue=work
+.filter(w=>
+(w.statuss||"")==="Apstiprināts"
 )
 .reduce(
 (sum,w)=>
@@ -2247,12 +1665,9 @@ Number(w.cena||0),
 0
 );
 
-const costs=
-work
-.filter(
-w=>
-(w.statuss||"")
-==="Apstiprināts"
+const costs=work
+.filter(w=>
+(w.statuss||"")==="Apstiprināts"
 )
 .reduce(
 (sum,w)=>
@@ -2265,61 +1680,202 @@ Number(w.darbs||0)
 0
 );
 
-const profit=
-revenue-costs;
+const profit=revenue-costs;
 
-const objectMap=
-new Map(
-obj.map(
-o=>[o.id,o]
-)
+const objectMap=new Map(
+obj.map(o=>[o.id,o])
 );
 
-const workMap=
-new Map(
-work.map(
-w=>[w.id,w]
-)
+const workMap=new Map(
+work.map(w=>[w.id,w])
 );
 
-const activity=
-appr
-.slice(0,8)
-.map(a=>{
+const activity=appr.slice(0,8).map(a=>{
 
-const w=
-workMap.get(
-a.papilddarbs_id
-);
+const w=workMap.get(a.papilddarbs_id);
 
-const o=
-w
-?
-objectMap.get(
-w.objekts_id
-)
-:null;
+const o=w?
+objectMap.get(w.objekts_id):
+null;
 
 return{
-
-title:
-w?.nosaukums||
-"Papilddarbs",
-
-meta:
-o?.nosaukums||
-"Objekts",
-
-status:
-a.statuss||
-"Gaida",
-
-date:
-a.created_at
-
+title:w?.nosaukums||"Papilddarbs",
+meta:o?.nosaukums||"Objekts",
+status:a.statuss||"Gaida"
 };
 
 });
+
+
+/* OBJEKTU FINANŠU PĀRSKATS */
+
+const objectRows=obj.map(o=>{
+
+const ow=work.filter(
+w=>w.objekts_id===o.id
+);
+
+const objRevenue=ow
+.filter(w=>
+(w.statuss||"")==="Apstiprināts"
+)
+.reduce(
+(s,w)=>
+s+
+Number(w.daudzums||0)*
+Number(w.cena||0),
+0
+);
+
+const objCosts=ow
+.filter(w=>
+(w.statuss||"")==="Apstiprināts"
+)
+.reduce(
+(s,w)=>
+s+
+Number(w.daudzums||0)*
+(
+Number(w.materials||0)+
+Number(w.darbs||0)
+),
+0
+);
+
+const objProfit=objRevenue-objCosts;
+
+const objWaiting=ow.filter(
+w=>
+(w.statuss||"")==="Gaida saskaņošanu"
+).length;
+
+const objApproved=ow.filter(
+w=>
+(w.statuss||"")==="Apstiprināts"
+).length;
+
+return `
+
+<div class="object-summary-row">
+
+<div class="object-summary-top">
+
+<div>
+
+<div class="object-summary-name">
+${esc(o.nosaukums)}
+</div>
+
+<div class="object-summary-meta">
+
+${esc(o.klients||"Bez klienta")}
+
+${o.adrese?
+" · "+esc(o.adrese):
+""}
+
+</div>
+
+</div>
+
+<button
+class="btn"
+onclick="openObjectFromDashboard('${o.id}')">
+
+Atvērt objektu
+
+</button>
+
+</div>
+
+
+<div class="object-summary-stats">
+
+<div class="object-summary-stat">
+
+<span>
+Ieņēmumi
+</span>
+
+<b class="money">
+${money(objRevenue)}
+</b>
+
+</div>
+
+
+<div class="object-summary-stat">
+
+<span>
+Izmaksas
+</span>
+
+<b>
+${money(objCosts)}
+</b>
+
+</div>
+
+
+<div class="object-summary-stat">
+
+<span>
+Peļņa
+</span>
+
+<b class="money">
+${money(objProfit)}
+</b>
+
+</div>
+
+
+<div class="object-summary-stat">
+
+<span>
+Apstiprināti
+</span>
+
+<b>
+${objApproved}
+</b>
+
+</div>
+
+
+<div class="object-summary-stat">
+
+<span>
+Gaida
+</span>
+
+<b>
+${objWaiting}
+</b>
+
+</div>
+
+
+<div class="object-summary-stat">
+
+<span>
+Darbi kopā
+</span>
+
+<b>
+${ow.length}
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
 
 box.innerHTML=`
 
@@ -2429,6 +1985,24 @@ Ieņēmumi − izmaksas
 </div>
 
 
+<div class="card">
+
+<h3>
+🏗️ Objektu finanšu pārskats
+</h3>
+
+<div class="object-summary">
+
+${
+objectRows||
+'<p class="small">Objektu vēl nav.</p>'
+}
+
+</div>
+
+</div>
+
+
 <div class="card activity">
 
 <h3>
@@ -2484,182 +2058,178 @@ esc(e.message)+
 }
 
 
+function openObjectFromDashboard(id){
+
+const select=document.getElementById(
+"objectSelect"
+);
+
+if(!select)return;
+
+select.value=id;
+
+loadObject();
+
+document.getElementById(
+"system"
+).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
 /* =========================
    KALKULATORS
 ========================= */
 
 const priceList={
 
-"Zemes darbi":
-{
+"Zemes darbi":{
 unit:"h",
 price:75,
 cost:60
 },
 
-"Mini ekskavators":
-{
+"Mini ekskavators":{
 unit:"h",
 price:55,
 cost:40
 },
 
-"Bobcat mini iekrāvējs":
-{
+"Bobcat mini iekrāvējs":{
 unit:"h",
 price:55,
 cost:42
 },
 
-"Planēšana":
-{
+"Planēšana":{
 unit:"m²",
 price:2.5,
 cost:1.2
 },
 
-"Tranšeja":
-{
+"Tranšeja":{
 unit:"m",
 price:7,
 cost:4
 },
 
-"Grunts pārvietošana":
-{
+"Grunts pārvietošana":{
 unit:"m³",
 price:12,
 cost:7
 },
 
-"Grunts izvešana":
-{
+"Grunts izvešana":{
 unit:"m³",
 price:22,
 cost:14
 },
 
-"Smilts / šķembas pamatne":
-{
+"Smilts / šķembas pamatne":{
 unit:"m³",
 price:35,
 cost:25
 },
 
-"Ģeotekstils":
-{
+"Ģeotekstils":{
 unit:"m²",
 price:5,
 cost:3
 },
 
-"Drenāža":
-{
+"Drenāža":{
 unit:"m",
 price:35,
 cost:22
 },
 
-"Bruģēšana — darbs":
-{
+"Bruģēšana — darbs":{
 unit:"m²",
 price:22,
 cost:15
 },
 
-"Bruģis + pamatne":
-{
+"Bruģis + pamatne":{
 unit:"m²",
 price:38,
 cost:25
 },
 
-"Bruģēšana ar materiāliem":
-{
+"Bruģēšana ar materiāliem":{
 unit:"m²",
 price:62,
 cost:48
 },
 
-"Pamatu rakšana":
-{
+"Pamatu rakšana":{
 unit:"h",
 price:75,
 cost:60
 },
 
-"Veidņi":
-{
+"Veidņi":{
 unit:"m²",
 price:18,
 cost:12
 },
 
-"Armatūra":
-{
+"Armatūra":{
 unit:"m²",
 price:28,
 cost:20
 },
 
-"Betona darbi":
-{
+"Betona darbi":{
 unit:"m³",
 price:55,
 cost:35
 },
 
-"Hidroizolācija":
-{
+"Hidroizolācija":{
 unit:"m²",
 price:10,
 cost:6
 },
 
-"Pamatu siltināšana":
-{
+"Pamatu siltināšana":{
 unit:"m²",
 price:12,
 cost:7
 },
 
-"Pamatu drenāža":
-{
+"Pamatu drenāža":{
 unit:"m",
 price:40,
 cost:25
 },
 
-"Kompleksie pamati":
-{
+"Kompleksie pamati":{
 unit:"m³",
 price:230,
 cost:170
 },
 
-"Kanalizācijas izbūve":
-{
+"Kanalizācijas izbūve":{
 unit:"m",
 price:35,
 cost:22
 },
 
-"Dzīvokļa remonts":
-{
+"Dzīvokļa remonts":{
 unit:"m²",
 price:35,
 cost:22
 },
 
-"Māju būvniecība":
-{
+"Māju būvniecība":{
 unit:"m²",
 price:650,
 cost:500
 },
 
-"Labiekārtošana":
-{
+"Labiekārtošana":{
 unit:"m²",
 price:20,
 cost:12
@@ -2670,8 +2240,7 @@ cost:12
 
 function loadPriceList(){
 
-const select=
-document.getElementById(
+const select=document.getElementById(
 "calcWork"
 );
 
@@ -2680,38 +2249,32 @@ if(!select)return;
 select.innerHTML=
 '<option value="">— Izvēlies darbu —</option>';
 
-Object.keys(priceList)
-.forEach(name=>{
+Object.keys(priceList).forEach(name=>{
 
-const o=
-document.createElement(
-"option"
-);
+const option=
+document.createElement("option");
 
-o.value=name;
+option.value=name;
 
-o.textContent=name;
+option.textContent=name;
 
-select.appendChild(o);
+select.appendChild(option);
 
 });
 
 select.onchange=function(){
 
-const item=
-priceList[this.value];
+const item=priceList[this.value];
 
 if(!item)return;
 
 document.getElementById(
 "calcPrice"
-).value=
-item.price;
+).value=item.price;
 
 document.getElementById(
 "calcCost"
-).value=
-item.cost;
+).value=item.cost;
 
 };
 
@@ -2720,56 +2283,49 @@ item.cost;
 
 function addCalc(){
 
-const work=
-document.getElementById(
+const work=document.getElementById(
 "calcWork"
 ).value;
 
 if(!work){
 
-alert(
-"Izvēlies darbu."
-);
+alert("Izvēlies darbu.");
 
 return;
 
 }
 
-const qty=
-Number(
+const qty=Number(
 document.getElementById(
 "calcQty"
 ).value||0
 );
 
-const price=
-Number(
+const price=Number(
 document.getElementById(
 "calcPrice"
 ).value||0
 );
 
-const cost=
-Number(
+const cost=Number(
 document.getElementById(
 "calcCost"
 ).value||0
 );
 
-const item=
-priceList[work];
+const item=priceList[work];
 
 calcRows.push({
 
-work,
+work:work,
 
 unit:item?.unit||"gab.",
 
-qty,
+qty:qty,
 
-price,
+price:price,
 
-cost
+cost:cost
 
 });
 
@@ -2780,10 +2336,7 @@ renderCalc();
 
 function removeCalc(index){
 
-calcRows.splice(
-index,
-1
-);
+calcRows.splice(index,1);
 
 renderCalc();
 
@@ -2792,8 +2345,7 @@ renderCalc();
 
 function renderCalc(){
 
-const box=
-document.getElementById(
+const box=document.getElementById(
 "calcItems"
 );
 
@@ -2810,15 +2362,12 @@ return;
 
 }
 
-box.innerHTML=
-calcRows.map(
+box.innerHTML=calcRows.map(
 (r,i)=>{
 
-const total=
-r.qty*r.price;
+const total=r.qty*r.price;
 
-const costs=
-r.qty*r.cost;
+const costs=r.qty*r.cost;
 
 return `
 
@@ -2882,43 +2431,33 @@ updateCalcTotals();
 
 function updateCalcTotals(){
 
-const discount=
-Number(
+const discount=Number(
 document.getElementById(
 "calcDiscount"
 )?.value||0
 );
 
-const gross=
-calcRows.reduce(
+const gross=calcRows.reduce(
 (sum,r)=>
-sum+
-r.qty*r.price,
+sum+r.qty*r.price,
 0
 );
 
-const costs=
-calcRows.reduce(
+const costs=calcRows.reduce(
 (sum,r)=>
-sum+
-r.qty*r.cost,
+sum+r.qty*r.cost,
 0
 );
 
-const total=
-Math.max(
+const total=Math.max(
 0,
 gross-discount
 );
 
-const profit=
-total-costs;
+const profit=total-costs;
 
-const margin=
-total>0
-?
-profit/total*100
-:
+const margin=total>0?
+profit/total*100:
 0;
 
 document.getElementById(
@@ -2972,44 +2511,36 @@ return;
 
 }
 
-const client=
-document.getElementById(
+const client=document.getElementById(
 "qClient"
 ).value.trim();
 
-const address=
-document.getElementById(
+const address=document.getElementById(
 "qAddress"
 ).value.trim();
 
-const note=
-document.getElementById(
+const note=document.getElementById(
 "qNote"
 ).value.trim();
 
-const discount=
-Number(
+const discount=Number(
 document.getElementById(
 "calcDiscount"
 ).value||0
 );
 
-const gross=
-calcRows.reduce(
+const gross=calcRows.reduce(
 (sum,r)=>
-sum+
-r.qty*r.price,
+sum+r.qty*r.price,
 0
 );
 
-const total=
-Math.max(
+const total=Math.max(
 0,
 gross-discount
 );
 
-const win=
-window.open(
+const win=window.open(
 "",
 "_blank"
 );
@@ -3109,21 +2640,10 @@ ${esc(address||"—")}
 
 <tr>
 
-<th>
-Darbs
-</th>
-
-<th>
-Daudzums
-</th>
-
-<th>
-Cena
-</th>
-
-<th>
-Summa
-</th>
+<th>Darbs</th>
+<th>Daudzums</th>
+<th>Cena</th>
+<th>Summa</th>
 
 </tr>
 
@@ -3198,9 +2718,11 @@ ${
 note
 ?
 `
+
 <div class="note">
 ${esc(note)}
 </div>
+
 `
 :
 ""
@@ -3236,41 +2758,6 @@ win.print();
    KLIENTA SASKAŅOŠANA
 ========================= */
 
-async function openClientApproval(
-id
-){
-
-const result=
-await sb
-.from("saskanojumi")
-.select("*")
-.eq("id",id)
-.single();
-
-if(result.error){
-
-alert(
-result.error.message
-);
-
-return;
-
-}
-
-const link=
-window.location.origin+
-window.location.pathname+
-"?saskano="+
-encodeURIComponent(id);
-
-window.open(
-link,
-"_blank"
-);
-
-}
-
-
 async function loadClientPage(
 approvalId
 ){
@@ -3285,8 +2772,7 @@ return;
 
 }
 
-const approvalResult=
-await sb
+const approvalResult=await sb
 .from("saskanojumi")
 .select("*")
 .eq("id",approvalId)
@@ -3305,14 +2791,10 @@ return;
 const approval=
 approvalResult.data;
 
-const workResult=
-await sb
+const workResult=await sb
 .from("papilddarbi")
 .select("*")
-.eq(
-"id",
-approval.papilddarbs_id
-)
+.eq("id",approval.papilddarbs_id)
 .single();
 
 if(workResult.error){
@@ -3328,14 +2810,10 @@ return;
 const work=
 workResult.data;
 
-const objectResult=
-await sb
+const objectResult=await sb
 .from("objekti")
 .select("*")
-.eq(
-"id",
-work.objekts_id
-)
+.eq("id",work.objekts_id)
 .single();
 
 if(objectResult.error){
@@ -3355,23 +2833,22 @@ const total=
 Number(work.daudzums||0)*
 Number(work.cena||0);
 
-document.body.innerHTML=`
 
-<div class="client-page">
+document.body.innerHTML=`
 
 <div class="container">
 
-<div class="client-box">
+<div class="section">
 
-<div class="client-logo">
+<div class="logo"
+style="text-align:center">
 TERRA BŪVE
 </div>
 
-<p style="text-align:center">
+<p
+style="text-align:center">
 No zemes gabala līdz gatavai mājai
 </p>
-
-<div class="client-work">
 
 <h2>
 Papilddarba saskaņošana
@@ -3413,7 +2890,7 @@ ${esc(work.vienibas)}
 ${money(work.cena)}
 </p>
 
-<div class="client-price">
+<div class="big">
 ${money(total)}
 </div>
 
@@ -3433,15 +2910,12 @@ approval.statuss==="Noraidīts"
 
 </div>
 
-</div>
-
-
 ${
 approval.statuss==="Gaida"
 ?
 `
 
-<div>
+<div style="margin-top:20px">
 
 <label>
 Jūsu vārds
@@ -3451,7 +2925,7 @@ Jūsu vārds
 id="clientApprovalName"
 placeholder="Vārds, uzvārds">
 
-<br><br>
+<br>
 
 <label>
 Jūsu komentārs
@@ -3461,8 +2935,6 @@ Jūsu komentārs
 id="clientApprovalComment"
 placeholder="Ja nepieciešams, ierakstiet komentāru...">
 </textarea>
-
-<div class="approval-buttons">
 
 <button
 class="btn"
@@ -3480,11 +2952,7 @@ onclick="clientDecision('${approval.id}','Noraidīts')">
 
 </button>
 
-</div>
-
-<div
-id="clientDecisionStatus">
-</div>
+<div id="clientDecisionStatus"></div>
 
 </div>
 
@@ -3515,8 +2983,6 @@ Terra Būve
 
 </div>
 
-</div>
-
 `;
 
 }
@@ -3527,13 +2993,11 @@ approvalId,
 decision
 ){
 
-const name=
-document.getElementById(
+const name=document.getElementById(
 "clientApprovalName"
 )?.value.trim()||"";
 
-const comment=
-document.getElementById(
+const comment=document.getElementById(
 "clientApprovalComment"
 )?.value.trim()||"";
 
@@ -3547,28 +3011,21 @@ return;
 
 }
 
-const result=
-await sb
+const result=await sb
 .from("saskanojumi")
 .update({
 
-statuss:
-decision,
+statuss:decision,
 
-klienta_vards:
-name,
+klienta_vards:name,
 
-klienta_komentars:
-comment,
+klienta_komentars:comment,
 
 apstiprinats_at:
 new Date().toISOString()
 
 })
-.eq(
-"id",
-approvalId
-);
+.eq("id",approvalId);
 
 if(result.error){
 
@@ -3583,14 +3040,10 @@ return;
 
 }
 
-const approval=
-await sb
+const approval=await sb
 .from("saskanojumi")
 .select("papilddarbs_id")
-.eq(
-"id",
-approvalId
-)
+.eq("id",approvalId)
 .single();
 
 if(
@@ -3601,11 +3054,9 @@ await sb
 .from("papilddarbi")
 .update({
 
-statuss:
-decision,
+statuss:decision,
 
-klienta_lemums:
-decision,
+klienta_lemums:decision,
 
 saskanosanas_laiks:
 new Date().toISOString()
@@ -3620,18 +3071,21 @@ approval.data.papilddarbs_id
 
 document.body.innerHTML=`
 
-<div class="client-page">
-
 <div class="container">
 
-<div class="client-box">
+<div class="section">
 
-<div class="client-logo">
+<div
+class="logo"
+style="text-align:center">
 TERRA BŪVE
 </div>
 
-<div class="notice success">
+<div
+class="card"
+style="margin-top:20px">
 
+<h2>
 ✓ ${
 decision==="Apstiprināts"
 ?
@@ -3639,14 +3093,11 @@ decision==="Apstiprināts"
 :
 "Lēmums ir saglabāts."
 }
+</h2>
 
-</div>
-
-<p style="text-align:center">
-
+<p>
 Paldies!
 Terra Būve ir saņēmusi jūsu lēmumu.
-
 </p>
 
 </div>
@@ -3660,19 +3111,17 @@ Terra Būve ir saņēmusi jūsu lēmumu.
 }
 
 
-function renderClientError(
-text
-){
+function renderClientError(text){
 
 document.body.innerHTML=`
 
-<div class="client-page">
-
 <div class="container">
 
-<div class="client-box">
+<div class="section">
 
-<div class="client-logo">
+<div
+class="logo"
+style="text-align:center">
 TERRA BŪVE
 </div>
 
@@ -3681,8 +3130,6 @@ TERRA BŪVE
 <p class="err">
 ${esc(text)}
 </p>
-
-</div>
 
 </div>
 
@@ -3710,9 +3157,14 @@ localStorage.getItem(
 
 if(key){
 
+const keyInput=
 document.getElementById(
 "supabaseKey"
-).value=key;
+);
+
+if(keyInput){
+keyInput.value=key;
+}
 
 initSupabase();
 
@@ -3757,5 +3209,5 @@ startApp
 </script>
 
 </body>
-</html>
+</html>   
 </section>
