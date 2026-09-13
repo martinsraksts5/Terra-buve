@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="lv">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Terra Būve — Būvniecība un objektu sistēma</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0b0d10;color:#f4f4f4;font-family:Arial,sans-serif}
@@ -19,13 +21,11 @@ nav a,.btn2{background:#272c34;color:#fff;text-decoration:none;border:0;border-r
 .section{background:#111419;border:1px solid #30343b;border-radius:20px;padding:22px;margin:20px 0}
 .section h2{color:#f3c64e;margin-top:0}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-@media(max-width:720px){.grid{grid-template-columns:1fr}.hero h1{font-size:31px}.calcline{grid-template-columns:1fr!important}}
 label{display:block;color:#ccc;font-weight:700;margin-bottom:6px}
 input,select,textarea{width:100%;background:#080a0d;color:#fff;border:1px solid #3b414a;border-radius:11px;padding:13px;font-size:16px}
 textarea{min-height:90px}
 .btn{background:#f3c64e;color:#111;border:0;border-radius:12px;padding:13px 17px;font-weight:900;font-size:16px;margin-top:12px}
 .services{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(max-width:720px){.services{grid-template-columns:1fr}}
 .service,.card{background:#191d23;border:1px solid #343943;border-radius:14px;padding:17px}
 .service h3{color:#f3c64e;margin:0 0 7px}
 .muted,.small{color:#999;font-size:14px}
@@ -33,7 +33,6 @@ textarea{min-height:90px}
 .calcitem{margin-top:10px}
 .money{color:#f3c64e;font-weight:900}
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
-@media(max-width:720px){.summary{grid-template-columns:1fr}}
 .summary .card{font-size:17px}
 .big{font-size:27px;font-weight:900;color:#f3c64e}
 .ok{color:#6fe38b}
@@ -44,9 +43,7 @@ textarea{min-height:90px}
 .footer{text-align:center;color:#777;padding:35px}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .right{text-align:right}
-</style>
 
-<style>
 .dashboard{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
 .dash-card{background:#191d23;border:1px solid #343943;border-radius:14px;padding:16px}
 .dash-label{color:#aaa;font-size:14px}
@@ -57,11 +54,7 @@ textarea{min-height:90px}
 .activity-row:last-child{border-bottom:0}
 .activity-title{font-weight:800}
 .activity-meta{font-size:13px;color:#999;margin-top:2px}
-@media(max-width:720px){.dashboard{grid-template-columns:1fr 1fr}.activity-row{display:block}}
-@media(max-width:430px){.dashboard{grid-template-columns:1fr}}
-</style>
 
-<style>
 .object-summary{margin-top:14px;display:grid;gap:10px}
 .object-summary-row{background:#191d23;border:1px solid #343943;border-radius:14px;padding:15px}
 .object-summary-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
@@ -71,7 +64,22 @@ textarea{min-height:90px}
 .object-summary-stat{background:#101316;border-radius:10px;padding:9px}
 .object-summary-stat span{display:block;color:#999;font-size:12px}
 .object-summary-stat b{display:block;margin-top:2px}
-@media(max-width:720px){.object-summary-top{display:block}.object-summary-stats{grid-template-columns:1fr}}
+
+@media(max-width:720px){
+.grid{grid-template-columns:1fr}
+.services{grid-template-columns:1fr}
+.hero h1{font-size:31px}
+.calcline{grid-template-columns:1fr!important}
+.summary{grid-template-columns:1fr}
+.dashboard{grid-template-columns:1fr 1fr}
+.activity-row{display:block}
+.object-summary-top{display:block}
+.object-summary-stats{grid-template-columns:1fr}
+}
+
+@media(max-width:430px){
+.dashboard{grid-template-columns:1fr}
+}
 </style>
 </head>
 
@@ -93,97 +101,66 @@ textarea{min-height:90px}
 
 <section class="hero">
 <h1>Būvniecība vienuviet</h1>
-<p>Zemes darbi, pamati, labiekārtošana, kanalizācija, bruģēšana, māju būvniecība un dzīvokļu remonts.</p>
+<p>
+Zemes darbi, pamati, labiekārtošana, kanalizācija,
+bruģēšana, māju būvniecība un dzīvokļu remonts.
+</p>
 </section>
 
 <section class="section" id="dashboard">
-
 <h2>📊 Terra Būve — Vadības panelis</h2>
-
-<p class="small">
-Kopsavilkums no Supabase datiem.
-</p>
-
+<p class="small">Kopsavilkums no Supabase datiem.</p>
 <div id="dashboardContent">
-
 <div class="card">
-
-<p class="small">
-Pieslēdz Supabase, lai ielādētu vadības paneli.
-</p>
-
+<p class="small">Pieslēdz Supabase, lai ielādētu vadības paneli.</p>
 </div>
-
 </div>
-
 </section>
 
 <section class="section" id="services">
-
 <h2>🏗️ Ko piedāvājam</h2>
 
 <div class="services">
 
 <div class="service">
 <h3>🚜 Zemes darbi</h3>
-<p>
-Rakšana, planēšana, grunts pārvietošana,
-tranšejas un teritorijas sagatavošana.
-</p>
+<p>Rakšana, planēšana, grunts pārvietošana, tranšejas un teritorijas sagatavošana.</p>
 </div>
 
 <div class="service">
 <h3>🏗️ Pamatu izbūve</h3>
-<p>
-Pamatu rakšana, veidņi, armatūra,
-betonēšana, hidroizolācija un siltināšana.
-</p>
+<p>Pamatu rakšana, veidņi, armatūra, betonēšana, hidroizolācija un siltināšana.</p>
 </div>
 
 <div class="service">
 <h3>🌳 Labiekārtošana</h3>
-<p>
-Teritorijas planēšana, drenāža, grunts,
-smilts, šķembas un kanalizācijas risinājumi.
-</p>
+<p>Teritorijas planēšana, drenāža, grunts, smilts, šķembas un kanalizācijas risinājumi.</p>
 </div>
 
 <div class="service">
 <h3>🚰 Kanalizācijas sistēmas izbūve</h3>
-<p>
-Kanalizācijas cauruļvadi, tranšejas,
-pieslēgumi, izvadi un teritorijas sakārtošana.
-</p>
+<p>Kanalizācijas cauruļvadi, tranšejas, pieslēgumi, izvadi un teritorijas sakārtošana.</p>
 </div>
 
 <div class="service">
 <h3>🏠 Māju būvniecība</h3>
-<p>
-Būvniecības darbi no pamatiem līdz gatavai mājai.
-</p>
+<p>Būvniecības darbi no pamatiem līdz gatavai mājai.</p>
 </div>
 
 <div class="service">
 <h3>🛠️ Dzīvokļa remonts</h3>
-<p>
-Dzīvokļu remonts, iekšdarbi, telpu atjaunošana
-un pilna remonta darbu organizēšana.
-</p>
+<p>Dzīvokļu remonts, iekšdarbi, telpu atjaunošana un pilna remonta darbu organizēšana.</p>
 </div>
 
 <div class="service">
 <h3>🧱 Bruģēšana</h3>
-<p>
-Bruģa segumi, pamatnes sagatavošana,
-apmales, pagalmi un celiņi.
-</p>
+<p>Bruģa segumi, pamatnes sagatavošana, apmales, pagalmi un celiņi.</p>
 </div>
 
 </div>
 </section>
 
 <section class="section" id="calculator">
-
 <h2>🧮 Cenu kalkulators</h2>
 
 <div class="grid">
@@ -228,9 +205,7 @@ apmales, pagalmi un celiņi.
 <input id="calcCost" type="number" min="0" step="0.01" value="0">
 </div>
 
-<button class="btn" onclick="addCalc()">
-Pievienot
-</button>
+<button class="btn" onclick="addCalc()">Pievienot</button>
 
 </div>
 
@@ -279,16 +254,22 @@ Peļņa
 <button class="btn" onclick="printQuote()">
 📄 Drukāt / Saglabāt PDF klientam
 </button>
+
+</section>
+
+<section class="section hidden" id="clientApproval">
+<h2>📋 Papilddarba saskaņošana</h2>
+<div id="clientApprovalContent">
+<p class="small">Ielādē...</p>
+</div>
+</section>
+
 <section class="section" id="system">
 
-<h2>📁 Objektu sistēma</h2>
-
-<div class="card">
-
-<h3>🔌 Supabase savienojums</h3>
+<h2>🏗️ Objektu sistēma</h2>
 
 <p class="small">
-Ievadi savu Supabase Publishable Key.
+Ievadi Supabase <b>Publishable Key</b>, nevis konta paroli.
 </p>
 
 <input
@@ -296,76 +277,42 @@ id="supabaseKey"
 type="password"
 placeholder="Supabase Publishable Key">
 
-<div class="row">
-
-<button
-class="btn"
-onclick="saveSupabaseKey()">
+<button class="btn" onclick="connectSupabase()">
 Pieslēgt Supabase
 </button>
 
-<button
-class="btn2"
-onclick="testSupabase()">
-Pārbaudīt
-</button>
-
-</div>
-
 <div
-id="supabaseStatus"
+id="connectionStatus"
 class="small"
 style="margin-top:10px">
-Savienojums nav pārbaudīts.
 </div>
 
-</div>
+<div id="systemContent" class="hidden">
 
+<div class="card" style="margin-top:18px">
 
-<div class="card">
-
-<h3>➕ Izveidot objektu</h3>
+<h3>➕ Jauns objekts</h3>
 
 <div class="grid">
 
 <div>
-
 <label>Objekta nosaukums</label>
-
-<input
-id="objName"
-placeholder="Piemēram, Māja Salaspils">
-
+<input id="objName" placeholder="Piemēram, Māja Mārupē">
 </div>
 
 <div>
-
 <label>Klients</label>
-
-<input
-id="clientName"
-placeholder="Klienta vārds">
-
+<input id="clientName" placeholder="Vārds, uzvārds">
 </div>
 
 <div>
-
 <label>Telefons</label>
-
-<input
-id="clientPhone"
-placeholder="Telefona numurs">
-
+<input id="clientPhone" placeholder="+371...">
 </div>
 
 <div>
-
 <label>Adrese</label>
-
-<input
-id="objAddress"
-placeholder="Objekta adrese">
-
+<input id="objAddress" placeholder="Objekta adrese">
 </div>
 
 </div>
@@ -373,661 +320,66 @@ placeholder="Objekta adrese">
 <br>
 
 <label>Piezīmes</label>
+<textarea id="objNotes"></textarea>
 
-<textarea
-id="objNotes"
-placeholder="Piezīmes par objektu"></textarea>
-
-<button
-class="btn"
-onclick="createObject()">
+<button class="btn" onclick="createObject()">
 Izveidot objektu
 </button>
 
-<div
-id="objectCreateStatus"
-style="margin-top:10px">
 </div>
 
-</div>
+<div class="card" style="margin-top:14px">
 
+<h3>📋 Objekts</h3>
 
-<div class="card">
-
-<h3>📋 Objekti</h3>
-
-<label>Izvēlies objektu</label>
-
-<select
-id="objectSelect"
-onchange="loadObject()">
-
-<option value="">
-— izvēlies objektu —
-</option>
-
+<select id="objectSelect" onchange="loadObject()">
+<option value="">— Izvēlies objektu —</option>
 </select>
 
-<div
-id="objectsList"
-style="margin-top:15px">
-</div>
+<div id="objectInfo"></div>
 
 </div>
 
+<div class="card" style="margin-top:14px">
 
-<div id="objectDetails"></div>
-
-</section>
-
-
-</div>
-
-
-<footer class="footer">
-© Terra Būve
-</footer>
-
-
-<script>
-
-const SUPABASE_URL =
-"https://nmxdvvagdanajplzgyju.supabase.co";
-
-let sb = null;
-let currentObject = null;
-
-const calcRows = [];
-
-
-function money(n){
-
-return Number(n || 0).toLocaleString(
-"lv-LV",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-) + " €";
-
-}
-
-
-function esc(v){
-
-return String(v ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-function initSupabase(){
-
-const key =
-localStorage.getItem(
-"terra_supabase_key"
-);
-
-if(
-key &&
-window.supabase &&
-typeof window.supabase.createClient ===
-"function"
-){
-
-sb =
-window.supabase.createClient(
-SUPABASE_URL,
-key
-);
-
-return true;
-
-}
-
-return false;
-
-}
-
-
-function saveSupabaseKey(){
-
-const key =
-document.getElementById(
-"supabaseKey"
-).value.trim();
-
-if(!key){
-
-document.getElementById(
-"supabaseStatus"
-).innerHTML =
-'<span class="err">Ievadi Publishable Key.</span>';
-
-return;
-
-}
-
-localStorage.setItem(
-"terra_supabase_key",
-key
-);
-
-if(initSupabase()){
-
-document.getElementById(
-"supabaseStatus"
-).innerHTML =
-'<span class="ok">✓ Supabase savienojums izveidots.</span>';
-
-loadObjects();
-loadDashboard();
-
-}
-
-}
-
-
-async function testSupabase(){
-
-if(!sb){
-
-initSupabase();
-
-}
-
-if(!sb){
-
-document.getElementById(
-"supabaseStatus"
-).innerHTML =
-'<span class="err">Vispirms pieslēdz Supabase.</span>';
-
-return;
-
-}
-
-const result =
-await sb
-.from("objekti")
-.select("id")
-.limit(1);
-
-if(result.error){
-
-document.getElementById(
-"supabaseStatus"
-).innerHTML =
-'<span class="err">Supabase kļūda: ' +
-esc(result.error.message) +
-'</span>';
-
-return;
-
-}
-
-document.getElementById(
-"supabaseStatus"
-).innerHTML =
-'<span class="ok">✓ Supabase darbojas.</span>';
-
-loadObjects();
-loadDashboard();
-
-}
-
-
-async function createObject(){
-
-if(!sb){
-
-initSupabase();
-
-}
-
-if(!sb){
-
-alert(
-"Vispirms pieslēdz Supabase."
-);
-
-return;
-
-}
-
-const name =
-document.getElementById(
-"objName"
-).value.trim();
-
-if(!name){
-
-alert(
-"Ievadi objekta nosaukumu."
-);
-
-return;
-
-}
-
-const payload = {
-
-nosaukums:name,
-
-klients:
-document.getElementById(
-"clientName"
-).value.trim(),
-
-telefons:
-document.getElementById(
-"clientPhone"
-).value.trim(),
-
-adrese:
-document.getElementById(
-"objAddress"
-).value.trim(),
-
-piezimes:
-document.getElementById(
-"objNotes"
-).value.trim(),
-
-statuss:"Aktīvs"
-
-};
-
-console.log(
-"Terra Būve — sūtu objektu:",
-payload
-);
-
-const result =
-await sb
-.from("objekti")
-.insert([payload])
-.select("*")
-.single();
-
-if(result.error){
-
-const e = result.error;
-
-alert(
-"SUPABASE KĻŪDA\n\n" +
-"Code: " + (e.code || "") +
-"\n\nMessage: " + (e.message || "") +
-"\n\nDetails: " + (e.details || "") +
-"\n\nHint: " + (e.hint || "")
-);
-
-return;
-
-}
-
-document.getElementById(
-"objName"
-).value = "";
-
-document.getElementById(
-"clientName"
-).value = "";
-
-document.getElementById(
-"clientPhone"
-).value = "";
-
-document.getElementById(
-"objAddress"
-).value = "";
-
-document.getElementById(
-"objNotes"
-).value = "";
-
-await loadObjects();
-
-document.getElementById(
-"objectSelect"
-).value =
-result.data.id;
-
-await loadObject();
-
-await loadDashboard();
-
-document.getElementById(
-"objectCreateStatus"
-).innerHTML =
-'<span class="ok">✓ Objekts izveidots!</span>';
-
-}
-
-
-async function loadObjects(){
-
-if(!sb)return;
-
-const result =
-await sb
-.from("objekti")
-.select("*")
-.order(
-"created_at",
-{ascending:false}
-);
-
-if(result.error){
-
-console.error(result.error);
-
-return;
-
-}
-
-const objects =
-result.data || [];
-
-const select =
-document.getElementById(
-"objectSelect"
-);
-
-select.innerHTML =
-'<option value="">— izvēlies objektu —</option>';
-
-objects.forEach(o=>{
-
-const option =
-document.createElement(
-"option"
-);
-
-option.value = o.id;
-
-option.textContent =
-(o.nosaukums || "Bez nosaukuma") +
-(
-o.klients
-?
-" — " + o.klients
-:
-""
-);
-
-select.appendChild(option);
-
-});
-
-
-const list =
-document.getElementById(
-"objectsList"
-);
-
-if(!objects.length){
-
-list.innerHTML =
-'<p class="small">Objektu vēl nav.</p>';
-
-return;
-
-}
-
-list.innerHTML =
-objects.map(o=>`
-
-<div class="card">
-
-<h3 class="money">
-${esc(o.nosaukums)}
-</h3>
-
-<div>
-<strong>Klients:</strong>
-${esc(o.klients || "—")}
-</div>
-
-<div>
-<strong>Telefons:</strong>
-${esc(o.telefons || "—")}
-</div>
-
-<div>
-<strong>Adrese:</strong>
-${esc(o.adrese || "—")}
-</div>
-
-<div class="status">
-${esc(o.statuss || "Aktīvs")}
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-async function loadObject(){
-
-const id =
-document.getElementById(
-"objectSelect"
-).value;
-
-if(!id){
-
-document.getElementById(
-"objectDetails"
-).innerHTML = "";
-
-currentObject = null;
-
-return;
-
-}
-
-const result =
-await sb
-.from("objekti")
-.select("*")
-.eq("id",id)
-.single();
-
-if(result.error){
-
-document.getElementById(
-"objectDetails"
-).innerHTML =
-'<div class="card err">' +
-esc(result.error.message) +
-'</div>';
-
-return;
-
-}
-
-currentObject =
-result.data;
-
-await renderObject();
-
-}
-
-
-async function renderObject(){
-
-if(!currentObject)return;
-
-const result =
-await sb
-.from("papilddarbi")
-.select("*")
-.eq(
-"objekts_id",
-currentObject.id
-)
-.order(
-"created_at",
-{ascending:false}
-);
-
-if(result.error){
-
-document.getElementById(
-"objectDetails"
-).innerHTML =
-'<div class="card err">' +
-esc(result.error.message) +
-'</div>';
-
-return;
-
-}
-
-const works =
-result.data || [];
-
-document.getElementById(
-"objectDetails"
-).innerHTML = `
-
-<div class="section">
-
-<h2>
-🏗️ ${esc(currentObject.nosaukums)}
-</h2>
-
-<div class="card">
-
-<div>
-<strong>Klients:</strong>
-${esc(currentObject.klients || "—")}
-</div>
-
-<div>
-<strong>Telefons:</strong>
-${esc(currentObject.telefons || "—")}
-</div>
-
-<div>
-<strong>Adrese:</strong>
-${esc(currentObject.adrese || "—")}
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-➕ Pievienot papilddarbu + foto
-</h3>
+<h3>➕ Papilddarbs + foto</h3>
 
 <div class="grid">
 
 <div>
-
 <label>Nosaukums</label>
-
-<input
-id="workName"
-placeholder="Piemēram, papildu kanalizācija">
-
+<input id="workName" placeholder="Piemēram, papildu kanalizācija">
 </div>
 
 <div>
-
 <label>Daudzums</label>
-
-<input
-id="workQty"
-type="number"
-value="1"
-min="0"
-step="0.01">
-
+<input id="workQty" type="number" min="0" step="0.01" value="1">
 </div>
 
 <div>
-
 <label>Vienība</label>
-
 <select id="workUnit">
-
-<option value="gab.">
-gab.
-</option>
-
-<option value="m">
-m
-</option>
-
-<option value="m²">
-m²
-</option>
-
-<option value="m³">
-m³
-</option>
-
-<option value="h">
-h
-</option>
-
+<option>gab.</option>
+<option>h</option>
+<option>m</option>
+<option>m²</option>
+<option>m³</option>
 </select>
-
 </div>
 
 <div>
-
-<label>
-Cena klientam €/vien.
-</label>
-
-<input
-id="workPrice"
-type="number"
-value="0"
-min="0"
-step="0.01">
-
+<label>Cena par vienību €</label>
+<input id="workPrice" type="number" min="0" step="0.01" value="0">
 </div>
 
 <div>
-
-<label>
-Materiālu izmaksas €/vien.
-</label>
-
-<input
-id="workMaterials"
-type="number"
-value="0"
-min="0"
-step="0.01">
-
+<label>Materiāli €</label>
+<input id="workMaterials" type="number" min="0" step="0.01" value="0">
 </div>
 
 <div>
-
-<label>
-Darba izmaksas €/vien.
-</label>
-
-<input
-id="workLabor"
-type="number"
-value="0"
-min="0"
-step="0.01">
-
+<label>Darbs €</label>
+<input id="workLabor" type="number" min="0" step="0.01" value="0">
 </div>
 
 </div>
@@ -1035,724 +387,309 @@ step="0.01">
 <br>
 
 <label>Apraksts</label>
-
-<textarea
-id="workDescription"
-placeholder="Darba apraksts klientam"></textarea>
+<textarea id="workDescription" placeholder="Kas jāizdara?"></textarea>
 
 <br>
 
 <label>Objekta foto</label>
+<input id="workPhoto" type="file" accept="image/*" capture="environment">
 
-<input
-id="workPhoto"
-type="file"
-accept="image/*"
-capture="environment">
+<p class="small">
+Vari nofotografēt objektu ar telefonu.
+</p>
 
-<button
-class="btn"
-onclick="addWork()">
-
+<button class="btn" onclick="createWork()">
 Pievienot papilddarbu
-
 </button>
 
-<div id="workStatus"></div>
+<div id="workMessage"></div>
 
 </div>
 
+<div class="card" style="margin-top:14px">
 
-<div class="card">
-
-<h3>
-📷 Papilddarbi un foto
-</h3>
+<h3>📸 Papilddarbi un foto</h3>
 
 <div id="worksList">
-
-${
-works.length
-?
-works.map(renderWork).join("")
-:
-'<p class="small">Papilddarbu vēl nav.</p>'
-}
-
+<p class="small">Izvēlies objektu.</p>
 </div>
 
 </div>
 
 </div>
-
-`;
-
-}
-
-
-function renderWork(w){
-
-const total =
-Number(w.daudzums || 0) *
-Number(w.cena || 0);
-
-const costs =
-Number(w.daudzums || 0) *
-(
-Number(w.materials || 0) +
-Number(w.darbs || 0)
-);
-
-const profit =
-total - costs;
-
-return `
-
-<div class="card">
-
-<h3 class="money">
-${esc(w.nosaukums)}
-</h3>
-
-<p>
-${esc(w.apraksts || "Bez apraksta")}
-</p>
-
-<p>
-<strong>
-${esc(w.daudzums)}
-${esc(w.vienibas)}
-×
-${money(w.cena)}
-</strong>
-</p>
-
-<div class="big">
-${money(total)}
-</div>
-
-<div class="small">
-
-Iekšējās izmaksas:
-${money(costs)}
-
-<br>
-
-Peļņa:
-${money(profit)}
+</section>
 
 </div>
 
-<div class="status">
-${esc(w.statuss || "Gaida saskaņošanu")}
-</div>
+<footer class="footer">
+© Terra Būve
+</footer>
 
-<div class="row">
-
-<button
-class="btn"
-onclick="createApproval('${w.id}')">
-
-🔗 Klienta saskaņošana
-
-</button>
-
-<button
-class="btn2"
-onclick="showPhotos('${w.id}')">
-
-📷 Foto
-
-</button>
-
-</div>
-
-<div id="approval-${w.id}"></div>
-
-<div id="photos-${w.id}"></div>
-
-</div>
-
-`;
-
-}
-
-
-async function addWork(){
-
-if(!currentObject){
-
-alert(
-"Vispirms izvēlies objektu."
-);
-
-return;
-
-}
-
-const name =
-document.getElementById(
-"workName"
-).value.trim();
-
-if(!name){
-
-alert(
-"Ievadi papilddarba nosaukumu."
-);
-
-return;
-
-}
-
-const payload = {
-
-objekts_id:
-currentObject.id,
-
-nosaukums:name,
-
-apraksts:
-document.getElementById(
-"workDescription"
-).value.trim(),
-
-daudzums:
-Number(
-document.getElementById(
-"workQty"
-).value || 0
-),
-
-vienibas:
-document.getElementById(
-"workUnit"
-).value,
-
-cena:
-Number(
-document.getElementById(
-"workPrice"
-).value || 0
-),
-
-materials:
-Number(
-document.getElementById(
-"workMaterials"
-).value || 0
-),
-
-darbs:
-Number(
-document.getElementById(
-"workLabor"
-).value || 0
-),
-
-statuss:
-"Gaida saskaņošanu"
-
-};
-
-const result =
-await sb
-.from("papilddarbi")
-.insert([payload])
-.select("*")
-.single();
-
-if(result.error){
-
-document.getElementById(
-"workStatus"
-).innerHTML =
-'<span class="err">' +
-esc(result.error.message) +
-'</span>';
-
-return;
-
-}
-
-const file =
-document.getElementById(
-"workPhoto"
-).files[0];
-
-if(file){
-
-await uploadPhoto(
-file,
-currentObject.id,
-result.data.id
-);
-
-}
-
-document.getElementById(
-"workStatus"
-).innerHTML =
-'<span class="ok">✓ Papilddarbs saglabāts.</span>';
-
-await renderObject();
-
-await loadDashboard();
-
-}
-
-
-async function uploadPhoto(
-file,
-objectId,
-workId
-){
-
-const filename =
-file.name.replace(
-/[^a-zA-Z0-9._-]/g,
-"_"
-);
-
-const path =
-objectId +
-"/" +
-Date.now() +
-"_" +
-filename;
-
-const upload =
-await sb.storage
-.from("objekta-foto")
-.upload(
-path,
-file,
-{
-upsert:false,
-contentType:file.type
-}
-);
-
-if(upload.error){
-
-console.error(upload.error);
-
-return;
-
-}
-
-const save =
-await sb
-.from("foto")
-.insert([{
-
-objekts_id:
-objectId,
-
-papilddarbs_id:
-workId,
-
-faila_url:
-path,
-
-apraksts:
-file.name
-
-}]);
-
-if(save.error){
-
-console.error(save.error);
-
-}
-
-}
-
-
-async function showPhotos(workId){
-
-const box =
-document.getElementById(
-"photos-" + workId
-);
-
-if(!box)return;
-
-box.innerHTML =
-'<p class="small">Ielādē foto...</p>';
-
-const result =
-await sb
-.from("foto")
-.select("*")
-.eq(
-"papilddarbs_id",
-workId
-)
-.order(
-"created_at",
-{ascending:false}
-);
-
-if(result.error){
-
-box.innerHTML =
-'<p class="err">' +
-esc(result.error.message) +
-'</p>';
-
-return;
-
-}
-
-const photos =
-result.data || [];
-
-if(!photos.length){
-
-box.innerHTML =
-'<p class="small">Foto vēl nav.</p>';
-
-return;
-
-}
-
-let html = "";
-
-for(
-const photo of photos
-){
-
-const signed =
-await sb.storage
-.from("objekta-foto")
-.createSignedUrl(
-photo.faila_url,
-3600
-);
-
-if(
-signed.data?.signedUrl
-){
-
-html += `
-
-<img
-class="photo"
-src="${esc(
-signed.data.signedUrl
-)}"
-alt="Objekta foto">
-
-`;
-
-}
-
-}
-
-box.innerHTML =
-html ||
-'<p class="small">Foto nav pieejami.</p>';
-
-}
-
-
-async function createApproval(workId){
-
-const existing =
-await sb
-.from("saskanojumi")
-.select("*")
-.eq(
-"papilddarbs_id",
-workId
-)
-.order(
-"created_at",
-{ascending:false}
-)
-.limit(1);
-
-if(existing.error){
-
-alert(
-existing.error.message
-);
-
-return;
-
-}
-
-let approval =
-existing.data?.[0];
-
-if(!approval){
-
-const result =
-await sb
-.from("saskanojumi")
-.insert([{
-
-papilddarbs_id:
-workId,
-
-statuss:"Gaida"
-
-}])
-.select("*")
-.single();
-
-if(result.error){
-
-alert(
-"Neizdevās izveidot saskaņošanu:\n" +
-result.error.message
-);
-
-return;
-
-}
-
-approval =
-result.data;
-
-}
-
-const link =
-window.location.origin +
-window.location.pathname +
-"?saskano=" +
-encodeURIComponent(
-approval.id
-);
-
-const box =
-document.getElementById(
-"approval-" + workId
-);
-
-box.innerHTML = `
-
-<div class="card">
-
-<h3>
-🔗 Klienta saskaņošanas saite
-</h3>
-
-<input
-readonly
-value="${esc(link)}">
-
-<div class="row">
-
-<button
-class="btn"
-onclick="copyLink('${esc(link)}')">
-
-📋 Nokopēt saiti
-
-</button>
-
-<button
-class="btn2"
-onclick="window.open('${esc(link)}','_blank')">
-
-👁 Atvērt
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-async function copyLink(text){
-
-try{
-
-await navigator.clipboard.writeText(
-text
-);
-
-alert("Saite nokopēta!");
-
-}catch(e){
-
-const t =
-document.createElement(
-"textarea"
-);
-
-t.value = text;
-
-document.body.appendChild(t);
-
-t.select();
-
-document.execCommand("copy");
-
-t.remove();
-
-alert("Saite nokopēta!");
-
-}
-
-}
 <script>
+
+const SUPABASE_URL =
+'https://nmxdvvagdanajplzgyju.supabase.co';
+
+const PRICES = [
+
+['Ekskavatora darbs','h',75,60],
+['Mini ekskavators','h',55,40],
+['Bobcat mini iekrāvējs','h',55,42],
+['Teritorijas planēšana','m²',2.5,1.2],
+['Tranšejas rakšana','m',7,4],
+['Grunts pārvietošana','m³',12,7],
+['Grunts izvešana','m³',22,14],
+['Smilts / šķembas pamatne','m³',35,25],
+['Ģeotekstils','m²',5,3],
+['Drenāža','m',35,22],
+['Bruģēšanas darbs','m²',22,15],
+['Bruģis + pamatne','m²',38,25],
+['Bruģēšana ar materiāliem','m²',62,48],
+['Ietves apmale','m',17,11],
+['Ceļa apmale','m',30,20],
+['Demontāža','m²',14,8],
+['Pamatu rakšanas darbi','h',75,60],
+['Veidņi','m²',18,12],
+['Armatūra','m²',28,20],
+['Betonēšanas darbi','m³',55,35],
+['Hidroizolācija','m²',10,6],
+['Pamatu siltināšana','m²',12,7],
+['Drenāža pie pamatiem','m',40,25],
+['Kompleksie pamati','m³',230,170],
+['Kanalizācijas cauruļvadi','m',40,25],
+['Dzīvokļa remonta darbi','h',60,40]
+
+];
+
+let sb = null;
+let objects = [];
+let calc = [];
+
+function $(id){
+return document.getElementById(id);
+}
+
+function money(n){
+return Number(n || 0).toFixed(2)+' €';
+}
+
+function esc(v){
+return String(v ?? '')
+.replace(/&/g,'&amp;')
+.replace(/</g,'&lt;')
+.replace(/>/g,'&gt;')
+.replace(/"/g,'&quot;')
+.replace(/'/g,'&#39;');
+}
+
+function escAttr(v){
+return String(v || '')
+.replace(/&/g,'&amp;')
+.replace(/"/g,'&quot;')
+.replace(/'/g,'&#39;')
+.replace(/</g,'&lt;')
+.replace(/>/g,'&gt;');
+}
 
 async function loadDashboard(){
 
-const box=document.getElementById("dashboardContent");
+const box = $('dashboardContent');
 
 if(!box || !sb)return;
 
-box.innerHTML='<p class="small">Ielādē vadības paneli...</p>';
+box.innerHTML =
+'<p class="small">Ielādē...</p>';
 
 try{
 
-const objects=await sb
-.from("objekti")
-.select("*")
-.order("created_at",{ascending:false});
+const [oR,wR,sR] = await Promise.all([
 
-const works=await sb
-.from("papilddarbi")
-.select("*")
-.order("created_at",{ascending:false});
+sb
+.from('objekti')
+.select('id,nosaukums,klients,adrese,statuss,created_at')
+.order('created_at',{ascending:false}),
 
-const approvals=await sb
-.from("saskanojumi")
-.select("*")
-.order("created_at",{ascending:false});
+sb
+.from('papilddarbi')
+.select('id,objekts_id,nosaukums,daudzums,cena,materials,darbs,statuss,created_at')
+.order('created_at',{ascending:false}),
 
-if(objects.error)throw objects.error;
-if(works.error)throw works.error;
-if(approvals.error)throw approvals.error;
+sb
+.from('saskanojumi')
+.select('id,papilddarbs_id,statuss,klienta_vards,created_at')
+.order('created_at',{ascending:false})
 
-const obj=objects.data||[];
-const work=works.data||[];
-const appr=approvals.data||[];
+]);
 
-const active=obj.filter(o=>
-(o.statuss||"Aktīvs")==="Aktīvs"
-).length;
+if(oR.error)throw oR.error;
+if(wR.error)throw wR.error;
+if(sR.error)throw sR.error;
 
-const waiting=work.filter(w=>
-(w.statuss||"")==="Gaida saskaņošanu"
-).length;
+const objs = oR.data || [];
+const works = wR.data || [];
+const approvals = sR.data || [];
 
-const approved=work.filter(w=>
-(w.statuss||"")==="Apstiprināts"
-).length;
+const active =
+objs.filter(o=>(o.statuss||'Aktīvs')==='Aktīvs').length;
 
-const rejected=work.filter(w=>
-(w.statuss||"")==="Noraidīts"
-).length;
+const waiting =
+works.filter(w=>w.statuss==='Gaida saskaņošanu').length;
 
-const revenue=work
-.filter(w=>
-(w.statuss||"")==="Apstiprināts"
-)
+const approved =
+works.filter(w=>w.statuss==='Apstiprināts').length;
+
+const rejected =
+works.filter(w=>w.statuss==='Noraidīts').length;
+
+const revenue =
+works
+.filter(w=>w.statuss==='Apstiprināts')
 .reduce(
-(sum,w)=>
-sum+
-Number(w.daudzums||0)*
-Number(w.cena||0),
+(s,w)=>s+(+w.daudzums||0)*(+w.cena||0),
 0
 );
 
-const costs=work
-.filter(w=>
-(w.statuss||"")==="Apstiprināts"
-)
+const costs =
+works
+.filter(w=>w.statuss==='Apstiprināts')
 .reduce(
-(sum,w)=>
-sum+
-Number(w.daudzums||0)*
-(
-Number(w.materials||0)+
-Number(w.darbs||0)
-),
+(s,w)=>s+(+w.daudzums||0)*
+((+w.materials||0)+(+w.darbs||0)),
 0
 );
 
-const profit=revenue-costs;
+const profit = revenue-costs;
 
-const objectMap=new Map(
-obj.map(o=>[o.id,o])
-);
+const byObj = new Map();
 
-const workMap=new Map(
-work.map(w=>[w.id,w])
-);
+works.forEach(w=>{
 
-const activity=appr.slice(0,8).map(a=>{
+if(!byObj.has(w.objekts_id)){
+byObj.set(w.objekts_id,{
+total:0,
+cost:0,
+profit:0,
+waiting:0,
+approved:0,
+rejected:0,
+count:0
+});
+}
 
-const w=workMap.get(a.papilddarbs_id);
+const x = byObj.get(w.objekts_id);
 
-const o=w?
-objectMap.get(w.objekts_id):
-null;
+const t =
+(+w.daudzums||0)*(+w.cena||0);
 
-return{
-title:w?.nosaukums||"Papilddarbs",
-meta:o?.nosaukums||"Objekts",
-status:a.statuss||"Gaida"
+const c =
+(+w.daudzums||0)*
+((+w.materials||0)+(+w.darbs||0));
+
+x.count++;
+
+if(w.statuss==='Gaida saskaņošanu')
+x.waiting++;
+
+if(w.statuss==='Apstiprināts'){
+x.approved++;
+x.total+=t;
+x.cost+=c;
+x.profit+=t-c;
+}
+
+if(w.statuss==='Noraidīts')
+x.rejected++;
+
+});
+
+const workMap =
+new Map(works.map(w=>[w.id,w]));
+
+const objMap =
+new Map(objs.map(o=>[o.id,o]));
+
+const activities =
+approvals
+.slice(0,8)
+.map(a=>{
+
+const w =
+workMap.get(a.papilddarbs_id);
+
+const o =
+w ? objMap.get(w.objekts_id) : null;
+
+return {
+title:w?.nosaukums||'Papilddarbs',
+meta:o?.nosaukums||'Objekts',
+status:a.statuss||'Gaida',
+date:a.created_at
 };
 
 });
 
+box.innerHTML = `
 
-/* OBJEKTU FINANŠU PĀRSKATS */
+<div class="dashboard">
 
-const objectRows=obj.map(o=>{
+<div class="dash-card">
+<div class="dash-label">🏗️ Aktīvie objekti</div>
+<div class="dash-number">${active}</div>
+<div class="dash-sub">Kopā: ${objs.length}</div>
+</div>
 
-const ow=work.filter(
-w=>w.objekts_id===o.id
-);
+<div class="dash-card">
+<div class="dash-label">⏳ Gaida saskaņošanu</div>
+<div class="dash-number">${waiting}</div>
+<div class="dash-sub">Papilddarbi</div>
+</div>
 
-const objRevenue=ow
-.filter(w=>
-(w.statuss||"")==="Apstiprināts"
-)
-.reduce(
-(s,w)=>
-s+
-Number(w.daudzums||0)*
-Number(w.cena||0),
-0
-);
+<div class="dash-card">
+<div class="dash-label">✅ Apstiprināti</div>
+<div class="dash-number">${approved}</div>
+<div class="dash-sub">Papilddarbi</div>
+</div>
 
-const objCosts=ow
-.filter(w=>
-(w.statuss||"")==="Apstiprināts"
-)
-.reduce(
-(s,w)=>
-s+
-Number(w.daudzums||0)*
-(
-Number(w.materials||0)+
-Number(w.darbs||0)
-),
-0
-);
+<div class="dash-card">
+<div class="dash-label">❌ Noraidīti</div>
+<div class="dash-number">${rejected}</div>
+<div class="dash-sub">Papilddarbi</div>
+</div>
 
-const objProfit=objRevenue-objCosts;
+<div class="dash-card">
+<div class="dash-label">💰 Ieņēmumi</div>
+<div class="dash-number">${money(revenue)}</div>
+<div class="dash-sub">Apstiprinātie darbi</div>
+</div>
 
-const objWaiting=ow.filter(
-w=>
-(w.statuss||"")==="Gaida saskaņošanu"
-).length;
+<div class="dash-card">
+<div class="dash-label">📈 Peļņa</div>
+<div class="dash-number">${money(profit)}</div>
+<div class="dash-sub">Ieņēmumi − izmaksas</div>
+</div>
 
-const objApproved=ow.filter(
-w=>
-(w.statuss||"")==="Apstiprināts"
-).length;
+</div>
+
+<div class="card object-summary">
+
+<h3>🏗️ Objektu pārskats</h3>
+
+${
+objs.length
+?
+objs.map(o=>{
+
+const x =
+byObj.get(o.id) ||
+{
+total:0,
+cost:0,
+profit:0,
+waiting:0,
+approved:0,
+rejected:0,
+count:0
+};
 
 return `
 
@@ -1767,105 +704,51 @@ ${esc(o.nosaukums)}
 </div>
 
 <div class="object-summary-meta">
-
-${esc(o.klients||"Bez klienta")}
-
-${o.adrese?
-" · "+esc(o.adrese):
-""}
-
+${esc(o.klients||'Bez klienta')}
+ ·
+${esc(o.adrese||'Bez adreses')}
 </div>
 
 </div>
 
 <button
-class="btn"
-onclick="openObjectFromDashboard('${o.id}')">
-
+class="btn2"
+onclick="openObjectFromDashboard('${escAttr(o.id)}')">
 Atvērt objektu
-
 </button>
 
 </div>
 
-
 <div class="object-summary-stats">
 
 <div class="object-summary-stat">
-
-<span>
-Ieņēmumi
-</span>
-
-<b class="money">
-${money(objRevenue)}
-</b>
-
+<span>Darbi</span>
+<b>${x.count}</b>
 </div>
 
-
 <div class="object-summary-stat">
-
-<span>
-Izmaksas
-</span>
-
-<b>
-${money(objCosts)}
-</b>
-
+<span>Ieņēmumi</span>
+<b>${money(x.total)}</b>
 </div>
 
-
 <div class="object-summary-stat">
-
-<span>
-Peļņa
-</span>
-
-<b class="money">
-${money(objProfit)}
-</b>
-
+<span>Izmaksas</span>
+<b>${money(x.cost)}</b>
 </div>
 
-
 <div class="object-summary-stat">
-
-<span>
-Apstiprināti
-</span>
-
-<b>
-${objApproved}
-</b>
-
+<span>Peļņa</span>
+<b>${money(x.profit)}</b>
 </div>
 
-
 <div class="object-summary-stat">
-
-<span>
-Gaida
-</span>
-
-<b>
-${objWaiting}
-</b>
-
+<span>Gaida</span>
+<b>${x.waiting}</b>
 </div>
 
-
 <div class="object-summary-stat">
-
-<span>
-Darbi kopā
-</span>
-
-<b>
-${ow.length}
-</b>
-
+<span>Apstiprināti</span>
+<b>${x.approved}</b>
 </div>
 
 </div>
@@ -1874,145 +757,21 @@ ${ow.length}
 
 `;
 
-}).join("");
-
-
-box.innerHTML=`
-
-<div class="dashboard">
-
-<div class="dash-card">
-
-<div class="dash-label">
-🏗️ Aktīvie objekti
-</div>
-
-<div class="dash-number">
-${active}
-</div>
-
-<div class="dash-sub">
-Kopā: ${obj.length}
-</div>
-
-</div>
-
-
-<div class="dash-card">
-
-<div class="dash-label">
-⏳ Gaida saskaņošanu
-</div>
-
-<div class="dash-number">
-${waiting}
-</div>
-
-<div class="dash-sub">
-Papilddarbi
-</div>
-
-</div>
-
-
-<div class="dash-card">
-
-<div class="dash-label">
-✅ Apstiprināti
-</div>
-
-<div class="dash-number">
-${approved}
-</div>
-
-<div class="dash-sub">
-Papilddarbi
-</div>
-
-</div>
-
-
-<div class="dash-card">
-
-<div class="dash-label">
-❌ Noraidīti
-</div>
-
-<div class="dash-number">
-${rejected}
-</div>
-
-<div class="dash-sub">
-Papilddarbi
-</div>
-
-</div>
-
-
-<div class="dash-card">
-
-<div class="dash-label">
-💰 Ieņēmumi
-</div>
-
-<div class="dash-number">
-${money(revenue)}
-</div>
-
-<div class="dash-sub">
-Apstiprinātie darbi
-</div>
-
-</div>
-
-
-<div class="dash-card">
-
-<div class="dash-label">
-📈 Peļņa
-</div>
-
-<div class="dash-number">
-${money(profit)}
-</div>
-
-<div class="dash-sub">
-Ieņēmumi − izmaksas
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-🏗️ Objektu finanšu pārskats
-</h3>
-
-<div class="object-summary">
-
-${
-objectRows||
+}).join('')
+:
 '<p class="small">Objektu vēl nav.</p>'
 }
 
 </div>
 
-</div>
-
-
 <div class="card activity">
 
-<h3>
-🔔 Pēdējā aktivitāte
-</h3>
+<h3>🔔 Pēdējā aktivitāte</h3>
 
 ${
-activity.length
+activities.length
 ?
-activity.map(a=>`
+activities.map(a=>`
 
 <div class="activity-row">
 
@@ -2034,7 +793,7 @@ ${esc(a.status)}
 
 </div>
 
-`).join("")
+`).join('')
 :
 '<p class="small">Aktivitātes vēl nav.</p>'
 }
@@ -2047,369 +806,146 @@ ${esc(a.status)}
 
 console.error(e);
 
-box.innerHTML=
-'<div class="card err">'+
-"Vadības paneļa kļūda: "+
+box.innerHTML =
+'<div class="card err">Vadības paneļa kļūda: '+
 esc(e.message)+
-"</div>";
+'</div>';
 
 }
 
 }
-
 
 function openObjectFromDashboard(id){
 
-const select=document.getElementById(
-"objectSelect"
-);
+const s = $('objectSelect');
 
-if(!select)return;
+if(!s)return;
 
-select.value=id;
+s.value = id;
 
 loadObject();
 
-document.getElementById(
-"system"
-).scrollIntoView({
-behavior:"smooth"
+$('system')?.scrollIntoView({
+behavior:'smooth'
 });
 
 }
 
+function initPrices(){
 
-/* =========================
-   KALKULATORS
-========================= */
+const s = $('calcWork');
 
-const priceList={
+PRICES.forEach(p=>{
 
-"Zemes darbi":{
-unit:"h",
-price:75,
-cost:60
-},
+let o =
+document.createElement('option');
 
-"Mini ekskavators":{
-unit:"h",
-price:55,
-cost:40
-},
+o.value = p[2];
+o.dataset.u = p[1];
+o.dataset.cost = p[3];
 
-"Bobcat mini iekrāvējs":{
-unit:"h",
-price:55,
-cost:42
-},
+o.textContent =
+p[0]+' — '+p[2].toFixed(2)+' €/'+p[1];
 
-"Planēšana":{
-unit:"m²",
-price:2.5,
-cost:1.2
-},
-
-"Tranšeja":{
-unit:"m",
-price:7,
-cost:4
-},
-
-"Grunts pārvietošana":{
-unit:"m³",
-price:12,
-cost:7
-},
-
-"Grunts izvešana":{
-unit:"m³",
-price:22,
-cost:14
-},
-
-"Smilts / šķembas pamatne":{
-unit:"m³",
-price:35,
-cost:25
-},
-
-"Ģeotekstils":{
-unit:"m²",
-price:5,
-cost:3
-},
-
-"Drenāža":{
-unit:"m",
-price:35,
-cost:22
-},
-
-"Bruģēšana — darbs":{
-unit:"m²",
-price:22,
-cost:15
-},
-
-"Bruģis + pamatne":{
-unit:"m²",
-price:38,
-cost:25
-},
-
-"Bruģēšana ar materiāliem":{
-unit:"m²",
-price:62,
-cost:48
-},
-
-"Pamatu rakšana":{
-unit:"h",
-price:75,
-cost:60
-},
-
-"Veidņi":{
-unit:"m²",
-price:18,
-cost:12
-},
-
-"Armatūra":{
-unit:"m²",
-price:28,
-cost:20
-},
-
-"Betona darbi":{
-unit:"m³",
-price:55,
-cost:35
-},
-
-"Hidroizolācija":{
-unit:"m²",
-price:10,
-cost:6
-},
-
-"Pamatu siltināšana":{
-unit:"m²",
-price:12,
-cost:7
-},
-
-"Pamatu drenāža":{
-unit:"m",
-price:40,
-cost:25
-},
-
-"Kompleksie pamati":{
-unit:"m³",
-price:230,
-cost:170
-},
-
-"Kanalizācijas izbūve":{
-unit:"m",
-price:35,
-cost:22
-},
-
-"Dzīvokļa remonts":{
-unit:"m²",
-price:35,
-cost:22
-},
-
-"Māju būvniecība":{
-unit:"m²",
-price:650,
-cost:500
-},
-
-"Labiekārtošana":{
-unit:"m²",
-price:20,
-cost:12
-}
-
-};
-
-
-function loadPriceList(){
-
-const select=document.getElementById(
-"calcWork"
-);
-
-if(!select)return;
-
-select.innerHTML=
-'<option value="">— Izvēlies darbu —</option>';
-
-Object.keys(priceList).forEach(name=>{
-
-const option=
-document.createElement("option");
-
-option.value=name;
-
-option.textContent=name;
-
-select.appendChild(option);
+s.appendChild(o);
 
 });
 
-select.onchange=function(){
+s.addEventListener('change',()=>{
 
-const item=priceList[this.value];
+let o =
+s.options[s.selectedIndex];
 
-if(!item)return;
+$('calcPrice').value =
+o.dataset?.cost ? o.value : '0';
 
-document.getElementById(
-"calcPrice"
-).value=item.price;
+$('calcCost').value =
+o.dataset?.cost || '0';
 
-document.getElementById(
-"calcCost"
-).value=item.cost;
-
-};
+});
 
 }
-
 
 function addCalc(){
 
-const work=document.getElementById(
-"calcWork"
-).value;
+let s = $('calcWork');
+let o = s.options[s.selectedIndex];
 
-if(!work){
+let q = +$('calcQty').value || 0;
+let p = +$('calcPrice').value || 0;
+let c = +$('calcCost').value || 0;
 
-alert("Izvēlies darbu.");
+if(!s.value || q<=0){
+
+alert('Izvēlies darbu un daudzumu.');
 
 return;
 
 }
 
-const qty=Number(
-document.getElementById(
-"calcQty"
-).value||0
-);
-
-const price=Number(
-document.getElementById(
-"calcPrice"
-).value||0
-);
-
-const cost=Number(
-document.getElementById(
-"calcCost"
-).value||0
-);
-
-const item=priceList[work];
-
-calcRows.push({
-
-work:work,
-
-unit:item?.unit||"gab.",
-
-qty:qty,
-
-price:price,
-
-cost:cost
-
+calc.push({
+name:o.textContent.split(' — ')[0],
+u:o.dataset.u,
+q,
+p,
+c
 });
 
 renderCalc();
 
 }
 
-
-function removeCalc(index){
-
-calcRows.splice(index,1);
-
-renderCalc();
-
-}
-
-
 function renderCalc(){
 
-const box=document.getElementById(
-"calcItems"
-);
+let box = $('calcItems');
 
-if(!box)return;
+let disc =
++$('calcDiscount').value || 0;
 
-if(!calcRows.length){
+let total = 0;
+let costs = 0;
 
-box.innerHTML=
-'<p class="small">Darbi vēl nav pievienoti.</p>';
+box.innerHTML = '';
 
-updateCalcTotals();
+calc.forEach((x,i)=>{
 
-return;
+let sum = x.q*x.p;
+let co = x.q*x.c;
 
-}
+total += sum;
+costs += co;
 
-box.innerHTML=calcRows.map(
-(r,i)=>{
+box.innerHTML += `
 
-const total=r.qty*r.price;
-
-const costs=r.qty*r.cost;
-
-return `
-
-<div class="card">
+<div class="card calcitem">
 
 <div class="row">
 
 <div style="flex:1">
 
-<strong>
-${esc(r.work)}
-</strong>
+<b>${esc(x.name)}</b>
 
-<div class="small">
+<br>
 
-${r.qty}
-${esc(r.unit)}
+<span class="small">
+
+${x.q} ${esc(x.u)}
 ×
-${money(r.price)}
+${x.p.toFixed(2)} €
+=
+klientam ${sum.toFixed(2)} €
+·
+pašizmaksa ${co.toFixed(2)} €
 
-</div>
+</span>
 
-<div class="small">
-
-Izmaksas:
-${money(costs)}
-
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="money">
-${money(total)}
 </div>
 
 <button
 class="btn2"
-onclick="removeCalc(${i})">
+onclick="calc.splice(${i},1);renderCalc()">
 
-Dzēst
+Noņemt
 
 </button>
 
@@ -2417,138 +953,82 @@ Dzēst
 
 </div>
 
-</div>
-
 `;
-
-}
-).join("");
-
-updateCalcTotals();
-
-}
-
-
-function updateCalcTotals(){
-
-const discount=Number(
-document.getElementById(
-"calcDiscount"
-)?.value||0
-);
-
-const gross=calcRows.reduce(
-(sum,r)=>
-sum+r.qty*r.price,
-0
-);
-
-const costs=calcRows.reduce(
-(sum,r)=>
-sum+r.qty*r.cost,
-0
-);
-
-const total=Math.max(
-0,
-gross-discount
-);
-
-const profit=total-costs;
-
-const margin=total>0?
-profit/total*100:
-0;
-
-document.getElementById(
-"calcTotal"
-).textContent=
-money(total);
-
-document.getElementById(
-"calcCosts"
-).textContent=
-money(costs);
-
-document.getElementById(
-"calcProfit"
-).textContent=
-money(profit);
-
-document.getElementById(
-"calcMargin"
-).textContent=
-margin.toFixed(1)+"%";
-
-}
-
-
-document.addEventListener(
-"input",
-function(e){
-
-if(
-e.target &&
-e.target.id==="calcDiscount"
-){
-
-updateCalcTotals();
-
-}
 
 });
 
+total =
+Math.max(0,total-disc);
+
+let profit =
+total-costs;
+
+let margin =
+total ? profit/total*100 : 0;
+
+$('calcTotal').textContent =
+total.toFixed(2)+' €';
+
+$('calcCosts').textContent =
+costs.toFixed(2)+' €';
+
+$('calcProfit').textContent =
+profit.toFixed(2)+' €';
+
+$('calcMargin').textContent =
+'Peļņas marža: '+margin.toFixed(1)+'%';
+
+}
+
+$('calcDiscount')
+.addEventListener('input',renderCalc);
 
 function printQuote(){
 
-if(!calcRows.length){
+if(!calc.length){
 
-alert(
-"Vispirms pievieno vismaz vienu darbu."
-);
+alert('Pievieno vismaz vienu darbu.');
 
 return;
 
 }
 
-const client=document.getElementById(
-"qClient"
-).value.trim();
+let rows =
+calc.map(x=>`
 
-const address=document.getElementById(
-"qAddress"
-).value.trim();
+<tr>
 
-const note=document.getElementById(
-"qNote"
-).value.trim();
+<td>${esc(x.name)}</td>
 
-const discount=Number(
-document.getElementById(
-"calcDiscount"
-).value||0
-);
+<td>${x.q} ${esc(x.u)}</td>
 
-const gross=calcRows.reduce(
-(sum,r)=>
-sum+r.qty*r.price,
-0
-);
+<td>${x.p.toFixed(2)} €</td>
 
-const total=Math.max(
-0,
-gross-discount
-);
+<td>${(x.q*x.p).toFixed(2)} €</td>
 
-const win=window.open(
-"",
-"_blank"
-);
+</tr>
+
+`).join('');
+
+let total =
+$('calcTotal').textContent;
+
+let client =
+$('qClient').value;
+
+let address =
+$('qAddress').value;
+
+let note =
+$('qNote').value;
+
+let win =
+open('','_blank');
 
 if(!win){
 
 alert(
-"Atļauj pārlūkā atvērt jaunu logu."
+'Atļauj pārlūkprogrammā popup logus.'
 );
 
 return;
@@ -2572,26 +1052,24 @@ Terra Būve — Piedāvājums
 <style>
 
 body{
-font-family:Arial,sans-serif;
-max-width:850px;
-margin:40px auto;
-padding:20px;
-color:#111
+font-family:Arial;
+padding:35px;
+color:#222
 }
 
 h1{
-color:#b38b1d
+color:#9b7615
 }
 
 table{
 width:100%;
 border-collapse:collapse;
-margin-top:25px
+margin-top:20px
 }
 
-th,td{
-padding:11px;
-border-bottom:1px solid #ddd;
+td,th{
+border:1px solid #ccc;
+padding:9px;
 text-align:left
 }
 
@@ -2600,140 +1078,60 @@ font-size:25px;
 font-weight:bold
 }
 
-.note{
-margin-top:25px;
-padding:15px;
-background:#f5f5f5
-}
-
 </style>
 
 </head>
 
 <body>
 
-<h1>
-TERRA BŪVE
-</h1>
+<h1>TERRA BŪVE</h1>
+
+<h2>CENU PIEDĀVĀJUMS</h2>
 
 <p>
-<strong>
-No zemes gabala līdz gatavai mājai
-</strong>
-</p>
 
-<hr>
+<b>Klients:</b>
+${esc(client)}
 
-<p>
-<strong>Klients:</strong>
-${esc(client||"—")}
-</p>
+<br>
 
-<p>
-<strong>Adrese:</strong>
-${esc(address||"—")}
+<b>Objekts:</b>
+${esc(address)}
+
 </p>
 
 <table>
-
-<thead>
 
 <tr>
 
 <th>Darbs</th>
 <th>Daudzums</th>
-<th>Cena</th>
+<th>Vienības cena</th>
 <th>Summa</th>
 
 </tr>
 
-</thead>
-
-<tbody>
-
-${calcRows.map(r=>`
-
-<tr>
-
-<td>
-${esc(r.work)}
-</td>
-
-<td>
-${r.qty}
-${esc(r.unit)}
-</td>
-
-<td>
-${money(r.price)}
-</td>
-
-<td>
-${money(r.qty*r.price)}
-</td>
-
-</tr>
-
-`).join("")}
-
-${
-discount>0
-?
-`
-
-<tr>
-
-<td colspan="3">
-Atlaide
-</td>
-
-<td>
--${money(discount)}
-</td>
-
-</tr>
-
-`
-:
-""
-}
-
-<tr class="total">
-
-<td colspan="3">
-KOPĀ
-</td>
-
-<td>
-${money(total)}
-</td>
-
-</tr>
-
-</tbody>
+${rows}
 
 </table>
 
-${
-note
-?
-`
+<p>
+Atlaide:
+${esc($('calcDiscount').value||0)} €
+</p>
 
-<div class="note">
-${esc(note)}
-</div>
-
-`
-:
-""
-}
-
-<p style="margin-top:45px">
-Paldies par uzticēšanos!
+<p class="total">
+Kopā: ${esc(total)}
 </p>
 
 <p>
-Terra Būve
+${esc(note)}
+</p>
+
+<hr>
+
+<p>
+No zemes gabala līdz gatavai mājai
 </p>
 
 </body>
@@ -2745,241 +1143,252 @@ Terra Būve
 win.document.close();
 
 setTimeout(
-function(){
-win.print();
-},
-500
+()=>win.print(),
+300
 );
 
 }
 
+function setStatus(t,error=false){
 
-/* =========================
-   KLIENTA SASKAŅOŠANA
-========================= */
+$('connectionStatus').textContent = t;
 
-async function loadClientPage(
-approvalId
-){
+$('connectionStatus').className =
+error ? 'small err' : 'small ok';
 
-if(!initSupabase()){
+}
 
-renderClientError(
-"Supabase savienojums nav pieejams."
+async function connectSupabase(){
+
+let key =
+$('supabaseKey').value.trim();
+
+if(!key){
+
+setStatus(
+'Ievieto Supabase Publishable Key.',
+true
 );
 
 return;
 
 }
 
-const approvalResult=await sb
-.from("saskanojumi")
-.select("*")
-.eq("id",approvalId)
+try{
+
+if(!window.supabase?.createClient){
+
+setStatus(
+'Supabase bibliotēka nav ielādējusies. Pārlādē lapu.',
+true
+);
+
+return;
+
+}
+
+sb =
+window.supabase.createClient(
+SUPABASE_URL,
+key
+);
+
+localStorage.setItem(
+'terra_supabase_key',
+key
+);
+
+$('systemContent')
+.classList.remove('hidden');
+
+setStatus(
+'Pārbaudu Supabase savienojumu...'
+);
+
+await loadObjects();
+
+}catch(e){
+
+console.error(e);
+
+setStatus(
+'Supabase kļūda: '+e.message,
+true
+);
+
+}
+
+}
+
+async function loadObjects(){
+
+let r =
+await sb
+.from('objekti')
+.select('*')
+.order('created_at',{ascending:false});
+
+if(r.error){
+
+setStatus(
+'Datubāzes kļūda: '+r.error.message,
+true
+);
+
+return;
+
+}
+
+objects =
+r.data || [];
+
+let s =
+$('objectSelect');
+
+s.innerHTML =
+'<option value="">— Izvēlies objektu —</option>';
+
+objects.forEach(o=>{
+
+s.innerHTML += `
+
+<option value="${o.id}">
+${esc(o.nosaukums)}
+</option>
+
+`;
+
+});
+
+setStatus(
+'✓ Supabase savienojums izveidots.'
+);
+
+await loadDashboard();
+
+}
+
+async function createObject(){
+
+if(!sb){
+
+alert(
+'Vispirms pieslēdz Supabase.'
+);
+
+return;
+
+}
+
+let n =
+$('objName').value.trim();
+
+if(!n){
+
+alert(
+'Ievadi objekta nosaukumu.'
+);
+
+return;
+
+}
+
+let r =
+await sb
+.from('objekti')
+.insert([{
+
+nosaukums:n,
+
+klients:
+$('clientName').value.trim(),
+
+telefons:
+$('clientPhone').value.trim(),
+
+adrese:
+$('objAddress').value.trim(),
+
+piezimes:
+$('objNotes').value.trim(),
+
+statuss:'Aktīvs'
+
+}])
+.select()
 .single();
 
-if(approvalResult.error){
+if(r.error){
 
-renderClientError(
-"Saskaņošanas saite nav atrasta."
+alert(
+'Objekta kļūda: '+
+r.error.message
 );
 
 return;
 
 }
 
-const approval=
-approvalResult.data;
+await loadObjects();
 
-const workResult=await sb
-.from("papilddarbi")
-.select("*")
-.eq("id",approval.papilddarbs_id)
-.single();
+$('objectSelect').value =
+r.data.id;
 
-if(workResult.error){
+await loadObject();
 
-renderClientError(
-"Papilddarbs nav atrasts."
+alert(
+'Objekts izveidots!'
 );
+
+}
+
+async function loadObject(){
+
+let id =
+$('objectSelect').value;
+
+if(!id){
+
+$('objectInfo').innerHTML = '';
+
+$('worksList').innerHTML =
+'<p class="small">Izvēlies objektu.</p>';
 
 return;
 
 }
 
-const work=
-workResult.data;
+let o =
+objects.find(x=>x.id===id);
 
-const objectResult=await sb
-.from("objekti")
-.select("*")
-.eq("id",work.objekts_id)
-.single();
+if(o){
 
-if(objectResult.error){
+$('objectInfo').innerHTML = `
 
-renderClientError(
-"Objekts nav atrasts."
-);
+<div
+class="card"
+style="margin-top:12px">
 
-return;
-
-}
-
-const object=
-objectResult.data;
-
-const total=
-Number(work.daudzums||0)*
-Number(work.cena||0);
-
-
-document.body.innerHTML=`
-
-<div class="container">
-
-<div class="section">
-
-<div class="logo"
-style="text-align:center">
-TERRA BŪVE
-</div>
-
-<p
-style="text-align:center">
-No zemes gabala līdz gatavai mājai
-</p>
-
-<h2>
-Papilddarba saskaņošana
-</h2>
-
-<p>
-<strong>Objekts:</strong>
-${esc(object.nosaukums)}
-</p>
-
-<p>
-<strong>Klients:</strong>
-${esc(object.klients||"")}
-</p>
-
-<p>
-<strong>Adrese:</strong>
-${esc(object.adrese||"")}
-</p>
-
-<hr>
-
-<h2>
-${esc(work.nosaukums)}
-</h2>
-
-<p>
-${esc(work.apraksts||"Bez apraksta")}
-</p>
-
-<p>
-<strong>Daudzums:</strong>
-${esc(work.daudzums)}
-${esc(work.vienibas)}
-</p>
-
-<p>
-<strong>Cena par vienību:</strong>
-${money(work.cena)}
-</p>
-
-<div class="big">
-${money(total)}
-</div>
-
-<div class="status">
-
-${
-approval.statuss==="Apstiprināts"
-?
-"✓ Apstiprināts"
-:
-approval.statuss==="Noraidīts"
-?
-"✕ Noraidīts"
-:
-"Gaida klienta lēmumu"
-}
-
-</div>
-
-${
-approval.statuss==="Gaida"
-?
-`
-
-<div style="margin-top:20px">
-
-<label>
-Jūsu vārds
-</label>
-
-<input
-id="clientApprovalName"
-placeholder="Vārds, uzvārds">
+<b>${esc(o.nosaukums)}</b>
 
 <br>
 
-<label>
-Jūsu komentārs
-</label>
+Klients:
+${esc(o.klients||'-')}
 
-<textarea
-id="clientApprovalComment"
-placeholder="Ja nepieciešams, ierakstiet komentāru...">
-</textarea>
+<br>
 
-<button
-class="btn"
-onclick="clientDecision('${approval.id}','Apstiprināts')">
+Telefons:
+${esc(o.telefons||'-')}
 
-✓ APSTIPRINĀT
+<br>
 
-</button>
+Adrese:
+${esc(o.adrese||'-')}
 
-<button
-class="btn"
-onclick="clientDecision('${approval.id}','Noraidīts')">
-
-✕ NORAIDĪT
-
-</button>
-
-<div id="clientDecisionStatus"></div>
-
-</div>
-
-`
-:
-`
-
-<div class="card">
-
-<p>
-Šis papilddarbs jau ir apstrādāts.
+<p class="small">
+${esc(o.piezimes||'')}
 </p>
-
-</div>
-
-`
-}
-
-<p
-class="small"
-style="text-align:center;margin-top:30px">
-
-Terra Būve
-
-</p>
-
-</div>
 
 </div>
 
@@ -2987,35 +1396,780 @@ Terra Būve
 
 }
 
+await loadWorks(id);
 
-async function clientDecision(
-approvalId,
-decision
-){
+}
 
-const name=document.getElementById(
-"clientApprovalName"
-)?.value.trim()||"";
+async function loadWorks(id){
 
-const comment=document.getElementById(
-"clientApprovalComment"
-)?.value.trim()||"";
+let box =
+$('worksList');
 
-if(!name){
+box.innerHTML =
+'<p class="small">Ielādē...</p>';
+
+let r =
+await sb
+.from('papilddarbi')
+.select('*')
+.eq('objekts_id',id)
+.order('created_at',{ascending:false});
+
+if(r.error){
+
+box.innerHTML =
+'<p class="err">'+
+esc(r.error.message)+
+'</p>';
+
+return;
+
+}
+
+if(!r.data?.length){
+
+box.innerHTML =
+'<p class="small">Papilddarbu vēl nav.</p>';
+
+return;
+
+}
+
+box.innerHTML = '';
+
+for(const w of r.data){
+
+let d =
+document.createElement('div');
+
+d.className = 'card';
+
+let total =
+(+w.daudzums||0)*
+(+w.cena||0);
+
+d.innerHTML = `
+
+<h3>
+${esc(w.nosaukums)}
+</h3>
+
+<p>
+${esc(w.apraksts||'')}
+</p>
+
+<p>
+
+Daudzums:
+<b>${w.daudzums}</b>
+${esc(w.vienibas||'')}
+
+</p>
+
+<div class="money">
+${total.toFixed(2)} €
+</div>
+
+<p class="small">
+
+Materiāli:
+${(+w.materials||0).toFixed(2)} €
+
+·
+
+Darbs:
+${(+w.darbs||0).toFixed(2)} €
+
+</p>
+
+<span class="status">
+${esc(w.statuss||'Gaida saskaņošanu')}
+</span>
+
+<div
+class="row"
+style="margin-top:10px">
+
+<button
+class="btn2"
+onclick="shareApproval('${w.id}')">
+
+🔗 Klienta saskaņošanas saite
+
+</button>
+
+</div>
+
+<div id="photos-${w.id}">
+
+<p class="small">
+Foto ielādē...
+</p>
+
+</div>
+
+`;
+
+box.appendChild(d);
+
+loadPhotos(w.id);
+
+}
+
+}
+
+async function loadPhotos(wid){
+
+let c =
+$('photos-'+wid);
+
+let r =
+await sb
+.from('foto')
+.select('*')
+.eq('papilddarbs_id',wid)
+.order('created_at',{ascending:false});
+
+if(r.error){
+
+c.innerHTML =
+'<p class="err">'+
+esc(r.error.message)+
+'</p>';
+
+return;
+
+}
+
+if(!r.data?.length){
+
+c.innerHTML =
+'<p class="small">Foto nav pievienots.</p>';
+
+return;
+
+}
+
+c.innerHTML = '';
+
+for(const p of r.data){
+
+let u =
+await sb.storage
+.from('objekta-foto')
+.createSignedUrl(
+p.faila_url,
+3600
+);
+
+if(u.data?.signedUrl){
+
+let img =
+document.createElement('img');
+
+img.className = 'photo';
+
+img.src =
+u.data.signedUrl;
+
+img.alt =
+'Objekta foto';
+
+c.appendChild(img);
+
+}
+
+}
+
+}
+
+async function createWork(){
+
+if(!sb){
 
 alert(
-"Lūdzu, ievadiet savu vārdu."
+'Vispirms pieslēdz Supabase.'
 );
 
 return;
 
 }
 
-const result=await sb
-.from("saskanojumi")
-.update({
+let oid =
+$('objectSelect').value;
 
-statuss:decision,
+if(!oid){
+
+alert(
+'Vispirms izvēlies objektu.'
+);
+
+return;
+
+}
+
+let name =
+$('workName').value.trim();
+
+if(!name){
+
+alert(
+'Ievadi papilddarba nosaukumu.'
+);
+
+return;
+
+}
+
+let q =
++$('workQty').value||0;
+
+let p =
++$('workPrice').value||0;
+
+let m =
++$('workMaterials').value||0;
+
+let l =
++$('workLabor').value||0;
+
+let unit =
+$('workUnit').value;
+
+let desc =
+$('workDescription').value.trim();
+
+let file =
+$('workPhoto').files[0];
+
+$('workMessage').innerHTML =
+'<p class="small">Saglabā...</p>';
+
+let r =
+await sb
+.from('papilddarbi')
+.insert([{
+
+objekts_id:oid,
+
+nosaukums:name,
+
+apraksts:desc,
+
+daudzums:q,
+
+vienibas:unit,
+
+cena:p,
+
+materials:m,
+
+darbs:l,
+
+statuss:'Gaida saskaņošanu'
+
+}])
+.select()
+.single();
+
+if(r.error){
+
+$('workMessage').innerHTML =
+'<p class="err">'+
+esc(r.error.message)+
+'</p>';
+
+return;
+
+}
+
+if(file){
+
+let safe =
+file.name.replace(
+/[^a-zA-Z0-9._-]/g,
+'_'
+);
+
+let path =
+'objekti/'+
+oid+'/'+
+r.data.id+
+'-'+
+Date.now()+
+'-'+
+safe;
+
+let up =
+await sb.storage
+.from('objekta-foto')
+.upload(
+path,
+file,
+{
+cacheControl:'3600',
+upsert:false
+}
+);
+
+if(up.error){
+
+$('workMessage').innerHTML =
+'<p class="err">'+
+'Darbs saglabāts, foto kļūda: '+
+esc(up.error.message)+
+'</p>';
+
+await loadWorks(oid);
+
+return;
+
+}
+
+let fr =
+await sb
+.from('foto')
+.insert([{
+
+objekts_id:oid,
+
+papilddarbs_id:
+r.data.id,
+
+faila_url:path,
+
+apraksts:desc
+
+}]);
+
+if(fr.error){
+
+$('workMessage').innerHTML =
+'<p class="err">'+
+'Foto augšupielādēts, bet ieraksta kļūda: '+
+esc(fr.error.message)+
+'</p>';
+
+await loadWorks(oid);
+
+return;
+
+}
+
+}
+
+$('workMessage').innerHTML =
+'<p class="ok">✓ Papilddarbs'+
+(file?' un foto':'')+
+' pievienots!</p>';
+
+['workName','workDescription']
+.forEach(id=>$(id).value='');
+
+['workPrice','workMaterials','workLabor']
+.forEach(id=>$(id).value='0');
+
+$('workQty').value='1';
+
+$('workPhoto').value='';
+
+await loadWorks(oid);
+
+await loadDashboard();
+
+}
+
+function shareApproval(wid){
+
+const url =
+location.origin+
+location.pathname+
+'?sask='+
+encodeURIComponent(wid);
+
+if(navigator.share){
+
+navigator.share({
+
+title:
+'Terra Būve — papilddarba saskaņošana',
+
+text:
+'Lūdzu apskati un saskaņo papilddarbu.',
+
+url
+
+}).catch(()=>{});
+
+}
+
+else if(navigator.clipboard){
+
+navigator.clipboard
+.writeText(url)
+.then(()=>alert(
+'Saskaņošanas saite nokopēta!\n\n'+
+url
+))
+.catch(()=>
+prompt(
+'Nokopē šo saiti:',
+url
+)
+);
+
+}
+
+else{
+
+prompt(
+'Nokopē šo saiti:',
+url
+);
+
+}
+
+}
+
+async function loadClientApproval(wid){
+
+document
+.getElementById('services')
+.classList.add('hidden');
+
+document
+.getElementById('calculator')
+.classList.add('hidden');
+
+document
+.getElementById('system')
+.classList.add('hidden');
+
+document
+.getElementById('clientApproval')
+.classList.remove('hidden');
+
+const box =
+$('clientApprovalContent');
+
+if(!window.supabase?.createClient){
+
+box.innerHTML =
+'<p class="err">'+
+'Supabase bibliotēka nav ielādējusies. Pārlādē lapu.'+
+'</p>';
+
+return;
+
+}
+
+let key =
+localStorage.getItem(
+'terra_supabase_key'
+)||'';
+
+if(!key){
+
+box.innerHTML =
+'<p class="err">'+
+'Saskaņošanas saite nav pieejama, jo Supabase atslēga nav saglabāta šajā pārlūkā.'+
+'</p>';
+
+return;
+
+}
+
+try{
+
+const client =
+window.supabase.createClient(
+SUPABASE_URL,
+key
+);
+
+let r =
+await client
+.from('papilddarbi')
+.select('*')
+.eq('id',wid)
+.single();
+
+if(r.error || !r.data){
+
+box.innerHTML =
+'<p class="err">Papilddarbs nav atrasts.</p>';
+
+return;
+
+}
+
+const w = r.data;
+
+let obj =
+await client
+.from('objekti')
+.select('nosaukums,klients,adrese')
+.eq('id',w.objekts_id)
+.single();
+
+let photos =
+await client
+.from('foto')
+.select('*')
+.eq('papilddarbs_id',wid)
+.order('created_at',{ascending:false});
+
+let imgs = '';
+
+for(
+const p of (photos.data||[])
+){
+
+let u =
+await client.storage
+.from('objekta-foto')
+.createSignedUrl(
+p.faila_url,
+3600
+);
+
+if(u.data?.signedUrl){
+
+imgs += `
+
+<img
+class="photo"
+src="${escAttr(u.data.signedUrl)}"
+alt="Papilddarba foto">
+
+`;
+
+}
+
+}
+
+let total =
+(+w.daudzums||0)*
+(+w.cena||0);
+
+let current =
+w.statuss ||
+'Gaida saskaņošanu';
+
+let decided =
+[
+'Apstiprināts',
+'Noraidīts'
+].includes(current);
+
+box.innerHTML = `
+
+<div class="card">
+
+<p class="small">
+Objekts
+</p>
+
+<h3>
+${esc(obj.data?.nosaukums||'-')}
+</h3>
+
+<p>
+<b>Adrese:</b>
+${esc(obj.data?.adrese||'-')}
+</p>
+
+<hr>
+
+<h2>
+${esc(w.nosaukums)}
+</h2>
+
+<p>
+${esc(w.apraksts||'')}
+</p>
+
+<p>
+
+Daudzums:
+<b>${esc(w.daudzums)}</b>
+${esc(w.vienibas||'')}
+
+</p>
+
+<div
+class="money"
+style="font-size:30px">
+
+${total.toFixed(2)} €
+
+</div>
+
+${imgs}
+
+<p>
+
+<span class="status">
+
+Statuss:
+${esc(current)}
+
+</span>
+
+</p>
+
+${
+decided
+
+?
+
+`
+
+<p class="small">
+
+Šis papilddarbs jau ir
+${current.toLowerCase()}.
+
+</p>
+
+`
+
+:
+
+`
+
+<div class="grid">
+
+<div>
+
+<label>
+Jūsu vārds
+</label>
+
+<input
+id="clientNameApproval"
+placeholder="Vārds, uzvārds">
+
+</div>
+
+<div>
+
+<label>
+Komentārs
+</label>
+
+<textarea
+id="clientCommentApproval"
+placeholder="Piezīme vai jautājums">
+</textarea>
+
+</div>
+
+</div>
+
+<div
+class="row"
+style="margin-top:10px">
+
+<button
+class="btn"
+onclick="submitApproval('${escAttr(w.id)}','Apstiprināts')">
+
+✅ APSTIPRINU
+
+</button>
+
+<button
+class="btn2"
+onclick="submitApproval('${escAttr(w.id)}','Noraidīts')">
+
+❌ NORAIDU
+
+</button>
+
+</div>
+
+<p
+id="approvalMessage"
+class="small">
+</p>
+
+`
+
+}
+
+</div>
+
+`;
+
+}catch(e){
+
+console.error(e);
+
+box.innerHTML =
+'<p class="err">Kļūda: '+
+esc(e.message)+
+'</p>';
+
+}
+
+}
+
+async function submitApproval(
+wid,
+status
+){
+
+const key =
+localStorage.getItem(
+'terra_supabase_key'
+)||'';
+
+if(!key)return;
+
+const client =
+window.supabase.createClient(
+SUPABASE_URL,
+key
+);
+
+const name =
+$('clientNameApproval')
+?.value.trim()||'';
+
+const comment =
+$('clientCommentApproval')
+?.value.trim()||'';
+
+const msg =
+$('approvalMessage');
+
+if(!name){
+
+msg.className =
+'small err';
+
+msg.textContent =
+'Lūdzu ievadi savu vārdu.';
+
+return;
+
+}
+
+msg.className =
+'small';
+
+msg.textContent =
+'Saglabā...';
+
+let r =
+await client
+.from('saskanojumi')
+.insert([{
+
+papilddarbs_id:wid,
+
+statuss:status,
 
 klienta_vards:name,
 
@@ -3024,190 +2178,102 @@ klienta_komentars:comment,
 apstiprinats_at:
 new Date().toISOString()
 
-})
-.eq("id",approvalId);
+}]);
 
-if(result.error){
+if(r.error){
 
-document.getElementById(
-"clientDecisionStatus"
-).innerHTML=
-'<p class="err">'+
-esc(result.error.message)+
-'</p>';
+msg.className =
+'small err';
+
+msg.textContent =
+'Kļūda: '+
+r.error.message;
 
 return;
 
 }
 
-const approval=await sb
-.from("saskanojumi")
-.select("papilddarbs_id")
-.eq("id",approvalId)
-.single();
-
-if(
-approval.data?.papilddarbs_id
-){
-
-await sb
-.from("papilddarbi")
+let u =
+await client
+.from('papilddarbi')
 .update({
 
-statuss:decision,
+statuss:status,
 
-klienta_lemums:decision,
+klienta_lemums:comment,
 
 saskanosanas_laiks:
 new Date().toISOString()
 
 })
-.eq(
-"id",
-approval.data.papilddarbs_id
-);
+.eq('id',wid);
 
-}
+if(u.error){
 
-document.body.innerHTML=`
+msg.className =
+'small err';
 
-<div class="container">
-
-<div class="section">
-
-<div
-class="logo"
-style="text-align:center">
-TERRA BŪVE
-</div>
-
-<div
-class="card"
-style="margin-top:20px">
-
-<h2>
-✓ ${
-decision==="Apstiprināts"
-?
-"Papilddarbs ir apstiprināts."
-:
-"Lēmums ir saglabāts."
-}
-</h2>
-
-<p>
-Paldies!
-Terra Būve ir saņēmusi jūsu lēmumu.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-function renderClientError(text){
-
-document.body.innerHTML=`
-
-<div class="container">
-
-<div class="section">
-
-<div
-class="logo"
-style="text-align:center">
-TERRA BŪVE
-</div>
-
-<div class="card">
-
-<p class="err">
-${esc(text)}
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-async function startApp(){
-
-loadPriceList();
-
-const key=
-localStorage.getItem(
-"terra_supabase_key"
-);
-
-if(key){
-
-const keyInput=
-document.getElementById(
-"supabaseKey"
-);
-
-if(keyInput){
-keyInput.value=key;
-}
-
-initSupabase();
-
-}
-
-const params=
-new URLSearchParams(
-window.location.search
-);
-
-const approvalId=
-params.get("saskano");
-
-if(approvalId){
-
-await loadClientPage(
-approvalId
-);
+msg.textContent =
+'Saskaņojums saglabāts, bet statusa atjaunošana neizdevās: '+
+u.error.message;
 
 return;
 
 }
 
-if(sb){
+msg.className =
+'small ok';
 
-await loadObjects();
+msg.textContent =
+'✓ Paldies! Jūsu lēmums ir saglabāts.';
 
-await loadDashboard();
+setTimeout(
+()=>loadClientApproval(wid),
+700
+);
+
+loadDashboard();
 
 }
+
+window.addEventListener(
+'load',
+()=>{
+
+initPrices();
 
 renderCalc();
 
+let s =
+new URLSearchParams(
+location.search
+).get('sask');
+
+if(s){
+
+loadClientApproval(s);
+
+return;
+
 }
 
+let k =
+localStorage.getItem(
+'terra_supabase_key'
+);
 
-window.addEventListener(
-"load",
-startApp
+if(k){
+
+$('supabaseKey').value = k;
+
+connectSupabase();
+
+}
+
+}
 );
 
 </script>
 
 </body>
-</html>   
-</section>
+</html>
