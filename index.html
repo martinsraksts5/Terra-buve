@@ -2276,6 +2276,276 @@ connectSupabase();
 );
 
 </script>
+<!-- TERRA BŪVE CENU KATALOGS -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
 
+const catalogData = {
+
+"🚜 Zemes darbi":[
+["Ekskavatora darbs","h",75],
+["Mini ekskavators","h",55],
+["Bobcat mini iekrāvējs","h",55],
+["Teritorijas planēšana","m²",2.5],
+["Tranšejas rakšana","m",7],
+["Grunts pārvietošana","m³",12],
+["Grunts izvešana","m³",22]
+],
+
+"🧱 Pamatu izbūve":[
+["Pamatu rakšanas darbi","h",75],
+["Veidņi","m²",18],
+["Armatūra","m²",28],
+["Betonēšanas darbi","m³",55],
+["Hidroizolācija","m²",10],
+["Pamatu siltināšana","m²",12],
+["Drenāža pie pamatiem","m",40],
+["Kompleksie pamati","m³",230]
+],
+
+"🧱 Bruģēšana":[
+["Bruģēšanas darbs","m²",22],
+["Bruģis + pamatne","m²",38],
+["Bruģēšana ar materiāliem","m²",62],
+["Ietves apmale","m",17],
+["Ceļa apmale","m",30]
+],
+
+"🚰 Kanalizācijas sistēmas":[
+["Kanalizācijas cauruļvadi","m",40],
+["Tranšejas rakšana","m",7],
+["Grunts aizbēršana","m³",12],
+["Teritorijas sakārtošana","m²",2.5]
+],
+
+"🌳 Labiekārtošana":[
+["Teritorijas planēšana","m²",2.5],
+["Smilts / šķembas pamatne","m³",35],
+["Ģeotekstils","m²",5],
+["Drenāža","m",35],
+["Grunts pārvietošana","m³",12],
+["Grunts izvešana","m³",22]
+],
+
+"🔨 Remontdarbi":[
+["Dzīvokļa remonta darbi","h",60],
+["Demontāža","m²",14]
+],
+
+"🏠 Māju būvniecība":[
+["Pamatu izbūve","m³",230],
+["Betonēšanas darbi","m³",55],
+["Armatūras darbi","m²",28],
+["Hidroizolācija","m²",10]
+]
+
+};
+
+const section=document.createElement("section");
+
+section.className="section";
+
+section.id="priceCatalog";
+
+section.innerHTML=`
+<h2>💰 Terra Būve cenu katalogs</h2>
+
+<p class="small">
+Izvēlies darbu, daudzumu un pievieno to cenu kalkulatoram.
+Cenas ir klienta pārdošanas cenas.
+</p>
+
+<div id="catalogCategories"></div>
+`;
+
+const pricesSection=document.getElementById("prices");
+
+if(pricesSection){
+pricesSection.parentNode.insertBefore(
+section,
+pricesSection
+);
+}else{
+document
+.querySelector(".container")
+.appendChild(section);
+}
+
+const container=
+document.getElementById("catalogCategories");
+
+Object.entries(catalogData).forEach(
+([category,items])=>{
+
+const card=
+document.createElement("div");
+
+card.className="card";
+
+card.style.marginBottom="14px";
+
+card.innerHTML=`
+
+<h3 style="color:#f3c64e">
+${category}
+</h3>
+
+<div class="catalog-items"></div>
+`;
+
+const list=
+card.querySelector(".catalog-items");
+
+items.forEach(item=>{
+
+const name=item[0];
+
+const unit=item[1];
+
+const price=item[2];
+
+const row=
+document.createElement("div");
+
+row.style.cssText=
+"display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #30343b;flex-wrap:wrap";
+
+row.innerHTML=`
+
+<div style="flex:1;min-width:190px">
+
+<b>${name}</b>
+
+<div class="small">
+${price.toFixed(2)} €/${unit}
+</div>
+
+</div>
+
+<button
+class="btn2"
+type="button"
+>
+➕ Pievienot
+</button>
+`;
+
+row
+.querySelector("button")
+.addEventListener(
+"click",
+function(){
+
+addCatalogToCalculator(
+name,
+unit,
+price
+);
+
+});
+
+list.appendChild(row);
+
+});
+
+container.appendChild(card);
+
+});
+
+});
+
+
+function addCatalogToCalculator(
+name,
+unit,
+price
+){
+
+const select=
+document.getElementById("calcWork");
+
+if(!select){
+
+alert(
+"Kalkulators nav atrasts."
+);
+
+return;
+
+}
+
+let option=
+Array.from(select.options)
+.find(
+o=>
+o.textContent
+.toLowerCase()
+.startsWith(
+name.toLowerCase()
+)
+);
+
+if(option){
+
+select.value=
+option.value;
+
+select.dispatchEvent(
+new Event("change")
+);
+
+}else{
+
+let newOption=
+document.createElement("option");
+
+newOption.value=
+price;
+
+newOption.dataset.u=
+unit;
+
+newOption.dataset.cost=
+"0";
+
+newOption.textContent=
+name+
+" — "+
+price.toFixed(2)+
+" €/"+
+unit;
+
+select.appendChild(
+newOption
+);
+
+select.value=
+price;
+
+select.dispatchEvent(
+new Event("change")
+);
+
+}
+
+document.getElementById(
+"calcQty"
+).value="1";
+
+document.getElementById(
+"calcPrice"
+).value=
+price;
+
+document.getElementById(
+"calculator"
+)?.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+</script>
 </body>
 </html>
