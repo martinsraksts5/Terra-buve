@@ -2030,7 +2030,7 @@ No zemes gabala līdz gatavai mājai
         if(result.error) throw result.error;
 
         localStorage.setItem('terra_supabase_key',key);
-        window.sb=client;
+        sb=client; window.sb=client;
         status.className='small ok';
         status.textContent='✓ Supabase savienojums izveidots.';
         const content=document.getElementById('systemContent');
@@ -3775,7 +3775,7 @@ block:"start"
         if(result.error) throw result.error;
 
         localStorage.setItem('terra_supabase_key',key);
-        window.sb=client;
+        sb=client; window.sb=client;
         status.className='small ok';
         status.textContent='✓ Supabase savienojums izveidots.';
         const content=document.getElementById('systemContent');
