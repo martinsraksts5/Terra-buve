@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="lv">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terra Būve — Būvniecība un risinājumi</title>
-<meta name="description" content="Terra Būve — būvniecība, zemes darbi, pamati, remonts un labiekārtošana.">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Terra Būve — Būvniecība un remonts
+</title>
+
+<meta
+  name="description"
+  content="Terra Būve — būvniecība, remonts, zemes darbi, pamati, labiekārtošana un inženierkomunikācijas."
+>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
 
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#080808;
+  margin:0;
+  background:#090909;
   color:#fff;
-  line-height:1.5;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
 a{
@@ -23,56 +47,69 @@ a{
   text-decoration:none;
 }
 
-img{
-  display:block;
-  width:100%;
+button,
+input,
+textarea{
+  font:inherit;
 }
 
 :root{
-  --black:#080808;
-  --black2:#101010;
-  --panel:#151515;
-  --gold:#c9a227;
-  --gold2:#e4c650;
+  --gold:#d4aa43;
+  --gold2:#f0c95b;
+  --black:#090909;
+  --dark:#111;
+  --dark2:#171717;
+  --line:#292929;
+  --muted:#999;
   --white:#fff;
-  --muted:#aaa;
-  --border:rgba(255,255,255,.10);
 }
+
 
 .container{
-  width:min(1200px,92%);
-  margin:0 auto;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
 }
 
-/* ================= HEADER ================= */
+
+/* =========================
+   HEADER
+========================= */
 
 header{
   position:fixed;
-  top:0;
   left:0;
-  width:100%;
+  right:0;
+  top:0;
   z-index:1000;
-  background:rgba(5,5,5,.95);
-  border-bottom:1px solid rgba(201,162,39,.25);
-  backdrop-filter:blur(12px);
+
+  background:
+    rgba(8,8,8,.92);
+
+  backdrop-filter:blur(14px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
 }
 
+
 .nav{
-  min-height:82px;
+  height:82px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:30px;
 }
 
+
 .logo{
-  display:flex;
-  flex-direction:column;
+  cursor:pointer;
   line-height:1;
 }
 
 .logo-main{
-  font-size:30px;
+  font-size:25px;
   font-weight:900;
   letter-spacing:2px;
 }
@@ -83,398 +120,1158 @@ header{
 
 .logo-slogan{
   margin-top:7px;
+
   color:#aaa;
-  font-size:9px;
+
+  font-size:8px;
   letter-spacing:2.2px;
 }
+
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:28px;
-  list-style:none;
+  gap:34px;
 }
 
 .nav-links a{
   color:#ddd;
-  font-size:13px;
-  font-weight:700;
+
+  font-size:12px;
+  font-weight:600;
+
+  transition:.2s;
 }
 
 .nav-links a:hover{
-  color:var(--gold2);
+  color:var(--gold);
 }
 
-.nav-btn{
+
+.nav-button{
+  border:0;
+
   background:var(--gold);
-  color:#050505;
-  padding:12px 20px;
-  border-radius:5px;
-  font-size:12px;
+  color:#111;
+
+  padding:13px 20px;
+
+  border-radius:4px;
+
+  font-size:11px;
   font-weight:900;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-/* ================= HERO ================= */
+.nav-button:hover{
+  background:var(--gold2);
+  transform:translateY(-1px);
+}
+
+
+.menu-button{
+  display:none;
+
+  border:1px solid #333;
+
+  background:#111;
+  color:#fff;
+
+  width:42px;
+  height:42px;
+
+  border-radius:5px;
+
+  cursor:pointer;
+
+  font-size:20px;
+}
+
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  min-height:680px;
-  position:relative;
+  min-height:760px;
+
+  padding-top:82px;
+
   display:flex;
   align-items:center;
+
+  position:relative;
+
   overflow:hidden;
+
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.90),
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.20)
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.86) 40%,
+      rgba(0,0,0,.35) 75%,
+      rgba(0,0,0,.8) 100%
     ),
-    url("GALVENA_BILDE")
+    url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=90")
     center/cover no-repeat;
 }
 
-.hero::after{
+
+.hero:after{
   content:"";
+
   position:absolute;
-  inset:0;
+  inset:auto 0 0 0;
+
+  height:180px;
+
   background:
     linear-gradient(
-      0deg,
-      #080808 0%,
-      transparent 35%,
-      rgba(0,0,0,.10) 100%
+      transparent,
+      #090909
     );
-  pointer-events:none;
 }
+
 
 .hero-content{
   position:relative;
   z-index:2;
-  padding:95px 0;
+
+  max-width:720px;
 }
 
-.hero-label{
-  color:var(--gold2);
+
+.eyebrow{
+  color:var(--gold);
+
   font-size:12px;
   font-weight:900;
+
   letter-spacing:3px;
-  margin-bottom:18px;
-  text-transform:uppercase;
+
+  margin-bottom:20px;
 }
+
 
 .hero h1{
-  max-width:760px;
-  font-size:clamp(42px,6vw,76px);
+  margin:0;
+
+  font-size:
+    clamp(48px,7vw,86px);
+
   line-height:.98;
-  text-transform:uppercase;
-  letter-spacing:-2px;
-  margin-bottom:25px;
+
+  letter-spacing:-3px;
+
+  font-weight:950;
 }
+
 
 .hero h1 span{
-  color:var(--gold2);
+  color:var(--gold);
 }
 
+
 .hero p{
-  max-width:610px;
-  color:#d0d0d0;
+  max-width:650px;
+
+  color:#c4c4c4;
+
   font-size:17px;
-  margin-bottom:34px;
+  line-height:1.7;
+
+  margin:28px 0 34px;
 }
+
 
 .hero-buttons{
   display:flex;
-  gap:14px;
+  gap:13px;
   flex-wrap:wrap;
 }
 
+
 .btn{
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
-  padding:15px 25px;
-  border-radius:5px;
-  font-size:13px;
-  font-weight:900;
-  border:1px solid var(--gold);
-}
 
-.btn-primary{
-  background:var(--gold);
-  color:#050505;
-}
+  min-height:48px;
 
-.btn-outline{
-  color:#fff;
-  background:rgba(0,0,0,.25);
-}
+  padding:0 24px;
 
-/* ================= SECTIONS ================= */
+  border-radius:4px;
 
-section{
-  padding:80px 0;
-}
-
-.section-head{
-  margin-bottom:35px;
-}
-
-.section-label{
-  color:var(--gold2);
   font-size:11px;
   font-weight:900;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:10px;
+
+  letter-spacing:.5px;
+
+  cursor:pointer;
+
+  border:1px solid transparent;
+
+  transition:.2s;
 }
+
+
+.btn-gold{
+  background:var(--gold);
+  color:#111;
+}
+
+.btn-gold:hover{
+  background:var(--gold2);
+}
+
+
+.btn-outline{
+  background:transparent;
+  color:#fff;
+
+  border-color:#555;
+}
+
+.btn-outline:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:100px 0;
+}
+
+
+.section-label{
+  color:var(--gold);
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:3px;
+
+  margin-bottom:14px;
+}
+
 
 .section-title{
-  font-size:40px;
-  line-height:1.05;
-  text-transform:uppercase;
+  margin:0;
+
+  font-size:
+    clamp(34px,5vw,58px);
+
+  line-height:1;
+
+  letter-spacing:-2px;
 }
+
 
 .section-text{
-  color:var(--muted);
-  max-width:680px;
-  margin-top:12px;
+  color:#888;
+
+  max-width:650px;
+
+  line-height:1.7;
+
+  margin-top:18px;
 }
 
-/* ================= SERVICES ================= */
+
+/* =========================
+   SERVICES
+========================= */
+
+.services-section{
+  background:#090909;
+}
+
 
 .services-grid{
+  margin-top:45px;
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:18px;
 }
 
+
 .service-card{
+  min-height:370px;
+
   position:relative;
-  min-height:270px;
+
   overflow:hidden;
-  border-radius:8px;
+
+  border:
+    1px solid #292929;
+
   background:#111;
-  border:1px solid var(--border);
+
+  border-radius:5px;
 }
 
+
 .service-card img{
-  position:absolute;
-  inset:0;
   width:100%;
   height:100%;
+
+  position:absolute;
+  inset:0;
+
   object-fit:cover;
-  transition:transform .4s;
+
+  transition:
+    transform .5s ease;
 }
+
+
+.service-card:after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      transparent 25%,
+      rgba(0,0,0,.95) 100%
+    );
+}
+
 
 .service-card:hover img{
   transform:scale(1.06);
 }
 
-.service-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.94),
-      rgba(0,0,0,.15) 70%
-    );
-}
 
 .service-content{
   position:absolute;
+
+  left:24px;
+  right:24px;
+  bottom:23px;
+
   z-index:2;
-  left:20px;
-  right:20px;
-  bottom:18px;
 }
+
 
 .service-number{
-  color:var(--gold2);
+  color:var(--gold);
+
   font-size:10px;
   font-weight:900;
-  margin-bottom:5px;
+
+  letter-spacing:2px;
+
+  margin-bottom:10px;
 }
+
 
 .service-content h3{
-  font-size:19px;
+  margin:0;
+
+  font-size:22px;
+
   text-transform:uppercase;
+
+  letter-spacing:-.5px;
 }
+
 
 .service-content p{
-  color:#bbb;
-  font-size:11px;
-  margin-top:5px;
+  margin:9px 0 0;
+
+  color:#aaa;
+
+  font-size:12px;
+  line-height:1.5;
 }
 
-/* ================= CALCULATOR ================= */
 
-.calculator{
-  background:#0b0b0b;
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator-section{
+  background:#101010;
 }
+
 
 .calculator-box{
+  margin-top:45px;
+
   background:#151515;
-  border:1px solid rgba(201,162,39,.25);
-  border-radius:10px;
-  padding:34px;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+  border:
+    1px solid #2b2b2b;
+
+  border-radius:7px;
+
+  overflow:hidden;
 }
 
-.calculator-top{
+
+.calculator-head{
+  padding:28px;
+
+  border-bottom:
+    1px solid #292929;
+
   display:flex;
   justify-content:space-between;
-  align-items:flex-end;
-  gap:25px;
-  margin-bottom:28px;
+  align-items:center;
+
+  gap:20px;
 }
 
-.calculator-top h2{
-  font-size:42px;
-  text-transform:uppercase;
+
+.calculator-head h3{
+  margin:0;
+
+  font-size:25px;
 }
 
-.calculator-top p{
-  color:#999;
-  font-size:13px;
+
+.calculator-head p{
+  color:#777;
+
+  font-size:12px;
+
+  margin:7px 0 0;
 }
+
 
 .categories{
+  padding:18px 20px;
+
   display:flex;
-  flex-wrap:wrap;
   gap:8px;
-  margin-bottom:25px;
+
+  flex-wrap:wrap;
+
+  border-bottom:
+    1px solid #292929;
 }
 
+
 .category{
-  border:1px solid #333;
-  background:#101010;
-  color:#ccc;
-  padding:11px 14px;
-  border-radius:5px;
-  font-size:11px;
+  background:#111;
+
+  color:#aaa;
+
+  border:
+    1px solid #333;
+
+  padding:10px 14px;
+
+  border-radius:4px;
+
+  font-size:10px;
+  font-weight:800;
+
   cursor:pointer;
 }
+
 
 .category.active,
 .category:hover{
   background:var(--gold);
-  color:#050505;
+
+  color:#111;
+
   border-color:var(--gold);
 }
 
+
+.table-scroll{
+  overflow-x:auto;
+}
+
+
 .work-table{
   width:100%;
+
   border-collapse:collapse;
+
+  min-width:700px;
 }
+
 
 .work-table th{
-  color:var(--gold2);
+  padding:15px;
+
+  background:#111;
+
+  color:#777;
+
   text-align:left;
-  font-size:11px;
-  text-transform:uppercase;
-  border-bottom:1px solid #333;
-  padding:15px 10px;
+
+  font-size:10px;
+
+  letter-spacing:1px;
 }
+
 
 .work-table td{
-  border-bottom:1px solid #252525;
-  padding:15px 10px;
-  font-size:13px;
+  padding:15px;
+
+  border-top:
+    1px solid #252525;
+
   color:#ddd;
+
+  font-size:13px;
 }
 
-.quantity{
-  width:78px;
-  background:#0c0c0c;
-  border:1px solid #333;
+
+.work-table input{
+  width:80px;
+
+  background:#0d0d0d;
+
   color:#fff;
+
+  border:
+    1px solid #3a3a3a;
+
   padding:9px;
+
   border-radius:4px;
+
+  text-align:center;
 }
+
 
 .price{
-  color:var(--gold2);
+  color:var(--gold);
+
   font-weight:800;
 }
 
-.total{
+
+.total-box{
+  padding:25px;
+
   display:flex;
-  justify-content:flex-end;
+
   align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  border-top:
+    1px solid #292929;
+}
+
+
+.total-label{
+  color:#777;
+
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+
+.total-value{
+  color:var(--gold);
+
+  font-size:31px;
+  font-weight:900;
+}
+
+
+.calculator-actions{
+  padding:0 25px 25px;
+
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:10px;
+}
+
+
+/* =========================
+   PRICE MONITOR
+========================= */
+
+.price-section{
+  background:#090909;
+}
+
+
+.price-grid{
+  margin-top:45px;
+
+  display:grid;
+
+  grid-template-columns:
+    1.2fr .8fr;
+
   gap:18px;
-  margin-top:28px;
 }
 
-.total span{
-  color:#999;
+
+.price-panel{
+  background:#111;
+
+  border:
+    1px solid #292929;
+
+  border-radius:7px;
+
+  overflow:hidden;
+}
+
+
+.price-panel-head{
+  padding:25px;
+
+  border-bottom:
+    1px solid #292929;
+}
+
+
+.price-panel-head h3{
+  margin:0;
+
+  font-size:23px;
+}
+
+
+.price-panel-head p{
+  color:#777;
+
+  font-size:11px;
+
+  margin:7px 0 0;
+}
+
+
+.price-table{
+  width:100%;
+
+  border-collapse:collapse;
+}
+
+
+.price-table th{
+  color:#777;
+
+  font-size:10px;
+
+  text-align:left;
+
+  padding:14px 20px;
+
+  background:#0d0d0d;
+}
+
+
+.price-table td{
+  padding:15px 20px;
+
+  border-top:
+    1px solid #252525;
+
+  font-size:13px;
+}
+
+
+.price-table td:last-child{
+  color:var(--gold);
+
+  font-weight:800;
+}
+
+
+.update-info{
+  padding:16px 20px;
+
+  color:#666;
+
+  font-size:10px;
+}
+
+
+/* =========================
+   OBJECTS
+========================= */
+
+.objects-section{
+  background:#101010;
+}
+
+
+.objects-grid{
+  margin-top:45px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:18px;
+}
+
+
+.object-card{
+  background:#151515;
+
+  border:
+    1px solid #292929;
+
+  border-radius:6px;
+
+  overflow:hidden;
+}
+
+
+.object-card img{
+  width:100%;
+
+  height:250px;
+
+  object-fit:cover;
+
+  display:block;
+}
+
+
+.object-info{
+  padding:22px;
+}
+
+
+.object-info small{
+  color:var(--gold);
+
+  font-size:9px;
+  font-weight:900;
+
+  letter-spacing:2px;
+}
+
+
+.object-info h3{
+  margin:9px 0 0;
+
+  font-size:20px;
+}
+
+
+.object-info p{
+  color:#777;
+
   font-size:12px;
+
+  line-height:1.5;
 }
 
-.total strong{
-  color:var(--gold2);
-  font-size:30px;
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.92),
+      rgba(0,0,0,.65)
+    ),
+    url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:950px){
+.cta-box{
+  max-width:800px;
+}
 
-  .services-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+
+.cta h2{
+  margin:0;
+
+  font-size:
+    clamp(38px,6vw,68px);
+
+  line-height:1;
+
+  letter-spacing:-2px;
+}
+
+
+.cta p{
+  color:#bbb;
+
+  line-height:1.7;
+
+  max-width:600px;
+
+  margin:22px 0 28px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:50px 0 25px;
+
+  background:#060606;
+
+  border-top:
+    1px solid #222;
+}
+
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:
+    2fr 1fr 1fr 1fr;
+
+  gap:40px;
+}
+
+
+.footer-logo{
+  font-size:24px;
+  font-weight:900;
+}
+
+
+.footer-logo span{
+  color:var(--gold);
+}
+
+
+.footer-slogan{
+  color:#777;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  margin-top:9px;
+}
+
+
+.footer-text{
+  max-width:350px;
+
+  color:#666;
+
+  font-size:11px;
+
+  line-height:1.7;
+
+  margin-top:20px;
+}
+
+
+.footer-column h4{
+  margin:0 0 17px;
+
+  color:#fff;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+
+.footer-column a{
+  display:block;
+
+  color:#777;
+
+  font-size:11px;
+
+  margin-bottom:11px;
+}
+
+
+.footer-column a:hover{
+  color:var(--gold);
+}
+
+
+.footer-bottom{
+  margin-top:45px;
+
+  padding-top:20px;
+
+  border-top:
+    1px solid #202020;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  color:#555;
+
+  font-size:9px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+
+  inset:0;
+
+  z-index:5000;
+
+  background:
+    rgba(0,0,0,.8);
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+
+.modal.show{
+  display:flex;
+}
+
+
+.modal-box{
+  width:min(560px,100%);
+
+  background:#151515;
+
+  border:
+    1px solid #333;
+
+  border-radius:7px;
+
+  padding:30px;
+}
+
+
+.modal-box h2{
+  margin:0 0 10px;
+
+  font-size:28px;
+}
+
+
+.modal-box p{
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+
+.form-group{
+  margin-top:17px;
+}
+
+
+.form-group label{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:#aaa;
+
+  font-size:10px;
+
+  font-weight:800;
+}
+
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+
+  background:#0d0d0d;
+
+  color:#fff;
+
+  border:
+    1px solid #333;
+
+  border-radius:4px;
+
+  padding:12px;
+
+  outline:none;
+}
+
+
+.form-group textarea{
+  min-height:100px;
+
+  resize:vertical;
+}
+
+
+.modal-actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:10px;
+
+  margin-top:20px;
+}
+
+
+.close-modal{
+  background:#222;
+
+  color:#aaa;
+
+  border:1px solid #333;
+
+  padding:11px 18px;
+
+  border-radius:4px;
+
+  cursor:pointer;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
 
   .nav-links{
     display:none;
   }
+
+  .nav-button{
+    display:none;
+  }
+
+  .menu-button{
+    display:block;
+  }
+
+  .services-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .price-grid{
+    grid-template-columns:1fr;
+  }
+
+  .objects-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
 }
 
-@media(max-width:650px){
+
+@media(max-width:600px){
+
+  .container{
+    width:min(
+      100% - 26px,
+      1180px
+    );
+  }
+
+  section{
+    padding:70px 0;
+  }
 
   .hero{
-    min-height:620px;
+    min-height:680px;
   }
 
   .hero h1{
-    font-size:43px;
+    font-size:47px;
+
+    letter-spacing:-2px;
+  }
+
+  .hero p{
+    font-size:14px;
   }
 
   .services-grid{
     grid-template-columns:1fr;
   }
 
-  .calculator-box{
-    padding:18px;
+  .objects-grid{
+    grid-template-columns:1fr;
   }
 
-  .calculator-top{
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
     flex-direction:column;
+    gap:10px;
+  }
+
+  .calculator-head{
     align-items:flex-start;
+
+    flex-direction:column;
   }
 
-  .calculator-top h2{
-    font-size:30px;
+  .total-box{
+    align-items:flex-start;
+
+    flex-direction:column;
   }
 
-  .work-table{
-    font-size:11px;
-  }
-
-  .work-table th,
-  .work-table td{
-    padding:10px 6px;
-  }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
   <div class="container nav">
 
-    <a href="#" class="logo">
+    <a
+      href="#sakums"
+      class="logo"
+    >
+
       <div class="logo-main">
         TERRA <span>BŪVE</span>
       </div>
@@ -482,52 +1279,95 @@ section{
       <div class="logo-slogan">
         IDEJAS. RISINĀJUMI. REZULTĀTS.
       </div>
+
     </a>
 
-    <ul class="nav-links">
-      <li><a href="#pakalpojumi">Pakalpojumi</a></li>
-      <li><a href="#tame">Tāme</a></li>
-      <li><a href="#cenas">Cenu uzraudzība</a></li>
-      <li><a href="#objekti">Objekti</a></li>
-    </ul>
 
-    <a class="nav-btn" href="#kontakti">
+    <nav class="nav-links">
+
+      <a href="#pakalpojumi">
+        Pakalpojumi
+      </a>
+
+      <a href="#tame">
+        Tāme
+      </a>
+
+      <a href="#cenas">
+        Cenu uzraudzība
+      </a>
+
+      <a href="#objekti">
+        Objekti
+      </a>
+
+    </nav>
+
+
+    <button
+      class="nav-button"
+      onclick="openModal()"
+    >
       SAZINĀTIES
-    </a>
+    </button>
+
+
+    <button
+      class="menu-button"
+      onclick="toggleMenu()"
+    >
+      ☰
+    </button>
 
   </div>
+
 </header>
+
 
 <main>
 
-<section class="hero">
 
-  <div class="container hero-content">
+<section
+  id="sakums"
+  class="hero"
+>
 
-    <div class="hero-label">
-      TERRA BŪVE
-    </div>
+  <div class="container">
 
-    <h1>
-      Būvējam idejas.<br>
-      Radām <span>rezultātu.</span>
-    </h1>
+    <div class="hero-content">
 
-    <p>
-      Zemes darbi, pamati, māju būvniecība,
-      remonts un teritorijas labiekārtošana —
-      no idejas līdz gatavam rezultātam.
-    </p>
+      <div class="eyebrow">
+        TERRA BŪVE
+      </div>
 
-    <div class="hero-buttons">
+      <h1>
+        BŪVĒJAM IDEJAS.<br>
+        RADĀM <span>REZULTĀTU.</span>
+      </h1>
 
-      <a href="#tame" class="btn btn-primary">
-        IZVEIDOT TĀMI
-      </a>
+      <p>
+        Zemes darbi, pamati, māju būvniecība,
+        remonts un teritorijas labiekārtošana —
+        no idejas līdz gatavam rezultātam.
+      </p>
 
-      <a href="#pakalpojumi" class="btn btn-outline">
-        MŪSU PAKALPOJUMI
-      </a>
+      <div class="hero-buttons">
+
+        <a
+          href="#tame"
+          class="btn btn-gold"
+        >
+          IZVEIDOT TĀMI
+        </a>
+
+        <a
+          href="#pakalpojumi"
+          class="btn btn-outline"
+        >
+          MŪSU PAKALPOJUMI
+        </a>
+
+      </div>
 
     </div>
 
@@ -535,217 +1375,455 @@ section{
 
 </section>
 
-<section id="pakalpojumi">
+
+<section
+  id="pakalpojumi"
+  class="services-section"
+>
 
   <div class="container">
 
-    <div class="section-head">
-
-      <div class="section-label">
-        KO MĒS DARĀM
-      </div>
-
-      <h2 class="section-title">
-        Mūsu pakalpojumi
-      </h2>
-
-      <p class="section-text">
-        Pilns būvniecības darbu klāsts vienuviet.
-      </p>
-
+    <div class="section-label">
+      KO MĒS DARĀM
     </div>
+
+    <h2 class="section-title">
+      MŪSU PAKALPOJUMI
+    </h2>
+
+    <p class="section-text">
+      Pilns būvniecības darbu klāsts vienuviet.
+    </p>
+
 
     <div class="services-grid">
 
-      <article class="service-card">
-        <img src="ZEMES_DARBI_BILDE" alt="Zemes darbi">
-
-        <div class="service-content">
-          <div class="service-number">01</div>
-          <h3>Zemes darbi</h3>
-          <p>Rakšana, planēšana un teritorijas sagatavošana.</p>
-        </div>
-      </article>
 
       <article class="service-card">
-        <img src="PAMATI_BILDE" alt="Pamatu izbūve">
+
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85"
+          alt="Zemes darbi"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">02</div>
-          <h3>Pamatu izbūve</h3>
-          <p>Pamatu sagatavošana, armatūra un betonēšana.</p>
+
+          <div class="service-number">
+            01
+          </div>
+
+          <h3>
+            Zemes darbi
+          </h3>
+
+          <p>
+            Rakšana, planēšana un teritorijas sagatavošana.
+          </p>
+
         </div>
+
       </article>
+
 
       <article class="service-card">
-        <img src="LABIEKARTOSANA_BILDE" alt="Labiekārtošana">
+
+        <img
+          src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=1000&q=85"
+          alt="Pamatu izbūve"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">03</div>
-          <h3>Labiekārtošana</h3>
-          <p>Teritorijas labiekārtošana un bruģēšana.</p>
+
+          <div class="service-number">
+            02
+          </div>
+
+          <h3>
+            Pamatu izbūve
+          </h3>
+
+          <p>
+            Pamati, armatūra, veidņi un betonēšana.
+          </p>
+
         </div>
+
       </article>
+
 
       <article class="service-card">
-        <img src="KANALIZACIJA_BILDE" alt="Kanalizācijas sistēmas">
+
+        <img
+          src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1000&q=85"
+          alt="Labiekārtošana"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">04</div>
-          <h3>Kanalizācijas sistēmas</h3>
-          <p>Ārējie tīkli, cauruļvadi un pieslēgumi.</p>
+
+          <div class="service-number">
+            03
+          </div>
+
+          <h3>
+            Labiekārtošana
+          </h3>
+
+          <p>
+            Teritorijas labiekārtošana un bruģēšana.
+          </p>
+
         </div>
+
       </article>
+
 
       <article class="service-card">
-        <img src="MAJU_BUVNIECIBA_BILDE" alt="Māju būvniecība">
+
+        <img
+          src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1000&q=85"
+          alt="Kanalizācijas sistēmas"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">05</div>
-          <h3>Māju būvniecība</h3>
-          <p>Mājas būvniecība no pamatiem līdz jumtam.</p>
+
+          <div class="service-number">
+            04
+          </div>
+
+          <h3>
+            Kanalizācijas sistēmas
+          </h3>
+
+          <p>
+            Ārējie tīkli, caurules un pieslēgumi.
+          </p>
+
         </div>
+
       </article>
+
 
       <article class="service-card">
-        <img src="DZIVOKLU_REMONTS_BILDE" alt="Dzīvokļu remonts">
+
+        <img
+          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1000&q=85"
+          alt="Māju būvniecība"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">06</div>
-          <h3>Dzīvokļu remonts</h3>
-          <p>Remonts, apdare un iekšdarbi.</p>
+
+          <div class="service-number">
+            05
+          </div>
+
+          <h3>
+            Māju būvniecība
+          </h3>
+
+          <p>
+            Konstrukcijas, sienas, jumts un būvdarbi.
+          </p>
+
         </div>
+
       </article>
+
 
       <article class="service-card">
-        <img src="BRUGESANA_BILDE" alt="Bruģēšana">
+
+        <img
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+          alt="Dzīvokļu remonts"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">07</div>
-          <h3>Bruģēšana</h3>
-          <p>Bruģa segumi, celiņi un pagalmi.</p>
+
+          <div class="service-number">
+            06
+          </div>
+
+          <h3>
+            Dzīvokļu remonts
+          </h3>
+
+          <p>
+            Remonts, apdare un iekšdarbi.
+          </p>
+
         </div>
+
       </article>
+
 
       <article class="service-card">
-        <img src="DEMONTĀŽA_BILDE" alt="Demontāža">
+
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=85"
+          alt="Bruģēšana"
+          loading="lazy"
+        >
 
         <div class="service-content">
-          <div class="service-number">08</div>
-          <h3>Demontāža</h3>
-          <p>Ēku, konstrukciju un materiālu demontāža.</p>
+
+          <div class="service-number">
+            07
+          </div>
+
+          <h3>
+            Bruģēšana
+          </h3>
+
+          <p>
+            Bruģa segumi, apmales un pamatnes.
+          </p>
+
         </div>
+
       </article>
+
+
+      <article class="service-card">
+
+        <img
+          src="https://images.unsplash.com/photo-1590725140246-20acddc7b7c0?auto=format&fit=crop&w=1000&q=85"
+          alt="Demontāža"
+          loading="lazy"
+        >
+
+        <div class="service-content">
+
+          <div class="service-number">
+            08
+          </div>
+
+          <h3>
+            Demontāža
+          </h3>
+
+          <p>
+            Droša konstrukciju un apdares demontāža.
+          </p>
+
+        </div>
+
+      </article>
+
 
     </div>
 
   </div>
-<section id="tame" class="calculator">
+<section
+  id="tame"
+  class="calculator-section"
+>
 
   <div class="container">
 
+    <div class="section-label">
+      TĀMES KALKULATORS
+    </div>
+
+    <h2 class="section-title">
+      IZVEIDO SAVU TĀMI
+    </h2>
+
+    <p class="section-text">
+      Izvēlies darbu, ievadi daudzumu un uzreiz redzi
+      provizoriskās darba izmaksas.
+    </p>
+
+
     <div class="calculator-box">
 
-      <div class="calculator-top">
+      <div class="calculator-head">
 
         <div>
-          <div class="section-label">
-            TERRA BŪVE
-          </div>
 
-          <h2>
-            Izveido savu tāmi
-          </h2>
+          <h3>
+            Būvdarbu kalkulators
+          </h3>
+
+          <p>
+            Cenas norādītas par darba izpildi.
+            Materiāli tiek aprēķināti atsevišķi.
+          </p>
+
         </div>
 
-        <p>
-          Izvēlies darbu un norādi nepieciešamo daudzumu.
-        </p>
+        <div class="section-label">
+          TERRA BŪVE
+        </div>
 
       </div>
 
 
       <div class="categories">
 
-        <button class="category active">
+        <button
+          class="category active"
+          data-category="Pamati"
+          onclick="selectCategory(this)"
+        >
           Pamati
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Sienas"
+          onclick="selectCategory(this)"
+        >
           Sienas
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Apdare"
+          onclick="selectCategory(this)"
+        >
           Apdare
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Griesti"
+          onclick="selectCategory(this)"
+        >
           Griesti
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Grīdas"
+          onclick="selectCategory(this)"
+        >
           Grīdas
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Elektroinstalācija"
+          onclick="selectCategory(this)"
+        >
           Elektroinstalācija
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Santehnika"
+          onclick="selectCategory(this)"
+        >
           Santehnika
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Logi un durvis"
+          onclick="selectCategory(this)"
+        >
           Logi un durvis
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Jumts"
+          onclick="selectCategory(this)"
+        >
           Jumts
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Fasāde"
+          onclick="selectCategory(this)"
+        >
           Fasāde
         </button>
 
-        <button class="category">
-          Apzaļumošana un labiekārtošana
+        <button
+          class="category"
+          data-category="Apzaļumošana un labiekārtošana"
+          onclick="selectCategory(this)"
+        >
+          Labiekārtošana
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Žogi"
+          onclick="selectCategory(this)"
+        >
           Žogi
         </button>
 
-        <button class="category">
+        <button
+          class="category"
+          data-category="Komunikācijas"
+          onclick="selectCategory(this)"
+        >
           Komunikācijas
         </button>
 
-        <button class="category">
-          Demontāžas darbi
+        <button
+          class="category"
+          data-category="Demontāžas darbi"
+          onclick="selectCategory(this)"
+        >
+          Demontāža
         </button>
 
-        <button class="category">
-          Mēbeles un virtuves
+        <button
+          class="category"
+          data-category="Mēbeles un virtuves"
+          onclick="selectCategory(this)"
+        >
+          Mēbeles
         </button>
 
-        <button class="category">
-          Citi celtniecības darbi
+        <button
+          class="category"
+          data-category="Citi celtniecības darbi"
+          onclick="selectCategory(this)"
+        >
+          Citi darbi
         </button>
 
       </div>
 
 
-      <div style="overflow-x:auto;">
+      <div class="table-scroll">
 
         <table class="work-table">
 
           <thead>
 
             <tr>
-              <th>Darbs</th>
-              <th>Vienība</th>
-              <th>Cena</th>
-              <th>Daudzums</th>
-              <th>Kopā</th>
+
+              <th>
+                DARBS
+              </th>
+
+              <th>
+                VIENĪBA
+              </th>
+
+              <th>
+                CENA
+              </th>
+
+              <th>
+                DAUDZUMS
+              </th>
+
+              <th>
+                KOPĀ
+              </th>
+
             </tr>
 
           </thead>
@@ -768,17 +1846,20 @@ section{
               </td>
 
               <td>
+
                 <input
                   class="quantity"
                   type="number"
-                  value="1"
                   min="0"
                   step="0.1"
+                  value="0"
+                  data-price="115"
                 >
+
               </td>
 
               <td class="price row-total">
-                115.00 €
+                0.00 €
               </td>
 
             </tr>
@@ -799,13 +1880,16 @@ section{
               </td>
 
               <td>
+
                 <input
                   class="quantity"
                   type="number"
-                  value="0"
                   min="0"
                   step="1"
+                  value="0"
+                  data-price="1.2"
                 >
+
               </td>
 
               <td class="price row-total">
@@ -830,13 +1914,16 @@ section{
               </td>
 
               <td>
+
                 <input
                   class="quantity"
                   type="number"
-                  value="0"
                   min="0"
                   step="0.1"
+                  value="0"
+                  data-price="18"
                 >
+
               </td>
 
               <td class="price row-total">
@@ -861,13 +1948,50 @@ section{
               </td>
 
               <td>
+
                 <input
                   class="quantity"
                   type="number"
-                  value="0"
                   min="0"
                   step="0.1"
+                  value="0"
+                  data-price="12"
                 >
+
+              </td>
+
+              <td class="price row-total">
+                0.00 €
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Hidroizolācijas izbūve
+              </td>
+
+              <td>
+                m²
+              </td>
+
+              <td class="price">
+                8.50 €
+              </td>
+
+              <td>
+
+                <input
+                  class="quantity"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  value="0"
+                  data-price="8.5"
+                >
+
               </td>
 
               <td class="price row-total">
@@ -883,41 +2007,51 @@ section{
       </div>
 
 
-      <div class="total">
+      <div class="total-box">
 
-        <span>
-          TĀMES KOPSUMMA
-        </span>
+        <div>
 
-        <strong id="estimateTotal">
-          115.00 €
-        </strong>
+          <div class="total-label">
+            TĀMES KOPSUMMA
+          </div>
+
+          <div
+            style="
+              color:#666;
+              font-size:10px;
+              margin-top:7px;
+            "
+          >
+            Provizoriska darba izmaksu summa
+          </div>
+
+        </div>
+
+
+        <div
+          id="estimateTotal"
+          class="total-value"
+        >
+          0.00 €
+        </div>
 
       </div>
 
 
-      <div
-        style="
-          margin-top:25px;
-          display:flex;
-          gap:12px;
-          flex-wrap:wrap;
-          justify-content:flex-end;
-        "
-      >
+      <div class="calculator-actions">
 
         <button
-          class="btn btn-outline"
           type="button"
+          class="btn btn-outline"
           onclick="clearEstimate()"
         >
-          NOTĪRĪT TĀMI
+          NOTĪRĪT
         </button>
 
         <button
-          class="btn btn-primary"
           type="button"
-          onclick="openRequestModal()"
+          class="btn btn-gold"
+          onclick="openModal()"
         >
           PIEPRASĪT TĀMI
         </button>
@@ -932,167 +2066,297 @@ section{
 
 
 
-<!-- ================= CENU UZRAUDZĪBA ================= -->
+<!-- =========================
+     CENU UZRAUDZĪBA
+========================= -->
 
-<section id="cenas">
+<section
+  id="cenas"
+  class="price-section"
+>
 
   <div class="container">
 
-    <div class="section-head">
-
-      <div class="section-label">
-        CENAS
-      </div>
-
-      <h2 class="section-title">
-        Cenu uzraudzība
-      </h2>
-
-      <p class="section-text">
-        Materiālu un būvniecības izmaksu pārskats.
-      </p>
-
+    <div class="section-label">
+      TERRA BŪVE
     </div>
 
+    <h2 class="section-title">
+      CENU UZRAUDZĪBA
+    </h2>
 
-    <div
-      style="
-        display:grid;
-        grid-template-columns:repeat(2,1fr);
-        gap:18px;
-      "
-    >
+    <p class="section-text">
+      Sekojam līdzi aktuālajām degvielas cenām un
+      būvniecības izmaksām.
+    </p>
 
-      <div class="calculator-box">
 
-        <div class="section-label">
-          DEGVIELA
+    <div class="price-grid">
+
+
+      <div class="price-panel">
+
+        <div class="price-panel-head">
+
+          <h3>
+            Degvielas cenas
+          </h3>
+
+          <p>
+            Automātiski atjaunoti dati
+          </p>
+
         </div>
 
-        <h3
-          style="
-            font-size:26px;
-            margin-bottom:20px;
-          "
+
+        <div class="table-scroll">
+
+          <table class="price-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  STACIJA
+                </th>
+
+                <th>
+                  DĪZELIS
+                </th>
+
+                <th>
+                  95 BENZĪNS
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="fuelPrices">
+
+              <tr>
+
+                <td>
+                  Neste
+                </td>
+
+                <td>
+                  —
+                </td>
+
+                <td>
+                  —
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Circle K
+                </td>
+
+                <td>
+                  —
+                </td>
+
+                <td>
+                  —
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  KOOL
+                </td>
+
+                <td>
+                  —
+                </td>
+
+                <td>
+                  —
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Straujupīte
+                </td>
+
+                <td>
+                  —
+                </td>
+
+                <td>
+                  —
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <div
+          id="lastPriceUpdate"
+          class="update-info"
         >
-          Degvielas cenas
-        </h3>
-
-
-        <table class="work-table">
-
-          <thead>
-
-            <tr>
-              <th>Stacija</th>
-              <th>Dīzelis</th>
-              <th>Benzīns 95</th>
-            </tr>
-
-          </thead>
-
-
-          <tbody>
-
-            <tr>
-              <td>Neste</td>
-              <td class="price">—</td>
-              <td class="price">—</td>
-            </tr>
-
-            <tr>
-              <td>Circle K</td>
-              <td class="price">—</td>
-              <td class="price">—</td>
-            </tr>
-
-            <tr>
-              <td>KOOL</td>
-              <td class="price">—</td>
-              <td class="price">—</td>
-            </tr>
-
-            <tr>
-              <td>Straujupīte</td>
-              <td class="price">—</td>
-              <td class="price">—</td>
-            </tr>
-
-          </tbody>
-
-        </table>
-
-        <p
-          style="
-            color:#777;
-            font-size:11px;
-            margin-top:16px;
-          "
-        >
-          Dati tiek atjaunoti automātiski.
-        </p>
+          Gaida datu atjaunošanu...
+        </div>
 
       </div>
 
 
-      <div class="calculator-box">
 
-        <div class="section-label">
-          MATERIĀLI
+      <div class="price-panel">
+
+        <div class="price-panel-head">
+
+          <h3>
+            Materiālu cenas
+          </h3>
+
+          <p>
+            Bāzes pozīcijas tāmes aprēķinam
+          </p>
+
         </div>
 
-        <h3
-          style="
-            font-size:26px;
-            margin-bottom:20px;
-          "
-        >
-          Materiālu cenas
-        </h3>
+
+        <div class="table-scroll">
+
+          <table class="price-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  MATERIĀLS
+                </th>
+
+                <th>
+                  VIENĪBA
+                </th>
+
+                <th>
+                  CENA
+                </th>
+
+              </tr>
+
+            </thead>
 
 
-        <table class="work-table">
+            <tbody>
 
-          <thead>
+              <tr>
 
-            <tr>
-              <th>Materiāls</th>
-              <th>Vienība</th>
-              <th>Cena</th>
-            </tr>
+                <td>
+                  Betons
+                </td>
 
-          </thead>
+                <td>
+                  m³
+                </td>
+
+                <td>
+                  pēc piegādātāja
+                </td>
+
+              </tr>
 
 
-          <tbody>
+              <tr>
 
-            <tr>
-              <td>Betons C25/30</td>
-              <td>m³</td>
-              <td class="price">—</td>
-            </tr>
+                <td>
+                  Armatūra
+                </td>
 
-            <tr>
-              <td>Armatūra</td>
-              <td>kg</td>
-              <td class="price">—</td>
-            </tr>
+                <td>
+                  kg
+                </td>
 
-            <tr>
-              <td>Šķembas</td>
-              <td>m³</td>
-              <td class="price">—</td>
-            </tr>
+                <td>
+                  pēc piegādātāja
+                </td>
 
-            <tr>
-              <td>Smilts</td>
-              <td>m³</td>
-              <td class="price">—</td>
-            </tr>
+              </tr>
 
-          </tbody>
 
-        </table>
+              <tr>
+
+                <td>
+                  Šķembas
+                </td>
+
+                <td>
+                  m³
+                </td>
+
+                <td>
+                  pēc piegādātāja
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Smilts
+                </td>
+
+                <td>
+                  m³
+                </td>
+
+                <td>
+                  pēc piegādātāja
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td>
+                  Būvniecības kokmateriāli
+                </td>
+
+                <td>
+                  m³
+                </td>
+
+                <td>
+                  pēc piegādātāja
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <div class="update-info">
+          Materiālu katalogu varam pieslēgt nākamajā etapā.
+        </div>
 
       </div>
 
@@ -1104,50 +2368,53 @@ section{
 
 
 
-<!-- ================= OBJEKTI ================= -->
+<!-- =========================
+     OBJEKTI
+========================= -->
 
-<section id="objekti">
+<section
+  id="objekti"
+  class="objects-section"
+>
 
   <div class="container">
 
-    <div class="section-head">
-
-      <div class="section-label">
-        MŪSU DARBI
-      </div>
-
-      <h2 class="section-title">
-        Jaunākie objekti
-      </h2>
-
-      <p class="section-text">
-        Projekti un darbi, ko realizē Terra Būve.
-      </p>
-
+    <div class="section-label">
+      MŪSU DARBI
     </div>
 
+    <h2 class="section-title">
+      JAUNĀKIE OBJEKTI
+    </h2>
 
-    <div class="services-grid">
+    <p class="section-text">
+      Būvniecības un teritorijas labiekārtošanas projekti.
+    </p>
 
-      <article class="service-card">
+
+    <div class="objects-grid">
+
+
+      <article class="object-card">
 
         <img
-          src="OBJEKTS_1_BILDE"
-          alt="Privātmājas būvniecība"
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85"
+          alt="Būvniecības objekts"
+          loading="lazy"
         >
 
-        <div class="service-content">
+        <div class="object-info">
 
-          <div class="service-number">
+          <small>
             OBJEKTS 01
-          </div>
+          </small>
 
           <h3>
             Privātmājas būvniecība
           </h3>
 
           <p>
-            Pamati un konstrukcijas.
+            Pamati, konstrukcijas un būvdarbi.
           </p>
 
         </div>
@@ -1155,25 +2422,26 @@ section{
       </article>
 
 
-      <article class="service-card">
+      <article class="object-card">
 
         <img
-          src="OBJEKTS_2_BILDE"
+          src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=85"
           alt="Teritorijas labiekārtošana"
+          loading="lazy"
         >
 
-        <div class="service-content">
+        <div class="object-info">
 
-          <div class="service-number">
+          <small>
             OBJEKTS 02
-          </div>
+          </small>
 
           <h3>
             Teritorijas labiekārtošana
           </h3>
 
           <p>
-            Bruģēšana un teritorijas darbi.
+            Bruģēšana, apmales un teritorijas izbūve.
           </p>
 
         </div>
@@ -1181,56 +2449,32 @@ section{
       </article>
 
 
-      <article class="service-card">
+      <article class="object-card">
 
         <img
-          src="OBJEKTS_3_BILDE"
-          alt="Būvniecības objekts"
+          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85"
+          alt="Mājas būvniecība"
+          loading="lazy"
         >
 
-        <div class="service-content">
+        <div class="object-info">
 
-          <div class="service-number">
+          <small>
             OBJEKTS 03
-          </div>
+          </small>
 
           <h3>
-            Būvniecības projekts
+            Mājas būvniecība
           </h3>
 
           <p>
-            Pilns darbu cikls.
+            No konstrukcijām līdz gatavam objektam.
           </p>
 
         </div>
 
       </article>
 
-
-      <article class="service-card">
-
-        <img
-          src="OBJEKTS_4_BILDE"
-          alt="Remonta projekts"
-        >
-
-        <div class="service-content">
-
-          <div class="service-number">
-            OBJEKTS 04
-          </div>
-
-          <h3>
-            Remonta projekts
-          </h3>
-
-          <p>
-            Iekšdarbi un apdare.
-          </p>
-
-        </div>
-
-      </article>
 
     </div>
 
@@ -1240,792 +2484,46 @@ section{
 
 
 
-<!-- ================= KONTAKTI ================= -->
+<!-- =========================
+     CTA
+========================= -->
 
-<section id="kontakti">
+<section class="cta">
 
   <div class="container">
 
-    <div class="calculator-box">
+    <div class="cta-box">
 
       <div class="section-label">
         TERRA BŪVE
       </div>
 
-      <h2 class="section-title">
-        Sāksim būvēt?
+      <h2>
+        IR IDEJA?<br>
+        <span style="color:var(--gold);">
+          UZBŪVĒSIM.
+        </span>
       </h2>
 
-      <p class="section-text">
-        Pastāsti par savu projektu, un sagatavosim
-        nākamos soļus.
+      <p>
+        Pastāsti par savu projektu.
+        Kopā atradīsim piemērotāko risinājumu
+        un nākamos soļus.
       </p>
-
-
-      <div
-        style="
-          display:flex;
-          gap:14px;
-          flex-wrap:wrap;
-          margin-top:25px;
-        "
-      >
-
-        <a
-          href="mailto:info@terrabuve.lv"
-          class="btn btn-primary"
-        >
-          NOSŪTĪT E-PASTU
-        </a>
-
-        <a
-          href="tel:+37100000000"
-          class="btn btn-outline"
-        >
-          ZVANĪT
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
- <script>
-
-/* ===============================
-   TERRA BŪVE — TĀMES APRĒĶINS
-================================ */
-
-const quantities = document.querySelectorAll(".quantity");
-
-function updateEstimate(){
-
-  let total = 0;
-
-  document.querySelectorAll("#estimateRows tr").forEach(row => {
-
-    const priceElement = row.querySelector(".price");
-
-    const quantityElement = row.querySelector(".quantity");
-
-    const totalElement = row.querySelector(".row-total");
-
-    if(!priceElement || !quantityElement || !totalElement){
-      return;
-    }
-
-    const price = parseFloat(
-      priceElement.textContent
-        .replace("€","")
-        .replace(",",".")
-        .trim()
-    ) || 0;
-
-    const quantity =
-      parseFloat(quantityElement.value) || 0;
-
-    const rowTotal = price * quantity;
-
-    totalElement.textContent =
-      rowTotal.toFixed(2) + " €";
-
-    total += rowTotal;
-
-  });
-
-
-  const totalElement =
-    document.getElementById("estimateTotal");
-
-  if(totalElement){
-    totalElement.textContent =
-      total.toFixed(2) + " €";
-  }
-
-}
-
-
-quantities.forEach(input => {
-
-  input.addEventListener(
-    "input",
-    updateEstimate
-  );
-
-});
-
-
-function clearEstimate(){
-
-  document
-    .querySelectorAll(".quantity")
-    .forEach(input => {
-      input.value = 0;
-    });
-
-  updateEstimate();
-
-}
-
-
-/* ===============================
-   KATEGORIJAS
-================================ */
-
-document
-  .querySelectorAll(".category")
-  .forEach(button => {
-
-    button.addEventListener("click", function(){
-
-      document
-        .querySelectorAll(".category")
-        .forEach(item =>
-          item.classList.remove("active")
-        );
-
-      this.classList.add("active");
-
-    });
-
-  });
-
-
-/* ===============================
-   PIEPRASĪJUMA MODĀLA LOGS
-================================ */
-
-function openRequestModal(){
-
-  const modal =
-    document.getElementById("requestModal");
-
-  if(modal){
-    modal.classList.add("show");
-  }
-
-}
-
-
-function closeRequestModal(){
-
-  const modal =
-    document.getElementById("requestModal");
-
-  if(modal){
-    modal.classList.remove("show");
-  }
-
-}
-
-
-document.addEventListener(
-  "click",
-  function(event){
-
-    const modal =
-      document.getElementById("requestModal");
-
-    if(
-      modal &&
-      event.target === modal
-    ){
-      closeRequestModal();
-    }
-
-  }
-);
-
-
-/* ===============================
-   SUPABASE
-================================ */
-
-const SUPABASE_URL =
-  "https://nmxdvvagdanajplzgyju.supabase.co";
-
-
-let supabaseClient = null;
-
-
-function connectSupabase(){
-
-  const keyInput =
-    document.getElementById("supabaseKey");
-
-  if(!keyInput){
-    return;
-  }
-
-  const key =
-    keyInput.value.trim();
-
-  if(!key){
-    alert(
-      "Ievadi Supabase Publishable Key."
-    );
-
-    return;
-  }
-
-
-  try{
-
-    if(
-      typeof window.supabase ===
-      "undefined"
-    ){
-
-      alert(
-        "Supabase bibliotēka nav ielādēta."
-      );
-
-      return;
-
-    }
-
-
-    supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        key
-      );
-
-
-    localStorage.setItem(
-      "terra_supabase_key",
-      key
-    );
-
-
-    const status =
-      document.getElementById(
-        "supabaseStatus"
-      );
-
-    if(status){
-
-      status.textContent =
-        "SAVIENOJUMS AKTĪVS";
-
-      status.classList.add(
-        "connected"
-      );
-
-    }
-
-
-    loadPrices();
-
-  }
-  catch(error){
-
-    console.error(error);
-
-    alert(
-      "Neizdevās izveidot savienojumu ar Supabase."
-    );
-
-  }
-
-}
-
-
-/* ===============================
-   CENU IELĀDE
-================================ */
-
-async function loadPrices(){
-
-  if(!supabaseClient){
-    return;
-  }
-
-
-  try{
-
-    const { data, error } =
-      await supabaseClient
-        .from("cenu_uzraudziba")
-        .select("*")
-        .order(
-          "atjaunots_at",
-          {
-            ascending:false
-          }
-        );
-
-
-    if(error){
-
-      console.error(
-        "Cenu ielādes kļūda:",
-        error
-      );
-
-      return;
-
-    }
-
-
-    renderFuelPrices(data || []);
-
-  }
-  catch(error){
-
-    console.error(error);
-
-  }
-
-}
-
-
-/* ===============================
-   DEGVIELAS CENAS
-================================ */
-
-function renderFuelPrices(rows){
-
-  const wantedStations = [
-    "Neste",
-    "Circle K",
-    "KOOL",
-    "Straujupīte"
-  ];
-
-
-  const stationMap = {};
-
-
-  rows.forEach(row => {
-
-    const station =
-      String(
-        row.nosaukums || ""
-      ).trim();
-
-
-    if(!wantedStations.includes(station)){
-      return;
-    }
-
-
-    const type =
-      String(
-        row.kategorija || ""
-      ).toLowerCase();
-
-
-    if(
-      type.includes("dīzel")
-    ){
-
-      if(
-        !stationMap[station]
-      ){
-        stationMap[station] = {};
-      }
-
-      stationMap[station].diesel =
-        Number(row.cena);
-
-    }
-
-
-    if(
-      type.includes("95")
-    ){
-
-      if(
-        !stationMap[station]
-      ){
-        stationMap[station] = {};
-      }
-
-      stationMap[station].petrol =
-        Number(row.cena);
-
-    }
-
-  });
-
-
-  const rowsHtml =
-    wantedStations
-      .map(station => {
-
-        const item =
-          stationMap[station] || {};
-
-
-        const diesel =
-          Number.isFinite(
-            item.diesel
-          )
-            ? item.diesel.toFixed(3)
-            : "—";
-
-
-        const petrol =
-          Number.isFinite(
-            item.petrol
-          )
-            ? item.petrol.toFixed(3)
-            : "—";
-
-
-        return `
-          <tr>
-
-            <td>
-              ${station}
-            </td>
-
-            <td class="price">
-              ${diesel} €
-            </td>
-
-            <td class="price">
-              ${petrol} €
-            </td>
-
-          </tr>
-        `;
-
-      })
-      .join("");
-
-
-  const tbody =
-    document.querySelector(
-      "#cenas .work-table tbody"
-    );
-
-
-  if(tbody){
-    tbody.innerHTML = rowsHtml;
-  }
-
-}
-
-
-/* ===============================
-   AUTOMĀTISKA SUPABASE
-   KEY ATJAUNOŠANA
-================================ */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
-
-    const savedKey =
-      localStorage.getItem(
-        "terra_supabase_key"
-      );
-
-
-    if(savedKey){
-
-      const input =
-        document.getElementById(
-          "supabaseKey"
-        );
-
-
-      if(input){
-        input.value = savedKey;
-      }
-
-
-      if(
-        typeof connectSupabase ===
-        "function"
-      ){
-
-        connectSupabase();
-
-      }
-
-    }
-
-
-    updateEstimate();
-
-  }
-);
-
-
-/* ===============================
-   MOBILĀ IZVĒLNE
-================================ */
-
-const menuButton =
-  document.getElementById(
-    "mobileMenu"
-  );
-
-
-const navigation =
-  document.getElementById(
-    "mainNavigation"
-  );
-
-
-if(menuButton && navigation){
-
-  menuButton.addEventListener(
-    "click",
-    function(){
-
-      navigation.classList.toggle(
-        "open"
-      );
-
-    }
-  );
-
-
-  navigation
-    .querySelectorAll("a")
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        function(){
-
-          navigation.classList.remove(
-            "open"
-          );
-
-        }
-      );
-
-    });
-
-}
-
-
-/* ===============================
-   GADS
-================================ */
-
-const yearElement =
-  document.getElementById(
-    "currentYear"
-  );
-
-
-if(yearElement){
-
-  yearElement.textContent =
-    new Date().getFullYear();
-
-}
-
-</script>
- <!-- ===============================
-     PIEPRASĪJUMA MODĀLA LOGS
-================================ -->
-
-<div
-  id="requestModal"
-  class="modal"
->
-
-  <div class="modal-content">
-
-    <button
-      class="modal-close"
-      type="button"
-      onclick="closeRequestModal()"
-    >
-      ×
-    </button>
-
-
-    <div class="section-label">
-      TERRA BŪVE
-    </div>
-
-
-    <h2>
-      Pieprasīt tāmi
-    </h2>
-
-
-    <p class="modal-description">
-      Aizpildi kontaktinformāciju,
-      un mēs sazināsimies ar Tevi.
-    </p>
-
-
-    <form
-      id="requestForm"
-      onsubmit="submitRequest(event)"
-    >
-
-      <label>
-        Vārds
-      </label>
-
-      <input
-        id="requestName"
-        type="text"
-        placeholder="Tavs vārds"
-        required
-      >
-
-
-      <label>
-        Telefons
-      </label>
-
-      <input
-        id="requestPhone"
-        type="tel"
-        placeholder="+371 ..."
-        required
-      >
-
-
-      <label>
-        E-pasts
-      </label>
-
-      <input
-        id="requestEmail"
-        type="email"
-        placeholder="epasts@piemers.lv"
-      >
-
-
-      <label>
-        Par projektu
-      </label>
-
-      <textarea
-        id="requestMessage"
-        rows="5"
-        placeholder="Īsi apraksti savu projektu..."
-      ></textarea>
-
 
       <button
-        class="btn btn-primary"
-        type="submit"
-        style="width:100%;"
+        class="btn btn-gold"
+        onclick="openModal()"
       >
-        NOSŪTĪT PIEPRASĪJUMU
+        SAZINĀTIES PAR PROJEKTU
       </button>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-
-<!-- ===============================
-     SUPABASE IESTATĪJUMI
-================================ -->
-
-<section
-  id="admin"
-  style="padding:80px 0;"
->
-
-  <div class="container">
-
-    <div class="calculator-box">
-
-      <div class="section-label">
-        SISTĒMA
-      </div>
-
-
-      <h2>
-        Cenu datu savienojums
-      </h2>
-
-
-      <p
-        style="
-          color:#999;
-          margin-bottom:25px;
-          line-height:1.7;
-        "
-      >
-        Šeit iespējams pieslēgt Supabase
-        datubāzi cenu uzraudzībai.
-      </p>
-
-
-      <div
-        style="
-          display:flex;
-          gap:12px;
-          flex-wrap:wrap;
-        "
-      >
-
-        <input
-          id="supabaseKey"
-          type="password"
-          placeholder="Supabase Publishable Key"
-          style="
-            flex:1;
-            min-width:280px;
-            background:#111;
-            border:1px solid #333;
-            color:#fff;
-            padding:15px 18px;
-            border-radius:8px;
-            outline:none;
-          "
-        >
-
-
-        <button
-          class="btn btn-primary"
-          type="button"
-          onclick="connectSupabase()"
-        >
-          SAVIENOT
-        </button>
-
-      </div>
-
-
-      <div
-        id="supabaseStatus"
-        style="
-          margin-top:18px;
-          font-size:12px;
-          letter-spacing:1px;
-          color:#777;
-        "
-      >
-        NAV SAVIENOTS
-      </div>
 
     </div>
 
   </div>
 
 </section>
-
-
-
-<!-- ===============================
-     FOOTER
-================================ -->
-
-<footer>
+  <footer>
 
   <div class="container">
 
@@ -2035,26 +2533,29 @@ if(yearElement){
       <div>
 
         <div class="logo footer-logo">
-          TERRA <span>BŪVE</span>
+
+          <div class="logo-main">
+            TERRA <span>BŪVE</span>
+          </div>
+
+          <div class="logo-slogan">
+            IDEJAS. RISINĀJUMI. REZULTĀTS.
+          </div>
+
         </div>
 
 
-        <p class="footer-slogan">
-          IDEJAS. RISINĀJUMI. REZULTĀTS.
-        </p>
-
-
         <p class="footer-text">
-          Būvniecība, remonts,
-          teritorijas labiekārtošana
-          un inženierkomunikācijas.
+          Terra Būve — būvniecība, remonts,
+          zemes darbi, pamati, teritorijas
+          labiekārtošana un inženierkomunikācijas.
         </p>
 
       </div>
 
 
 
-      <div>
+      <div class="footer-column">
 
         <h4>
           PAKALPOJUMI
@@ -2080,14 +2581,14 @@ if(yearElement){
 
 
 
-      <div>
+      <div class="footer-column">
 
         <h4>
           INFORMĀCIJA
         </h4>
 
         <a href="#tame">
-          Tāmju kalkulators
+          Tāmes kalkulators
         </a>
 
         <a href="#cenas">
@@ -2106,7 +2607,7 @@ if(yearElement){
 
 
 
-      <div>
+      <div class="footer-column">
 
         <h4>
           KONTAKTI
@@ -2120,9 +2621,9 @@ if(yearElement){
           +371 00000000
         </a>
 
-        <span>
+        <a href="#sakums">
           Latvija
-        </span>
+        </a>
 
       </div>
 
@@ -2133,7 +2634,10 @@ if(yearElement){
     <div class="footer-bottom">
 
       <span>
-        © <span id="currentYear"></span>
+        ©
+        <span id="currentYear">
+          2026
+        </span>
         Terra Būve
       </span>
 
@@ -2150,11 +2654,708 @@ if(yearElement){
 
 
 
+<!-- =========================
+     KONTAKTU MODĀLAIS LOGS
+========================= -->
+
+<div
+  id="requestModal"
+  class="modal"
+>
+
+  <div class="modal-box">
+
+    <div class="section-label">
+      TERRA BŪVE
+    </div>
+
+
+    <h2>
+      Sazināties
+    </h2>
+
+
+    <p>
+      Atstāj savu kontaktinformāciju,
+      un mēs ar Tevi sazināsimies.
+    </p>
+
+
+    <form
+      id="requestForm"
+      onsubmit="submitRequest(event)"
+    >
+
+
+      <div class="form-group">
+
+        <label for="requestName">
+          VĀRDS
+        </label>
+
+        <input
+          id="requestName"
+          type="text"
+          placeholder="Tavs vārds"
+          required
+        >
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label for="requestPhone">
+          TĀLRUNIS
+        </label>
+
+        <input
+          id="requestPhone"
+          type="tel"
+          placeholder="+371 ..."
+          required
+        >
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label for="requestEmail">
+          E-PASTS
+        </label>
+
+        <input
+          id="requestEmail"
+          type="email"
+          placeholder="epasts@piemers.lv"
+        >
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label for="requestMessage">
+          PAR PROJEKTU
+        </label>
+
+        <textarea
+          id="requestMessage"
+          placeholder="Īsi apraksti savu projektu..."
+        ></textarea>
+
+      </div>
+
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="close-modal"
+          onclick="closeModal()"
+        >
+          AIZVĒRT
+        </button>
+
+
+        <button
+          type="submit"
+          class="btn btn-gold"
+        >
+          NOSŪTĪT
+        </button>
+
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
 
-/* ===============================
-   PIEPRASĪJUMA NOSŪTĪŠANA
-================================ */
+const SUPABASE_URL =
+  "https://nmxdvvagdanajplzgyju.supabase.co";
+
+
+let supabaseClient = null;
+
+
+
+/* =========================
+   SUPABASE SAVIENOJUMS
+========================= */
+
+function connectSupabase(){
+
+  const input =
+    document.getElementById(
+      "supabaseKey"
+    );
+
+
+  if(!input){
+    return;
+  }
+
+
+  const key =
+    input.value.trim();
+
+
+  if(!key){
+
+    alert(
+      "Ievadi Supabase Publishable Key."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        key
+      );
+
+
+    localStorage.setItem(
+      "terra_supabase_key",
+      key
+    );
+
+
+    const status =
+      document.getElementById(
+        "supabaseStatus"
+      );
+
+
+    if(status){
+
+      status.textContent =
+        "SAVIENOJUMS AKTĪVS";
+
+      status.style.color =
+        "#d4aa43";
+
+    }
+
+
+    loadFuelPrices();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Supabase savienojumu neizdevās izveidot."
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   DEGVIĒLAS CENAS
+========================= */
+
+async function loadFuelPrices(){
+
+  if(!supabaseClient){
+    return;
+  }
+
+
+  try{
+
+    const result =
+      await supabaseClient
+        .from("cenu_uzraudziba")
+        .select("*")
+        .order(
+          "atjaunots_at",
+          {
+            ascending:false
+          }
+        );
+
+
+    if(result.error){
+
+      console.error(
+        result.error
+      );
+
+      return;
+
+    }
+
+
+    const rows =
+      result.data || [];
+
+
+    const stations = [
+      "Neste",
+      "Circle K",
+      "KOOL",
+      "Straujupīte"
+    ];
+
+
+    const values = {};
+
+
+    rows.forEach(row => {
+
+      const name =
+        String(
+          row.nosaukums || ""
+        ).trim();
+
+
+      if(
+        !stations.includes(name)
+      ){
+        return;
+      }
+
+
+      if(!values[name]){
+        values[name] = {};
+      }
+
+
+      const category =
+        String(
+          row.kategorija || ""
+        ).toLowerCase();
+
+
+      if(
+        category.includes("dīzel")
+      ){
+
+        values[name].diesel =
+          Number(row.cena);
+
+      }
+
+
+      if(
+        category.includes("95")
+      ){
+
+        values[name].petrol =
+          Number(row.cena);
+
+      }
+
+    });
+
+
+    const tbody =
+      document.getElementById(
+        "fuelPrices"
+      );
+
+
+    if(!tbody){
+      return;
+    }
+
+
+    tbody.innerHTML =
+      stations
+        .map(name => {
+
+          const item =
+            values[name] || {};
+
+
+          const diesel =
+            Number.isFinite(
+              item.diesel
+            )
+              ? item.diesel.toFixed(3)
+              : "—";
+
+
+          const petrol =
+            Number.isFinite(
+              item.petrol
+            )
+              ? item.petrol.toFixed(3)
+              : "—";
+
+
+          return `
+            <tr>
+
+              <td>
+                ${name}
+              </td>
+
+              <td>
+                ${diesel === "—"
+                  ? "—"
+                  : diesel + " €"}
+              </td>
+
+              <td>
+                ${petrol === "—"
+                  ? "—"
+                  : petrol + " €"}
+              </td>
+
+            </tr>
+          `;
+
+        })
+        .join("");
+
+
+    if(rows.length){
+
+      const latest =
+        rows[0].atjaunots_at;
+
+
+      const update =
+        document.getElementById(
+          "lastPriceUpdate"
+        );
+
+
+      if(update){
+
+        const date =
+          new Date(latest);
+
+
+        update.textContent =
+          "Pēdējā atjaunošana: " +
+          date.toLocaleString(
+            "lv-LV"
+          );
+
+      }
+
+    }
+
+  }
+  catch(error){
+
+    console.error(
+      "Degvielas cenu kļūda:",
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   AUTOMĀTISKĀ KEY IELĀDE
+========================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    const savedKey =
+      localStorage.getItem(
+        "terra_supabase_key"
+      );
+
+
+    if(savedKey){
+
+      const input =
+        document.getElementById(
+          "supabaseKey"
+        );
+
+
+      if(input){
+
+        input.value =
+          savedKey;
+
+        connectSupabase();
+
+      }
+
+    }
+
+
+    updateEstimate();
+
+  }
+);
+
+
+
+/* =========================
+   TĀMES APRĒĶINS
+========================= */
+
+function updateEstimate(){
+
+  let total = 0;
+
+
+  document
+    .querySelectorAll(
+      ".quantity"
+    )
+    .forEach(input => {
+
+      const price =
+        Number(
+          input.dataset.price
+        ) || 0;
+
+
+      const quantity =
+        Number(
+          input.value
+        ) || 0;
+
+
+      const row =
+        input.closest("tr");
+
+
+      const totalCell =
+        row
+          ? row.querySelector(
+              ".row-total"
+            )
+          : null;
+
+
+      const rowTotal =
+        price * quantity;
+
+
+      if(totalCell){
+
+        totalCell.textContent =
+          rowTotal.toFixed(2) +
+          " €";
+
+      }
+
+
+      total += rowTotal;
+
+    });
+
+
+  const totalElement =
+    document.getElementById(
+      "estimateTotal"
+    );
+
+
+  if(totalElement){
+
+    totalElement.textContent =
+      total.toFixed(2) +
+      " €";
+
+  }
+
+}
+
+
+
+document.addEventListener(
+  "input",
+  function(event){
+
+    if(
+      event.target.matches(
+        ".quantity"
+      )
+    ){
+
+      updateEstimate();
+
+      saveEstimate();
+
+    }
+
+  }
+);
+
+
+
+/* =========================
+   KATEGORIJU IZVĒLE
+========================= */
+
+function selectCategory(button){
+
+  document
+    .querySelectorAll(
+      ".category"
+    )
+    .forEach(item => {
+
+      item.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  button.classList.add(
+    "active"
+  );
+
+}
+
+
+
+/* =========================
+   TĀMES NOTĪRĪŠANA
+========================= */
+
+function clearEstimate(){
+
+  document
+    .querySelectorAll(
+      ".quantity"
+    )
+    .forEach(input => {
+
+      input.value = 0;
+
+    });
+
+
+  localStorage.removeItem(
+    "terra_estimate"
+  );
+
+
+  updateEstimate();
+
+}
+
+
+
+/* =========================
+   TĀMES SAGLABĀŠANA
+========================= */
+
+function saveEstimate(){
+
+  const values = {};
+
+
+  document
+    .querySelectorAll(
+      ".quantity"
+    )
+    .forEach(input => {
+
+      values[
+        input.parentElement
+          .parentElement
+          .querySelector("td")
+          .textContent
+          .trim()
+      ] =
+        input.value;
+
+    });
+
+
+  localStorage.setItem(
+    "terra_estimate",
+    JSON.stringify(values)
+  );
+
+}
+
+
+
+/* =========================
+   MODĀLS
+========================= */
+
+function openModal(){
+
+  const modal =
+    document.getElementById(
+      "requestModal"
+    );
+
+
+  if(modal){
+
+    modal.classList.add(
+      "show"
+    );
+
+  }
+
+}
+
+
+
+function closeModal(){
+
+  const modal =
+    document.getElementById(
+      "requestModal"
+    );
+
+
+  if(modal){
+
+    modal.classList.remove(
+      "show"
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   PIEPRASĪJUMS
+========================= */
 
 async function submitRequest(event){
 
@@ -2185,67 +3386,48 @@ async function submitRequest(event){
     ).value.trim();
 
 
-  const totalElement =
+  const total =
     document.getElementById(
       "estimateTotal"
-    );
-
-
-  const estimate =
-    totalElement
-      ? totalElement.textContent
-      : "0.00 €";
-
-
-  const submitButton =
-    event.target.querySelector(
-      'button[type="submit"]'
-    );
-
-
-  if(submitButton){
-
-    submitButton.disabled = true;
-
-    submitButton.textContent =
-      "NOSŪTA...";
-
-  }
+    )?.textContent ||
+    "0.00 €";
 
 
   try{
 
-    if(
-      supabaseClient
-    ){
+    if(supabaseClient){
 
-      const { error } =
+      const result =
         await supabaseClient
           .from("pieprasijumi")
           .insert({
 
-            vards: name,
+            vards:name,
 
-            telefons: phone,
+            telefons:phone,
 
-            epasts: email,
+            epasts:email,
 
-            pazinojums: message,
+            pazinojums:message,
 
-            tame: estimate
+            tame:total
 
           });
 
 
-      if(error){
-        throw error;
+      if(result.error){
+
+        console.error(
+          result.error
+        );
+
       }
 
     }
 
 
     alert(
-      "Paldies! Pieprasījums ir nosūtīts."
+      "Paldies! Tavs pieprasījums ir saņemts."
     );
 
 
@@ -2256,538 +3438,318 @@ async function submitRequest(event){
       .reset();
 
 
-    closeRequestModal();
-
+    closeModal();
 
   }
   catch(error){
 
-    console.error(
-      "Pieprasījuma kļūda:",
-      error
-    );
-
+    console.error(error);
 
     alert(
-      "Pieprasījumu neizdevās nosūtīt. Lūdzu, sazinies ar mums pa tālruni vai e-pastu."
+      "Radās kļūda. Lūdzu, sazinies ar mums pa tālruni."
     );
-
-  }
-
-
-  if(submitButton){
-
-    submitButton.disabled = false;
-
-    submitButton.textContent =
-      "NOSŪTĪT PIEPRASĪJUMU";
 
   }
 
 }
 
 
-/* ===============================
-   ESC — AIZVĒRT MODĀLI
-================================ */
+
+/* =========================
+   MOBILĀ IZVĒLNE
+========================= */
+
+function toggleMenu(){
+
+  const nav =
+    document.querySelector(
+      ".nav-links"
+    );
+
+
+  if(!nav){
+    return;
+  }
+
+
+  if(
+    nav.style.display ===
+    "flex"
+  ){
+
+    nav.style.display =
+      "";
+
+  }
+  else{
+
+    nav.style.display =
+      "flex";
+
+    nav.style.position =
+      "absolute";
+
+    nav.style.top =
+      "82px";
+
+    nav.style.left =
+      "13px";
+
+    nav.style.right =
+      "13px";
+
+    nav.style.padding =
+      "20px";
+
+    nav.style.background =
+      "#111";
+
+    nav.style.border =
+      "1px solid #333";
+
+    nav.style.flexDirection =
+      "column";
+
+    nav.style.alignItems =
+      "flex-start";
+
+  }
+
+}
+
+
+
+/* =========================
+   GADS
+========================= */
+
+const year =
+  document.getElementById(
+    "currentYear"
+  );
+
+
+if(year){
+
+  year.textContent =
+    new Date()
+      .getFullYear();
+
+}
+
+
+
+/* =========================
+   AIZVĒRT MODĀLI
+========================= */
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const modal =
+      document.getElementById(
+        "requestModal"
+      );
+
+
+    if(
+      modal &&
+      event.target === modal
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
 
 document.addEventListener(
   "keydown",
   function(event){
 
-    if(event.key === "Escape"){
-
-      closeRequestModal();
-
-    }
-
-  }
-);
-
-
-/* ===============================
-   SMOOTH SCROLL
-================================ */
-
-document
-  .querySelectorAll(
-    'a[href^="#"]'
-  )
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-      function(event){
-
-        const targetId =
-          this.getAttribute("href");
-
-
-        if(
-          targetId === "#" ||
-          targetId.length < 2
-        ){
-          return;
-        }
-
-
-        const target =
-          document.querySelector(
-            targetId
-          );
-
-
-        if(target){
-
-          event.preventDefault();
-
-
-          target.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-          });
-
-        }
-
-      }
-    );
-
-  });
-
-
-</script>
-<script>
-
-/* ===============================
-   TERRA BŪVE — PAPILDU FUNKCIJAS
-================================ */
-
-(function(){
-
-  const navLinks =
-    document.querySelectorAll(
-      ".main-nav a"
-    );
-
-  navLinks.forEach(link => {
-
-    link.addEventListener(
-      "click",
-      function(){
-
-        navLinks.forEach(item =>
-          item.classList.remove("active")
-        );
-
-        this.classList.add("active");
-
-      }
-    );
-
-  });
-
-
-  /* Parādīt elementus, kad tie
-     ienāk ekrānā */
-
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "visible"
-            );
-
-          }
-
-        });
-
-      },
-      {
-        threshold:0.12
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      ".service-card, .calculator-box, .section-head"
-    )
-    .forEach(element => {
-
-      observer.observe(element);
-
-    });
-
-})();
-
-
-
-/* ===============================
-   DATUMA FORMĀTS
-================================ */
-
-function formatDate(date){
-
-  const d =
-    new Date(date);
-
-  if(
-    Number.isNaN(
-      d.getTime()
-    )
-  ){
-    return "";
-  }
-
-
-  return d.toLocaleDateString(
-    "lv-LV",
-    {
-      day:"2-digit",
-      month:"2-digit",
-      year:"numeric"
-    }
-  );
-
-}
-
-
-
-/* ===============================
-   CENU ATJAUNOŠANAS DATUMS
-================================ */
-
-async function loadLastUpdate(){
-
-  if(!supabaseClient){
-    return;
-  }
-
-
-  try{
-
-    const { data, error } =
-      await supabaseClient
-        .from("cenu_uzraudziba")
-        .select("atjaunots_at")
-        .order(
-          "atjaunots_at",
-          {
-            ascending:false
-          }
-        )
-        .limit(1);
-
-
-    if(error){
-      return;
-    }
-
-
     if(
-      data &&
-      data.length
+      event.key === "Escape"
     ){
 
-      const element =
-        document.getElementById(
-          "lastPriceUpdate"
-        );
-
-
-      if(element){
-
-        element.textContent =
-          "Atjaunots: " +
-          formatDate(
-            data[0].atjaunots_at
-          );
-
-      }
+      closeModal();
 
     }
-
-  }
-  catch(error){
-
-    console.error(error);
-
-  }
-
-}
-
-
-
-/* ===============================
-   PAPILDINA SUPABASE SAVIENOJUMU
-================================ */
-
-const originalConnect =
-  window.connectSupabase;
-
-
-window.connectSupabase =
-  async function(){
-
-    if(
-      typeof originalConnect ===
-      "function"
-    ){
-
-      originalConnect();
-
-    }
-
-
-    setTimeout(
-      function(){
-
-        loadLastUpdate();
-
-      },
-      1200
-    );
-
-  };
-
-
-
-/* ===============================
-   SKROLLA GALVA
-================================ */
-
-window.addEventListener(
-  "scroll",
-  function(){
-
-    const header =
-      document.querySelector(
-        "header"
-      );
-
-
-    if(!header){
-      return;
-    }
-
-
-    if(window.scrollY > 50){
-
-      header.classList.add(
-        "scrolled"
-      );
-
-    }
-    else{
-
-      header.classList.remove(
-        "scrolled"
-      );
-
-    }
-
-  }
-);
-
-
-
-/* ===============================
-   LOGO — UZ AUGŠU
-================================ */
-
-const logo =
-  document.querySelector(
-    ".logo"
-  );
-
-
-if(logo){
-
-  logo.addEventListener(
-    "click",
-    function(){
-
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
-
-    }
-  );
-
-}
-
-
-
-/* ===============================
-   TĀMES SAGLABĀŠANA
-================================ */
-
-function saveEstimate(){
-
-  const estimate = [];
-
-
-  document
-    .querySelectorAll(
-      "#estimateRows tr"
-    )
-    .forEach(row => {
-
-      const name =
-        row.children[0]
-          ?.textContent
-          .trim();
-
-
-      const quantity =
-        row.querySelector(
-          ".quantity"
-        )?.value || 0;
-
-
-      if(name){
-
-        estimate.push({
-          name:name,
-          quantity:Number(
-            quantity
-          )
-        });
-
-      }
-
-    });
-
-
-  localStorage.setItem(
-    "terra_estimate",
-    JSON.stringify(
-      estimate
-    )
-  );
-
-}
-
-
-
-/* ===============================
-   TĀMES IELĀDE
-================================ */
-
-function restoreEstimate(){
-
-  const saved =
-    localStorage.getItem(
-      "terra_estimate"
-    );
-
-
-  if(!saved){
-    return;
-  }
-
-
-  try{
-
-    const estimate =
-      JSON.parse(saved);
-
-
-    document
-      .querySelectorAll(
-        "#estimateRows tr"
-      )
-      .forEach(row => {
-
-        const name =
-          row.children[0]
-            ?.textContent
-            .trim();
-
-
-        const item =
-          estimate.find(
-            x =>
-              x.name === name
-          );
-
-
-        if(item){
-
-          const input =
-            row.querySelector(
-              ".quantity"
-            );
-
-
-          if(input){
-
-            input.value =
-              item.quantity;
-
-          }
-
-        }
-
-      });
-
-
-    updateEstimate();
-
-  }
-  catch(error){
-
-    console.error(error);
-
-  }
-
-}
-
-
-
-/* Saglabājam pēc izmaiņām */
-
-document.addEventListener(
-  "input",
-  function(event){
-
-    if(
-      event.target.matches(
-        ".quantity"
-      )
-    ){
-
-      saveEstimate();
-
-    }
-
-  }
-);
-
-
-
-/* ===============================
-   SĀKUMA IESTATĪŠANA
-================================ */
-
-window.addEventListener(
-  "load",
-  function(){
-
-    restoreEstimate();
-
-    updateEstimate();
-
-    loadLastUpdate();
 
   }
 );
 
 </script>
+  <!-- =========================
+     SUPABASE SAVIENOJUMS
+========================= -->
+
+<section
+  style="
+    padding:60px 0;
+    background:#090909;
+  "
+>
+
+  <div class="container">
+
+    <div
+      class="price-panel"
+      style="padding:25px;"
+    >
+
+      <div class="section-label">
+        SISTĒMA
+      </div>
+
+      <h3
+        style="
+          margin:0 0 10px;
+          font-size:24px;
+        "
+      >
+        Cenu datu savienojums
+      </h3>
+
+      <p
+        style="
+          color:#777;
+          font-size:12px;
+          line-height:1.6;
+          margin-bottom:20px;
+        "
+      >
+        Supabase savienojums paredzēts cenu
+        uzraudzības datu ielādei.
+      </p>
+
+
+      <div
+        style="
+          display:flex;
+          gap:10px;
+          flex-wrap:wrap;
+        "
+      >
+
+        <input
+          id="supabaseKey"
+          type="password"
+          placeholder="Supabase Publishable Key"
+          style="
+            flex:1;
+            min-width:260px;
+            background:#0d0d0d;
+            color:#fff;
+            border:1px solid #333;
+            border-radius:4px;
+            padding:13px 15px;
+            outline:none;
+          "
+        >
+
+
+        <button
+          type="button"
+          class="btn btn-gold"
+          onclick="connectSupabase()"
+        >
+          SAVIENOT
+        </button>
+
+      </div>
+
+
+      <div
+        id="supabaseStatus"
+        style="
+          margin-top:14px;
+          color:#666;
+          font-size:10px;
+          letter-spacing:1px;
+        "
+      >
+        NAV SAVIENOTS
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     KONTAKTI
+========================= -->
+
+<section
+  id="kontakti"
+  style="
+    background:#101010;
+    padding:90px 0;
+  "
+>
+
+  <div class="container">
+
+    <div class="section-label">
+      TERRA BŪVE
+    </div>
+
+    <h2 class="section-title">
+      SAZINĀSIMIES
+    </h2>
+
+    <p class="section-text">
+      Pastāsti par savu projektu un sazināsimies
+      par iespējām to realizēt.
+    </p>
+
+
+    <div
+      style="
+        display:flex;
+        gap:12px;
+        flex-wrap:wrap;
+        margin-top:28px;
+      "
+    >
+
+      <button
+        type="button"
+        class="btn btn-gold"
+        onclick="openModal()"
+      >
+        NOSŪTĪT PIEPRASĪJUMU
+      </button>
+
+
+      <a
+        href="mailto:info@terrabuve.lv"
+        class="btn btn-outline"
+      >
+        info@terrabuve.lv
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     PAGE END
+========================= -->
+
+</main>
+
+</body>
+
+</html>
 </section>
