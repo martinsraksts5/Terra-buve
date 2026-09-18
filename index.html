@@ -774,11 +774,278 @@ tbody tr:hover td{
 }
 </style>
 
+
+<style id="terra-buve-hero">
+.tb-hero{
+  min-height:590px!important;
+  margin-bottom:30px!important;
+  padding:0!important;
+  display:flex!important;
+  justify-content:flex-start!important;
+  align-items:stretch!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:26px!important;
+  background:
+    linear-gradient(90deg,rgba(5,7,9,.98) 0%,rgba(7,9,12,.94) 37%,rgba(7,9,12,.67) 62%,rgba(7,9,12,.25) 100%),
+    radial-gradient(circle at 78% 46%,rgba(215,169,76,.18),transparent 29%),
+    linear-gradient(125deg,#252b32 0%,#151a20 45%,#090b0e 100%)!important;
+}
+
+.tb-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.65;
+  background:
+    linear-gradient(135deg,transparent 0 47%,rgba(229,189,98,.10) 47.2%,transparent 47.6%),
+    linear-gradient(160deg,transparent 0 67%,rgba(255,255,255,.035) 67.2%,transparent 67.7%),
+    repeating-linear-gradient(105deg,transparent 0 88px,rgba(255,255,255,.025) 89px,transparent 90px);
+  pointer-events:none;
+}
+
+.tb-hero::after{
+  content:"";
+  position:absolute;
+  right:-110px;
+  top:-130px;
+  width:470px;
+  height:470px;
+  border:1px solid rgba(229,189,98,.18);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 48px rgba(229,189,98,.025),
+    0 0 0 96px rgba(229,189,98,.018);
+  pointer-events:none;
+}
+
+.tb-hero-content{
+  position:relative;
+  z-index:2;
+  width:min(760px,100%);
+  padding:76px 64px;
+}
+
+.tb-eyebrow{
+  margin-bottom:18px;
+  color:var(--tb-gold2);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.tb-hero h1{
+  max-width:760px!important;
+  margin:0!important;
+  color:#fff!important;
+  font-size:clamp(58px,7vw,94px)!important;
+  line-height:.91!important;
+  letter-spacing:-4px!important;
+  font-weight:950!important;
+}
+
+.tb-hero h1::after{
+  display:none!important;
+}
+
+.tb-hero h1 span{
+  color:var(--tb-gold2);
+}
+
+.tb-hero p{
+  max-width:650px!important;
+  margin:28px 0 0!important;
+  color:#c5cad1!important;
+  font-size:18px!important;
+  line-height:1.65!important;
+}
+
+.tb-hero-actions{
+  display:flex;
+  gap:11px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.tb-hero-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:49px;
+  padding:0 20px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:900;
+  transition:.2s ease;
+}
+
+.tb-hero-primary{
+  background:linear-gradient(135deg,#b9852e,#e5bd62);
+  color:#0b0d10;
+  border:1px solid #e0b55a;
+  box-shadow:0 10px 28px rgba(201,154,59,.18);
+}
+
+.tb-hero-primary span{
+  font-size:19px;
+}
+
+.tb-hero-secondary{
+  color:#f1f2f3;
+  background:rgba(255,255,255,.045);
+  border:1px solid #414a56;
+}
+
+.tb-hero-btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+}
+
+.tb-hero-facts{
+  display:flex;
+  gap:0;
+  margin-top:52px;
+  border-top:1px solid rgba(255,255,255,.13);
+  padding-top:17px;
+}
+
+.tb-hero-facts div{
+  min-width:175px;
+  padding-right:25px;
+  margin-right:25px;
+  border-right:1px solid rgba(255,255,255,.10);
+}
+
+.tb-hero-facts div:last-child{
+  border-right:0;
+}
+
+.tb-hero-facts strong{
+  display:block;
+  color:var(--tb-gold2);
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+.tb-hero-facts span{
+  display:block;
+  margin-top:4px;
+  color:#aeb5be;
+  font-size:12px;
+}
+
+.tb-hero-mark{
+  position:absolute;
+  right:54px;
+  bottom:28px;
+  z-index:1;
+  color:rgba(255,255,255,.035);
+  font-size:clamp(180px,26vw,360px);
+  line-height:.75;
+  font-weight:950;
+  letter-spacing:-25px;
+  pointer-events:none;
+}
+
+@media(max-width:760px){
+  .tb-hero{
+    min-height:560px!important;
+  }
+
+  .tb-hero-content{
+    padding:48px 25px;
+  }
+
+  .tb-hero h1{
+    font-size:clamp(49px,14vw,70px)!important;
+    letter-spacing:-2.8px!important;
+  }
+
+  .tb-hero p{
+    font-size:16px!important;
+  }
+
+  .tb-hero-facts{
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:38px;
+  }
+
+  .tb-hero-facts div{
+    min-width:145px;
+    padding-right:15px;
+    margin-right:0;
+  }
+
+  .tb-hero-mark{
+    right:-10px;
+    bottom:28px;
+    font-size:190px;
+  }
+}
+
+@media(max-width:460px){
+  .tb-hero{
+    min-height:620px!important;
+  }
+
+  .tb-hero-content{
+    padding:39px 20px;
+  }
+
+  .tb-eyebrow{
+    font-size:10px;
+    letter-spacing:1.4px;
+  }
+
+  .tb-hero-actions{
+    flex-direction:column;
+  }
+
+  .tb-hero-btn{
+    width:100%;
+  }
+
+  .tb-hero-facts{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .tb-hero-facts div{
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    padding-bottom:9px;
+  }
+
+  .tb-hero-facts div:last-child{
+    border-bottom:0;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="logo">TERRA BŪVE</div><div class="tag">No zemes gabala līdz gatavai mājai</div><nav><a href="#dashboard">📊 Panelis</a><details class="dropdown"><summary class="dropbtn">🏗️ Būvdarbi <span class="arrow">▾</span></summary><div class="dropdown-menu"><a href="#house">🏠 Māju būvniecība</a><a href="#repair">🔨 Remontdarbi</a><a href="#earth">🚜 Zemes darbi</a><a href="#foundations">🧱 Pamatu izbūve</a><a href="#paving">🧱 Bruģēšana</a><a href="#landscaping">🌳 Labiekārtošana</a><a href="#sewer">🚰 Kanalizācijas sistēmas</a><a href="#other">🏗️ Citi būvdarbi</a></div></details><a href="#services">Pakalpojumi</a><a href="#calculator">Kalkulators</a><a href="#prices">Cenu uzraudzība</a><a href="#planner">📅 Dienas plāns</a><a href="#system">Objektu sistēma</a></nav></header>
 <div class="container">
-<section class="hero"><h1>Būvniecība vienuviet</h1><p>Zemes darbi, pamati, labiekārtošana, kanalizācija, bruģēšana, māju būvniecība un dzīvokļu remonts.</p></section>
+<section class="hero tb-hero">
+  <div class="tb-hero-content">
+    <div class="tb-eyebrow">TERRA BŪVE · CELTNIECĪBA · LABIEKĀRTOŠANA</div>
+    <h1>Būvējam<br><span>ar pārliecību.</span></h1>
+    <p>Kompleksi būvniecības un teritorijas labiekārtošanas darbi — no zemes gabala sagatavošanas līdz gatavam rezultātam.</p>
+    <div class="tb-hero-actions">
+      <a class="tb-hero-btn tb-hero-primary" href="#calculator">Izveidot tāmi <span>→</span></a>
+      <a class="tb-hero-btn tb-hero-secondary" href="#services">Apskatīt pakalpojumus</a>
+    </div>
+    <div class="tb-hero-facts">
+      <div><strong>01</strong><span>Zemes darbi</span></div>
+      <div><strong>02</strong><span>Pamati un būvniecība</span></div>
+      <div><strong>03</strong><span>Labiekārtošana</span></div>
+    </div>
+  </div>
+  <div class="tb-hero-mark">TB</div>
+</section>
 <section class="section" id="dashboard"><h2>📊 Terra Būve — Vadības panelis</h2><p class="small">Kopsavilkums no Supabase datiem.</p><div id="dashboardContent"><div class="card"><p class="small">Pieslēdz Supabase, lai ielādētu vadības paneli.</p></div></div></section>
 <section class="section" id="services"><h2>🏗️ Ko piedāvājam</h2><div class="services">
 <div class="service" id="earth"><h3>🚜 Zemes darbi</h3><p>Rakšana, planēšana, grunts pārvietošana, tranšejas un teritorijas sagatavošana.</p></div>
