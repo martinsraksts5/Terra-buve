@@ -8,6 +8,55 @@
 *{box-sizing:border-box}body{margin:0;background:#0b0d10;color:#f4f4f4;font-family:Arial,sans-serif}header{background:#111419;border-bottom:1px solid #333;padding:24px 18px;text-align:center}.logo{font-size:34px;font-weight:900;color:#f3c64e}.tag{color:#aaa;margin-top:6px}nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}nav a,.btn2{background:#272c34;color:#fff;text-decoration:none;border:0;border-radius:11px;padding:11px 14px}.container{max-width:1050px;margin:auto;padding:18px}.hero{padding:28px 0}.hero h1{font-size:40px;color:#f3c64e;margin:0 0 10px}.hero p{font-size:19px;color:#bbb;line-height:1.5}.section{background:#111419;border:1px solid #30343b;border-radius:20px;padding:22px;margin:20px 0}.section h2{color:#f3c64e;margin-top:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media(max-width:720px){.grid{grid-template-columns:1fr}.hero h1{font-size:31px}.calcline{grid-template-columns:1fr!important}}label{display:block;color:#ccc;font-weight:700;margin-bottom:6px}input,select,textarea{width:100%;background:#080a0d;color:#fff;border:1px solid #3b414a;border-radius:11px;padding:13px;font-size:16px}textarea{min-height:90px}.btn{background:#f3c64e;color:#111;border:0;border-radius:12px;padding:13px 17px;font-weight:900;font-size:16px;margin-top:12px}.services{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}@media(max-width:720px){.services{grid-template-columns:1fr}}.service,.card{background:#191d23;border:1px solid #343943;border-radius:14px;padding:17px}.service h3{color:#f3c64e;margin:0 0 7px}.muted,.small{color:#999;font-size:14px}.calcline{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:end}.calcitem{margin-top:10px}.money{color:#f3c64e;font-weight:900}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}@media(max-width:720px){.summary{grid-template-columns:1fr}}.summary .card{font-size:17px}.big{font-size:27px;font-weight:900;color:#f3c64e}.ok{color:#6fe38b}.err{color:#ff7474}.status{display:inline-block;padding:7px 10px;border-radius:8px;background:#34302a;color:#f3c64e}.photo{width:100%;max-width:520px;border-radius:12px;margin-top:10px}.hidden{display:none!important}.footer{text-align:center;color:#777;padding:35px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.right{text-align:right}
 
 .dropdown{position:relative;display:inline-block}.dropbtn{background:#272c34;color:#fff;border:0;border-radius:11px;padding:11px 14px;font-size:15px;cursor:pointer;list-style:none}.dropbtn::-webkit-details-marker{display:none}.dropbtn::marker{display:none}.dropdown[open] .arrow{display:inline-block;transform:rotate(180deg)}.dropdown-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:240px;background:#15191f;border:1px solid #3b414a;border-radius:13px;padding:7px;z-index:50;box-shadow:0 12px 30px rgba(0,0,0,.45)}.dropdown-menu a{display:block;background:transparent;text-align:left;border-radius:9px;padding:10px 12px}.dropdown-menu a:hover{background:#252a31;color:#f3c64e}.planner{display:grid;grid-template-columns:1fr 1fr;gap:14px}.planner-day{background:#191d23;border:1px solid #343943;border-radius:14px;padding:14px}.plan-item{background:#101316;border-left:4px solid #f3c64e;border-radius:10px;padding:11px;margin-top:9px}.plan-time{color:#f3c64e;font-weight:900}.plan-meta{color:#aaa;font-size:13px;margin-top:3px}.price-table{width:100%;border-collapse:collapse}.price-table th,.price-table td{padding:9px;border-bottom:1px solid #30343b;text-align:left}.up{color:#ff8b7b}.down{color:#6fe38b}.pill{display:inline-block;padding:5px 8px;border-radius:8px;background:#262b32;color:#f3c64e;font-size:12px}@media(max-width:720px){.planner{grid-template-columns:1fr}.dropdown{width:100%}.dropbtn{width:100%;text-align:left}.dropdown-menu{position:static;width:100%;margin-top:5px}}
+
+
+/* =========================================================
+   TERRA BŪVE — VADĪBAS PANELIS v2 PREMIUM
+   ========================================================= */
+#dashboard .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:20px}
+#dashboard .section-head h2{margin-bottom:5px}
+.tb-dash-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0}
+.tb-stat-card{position:relative;min-height:168px;padding:22px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:linear-gradient(145deg,#1a2028 0%,#0d1117 100%);box-shadow:0 16px 42px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.035);overflow:hidden;transition:.25s ease}
+.tb-stat-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-70px;background:rgba(235,184,48,.075);border:1px solid rgba(235,184,48,.08)}
+.tb-stat-card:hover{transform:translateY(-4px);border-color:rgba(235,184,48,.45);box-shadow:0 20px 50px rgba(0,0,0,.34),0 0 28px rgba(235,184,48,.06)}
+.tb-stat-top{display:flex;justify-content:space-between;align-items:center;gap:12px;position:relative;z-index:1}
+.tb-stat-label{font-size:11px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:#aeb6c1}
+.tb-stat-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(235,184,48,.10);border:1px solid rgba(235,184,48,.16);font-size:17px}
+.tb-stat-number{position:relative;z-index:1;margin-top:20px;font-size:36px;line-height:1;font-weight:950;color:#fff;letter-spacing:-.03em}
+.tb-stat-number.gold{color:#f2c64d}
+.tb-stat-sub{position:relative;z-index:1;margin-top:9px;color:#7f8995;font-size:12px}
+.tb-stat-bar{position:absolute;left:22px;right:22px;bottom:18px;height:3px;border-radius:99px;background:#252c35;overflow:hidden}
+.tb-stat-bar span{display:block;height:100%;width:62%;background:#e9b72f;border-radius:99px}
+.tb-stat-card.approved .tb-stat-icon{background:rgba(62,198,112,.10);border-color:rgba(62,198,112,.16)}
+.tb-stat-card.waiting .tb-stat-icon{background:rgba(255,183,77,.10)}
+.tb-stat-card.rejected .tb-stat-icon{background:rgba(239,91,91,.10);border-color:rgba(239,91,91,.16)}
+.tb-stat-card.money .tb-stat-icon{background:rgba(235,184,48,.12)}
+.tb-object-panel{margin-top:18px;padding:24px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,#151b22,#0d1117);box-shadow:0 16px 45px rgba(0,0,0,.22)}
+.tb-panel-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}
+.tb-panel-title{display:flex;align-items:center;gap:11px;font-size:18px;font-weight:900;color:#f2f3f4}
+.tb-panel-title .mini-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:rgba(235,184,48,.10);border:1px solid rgba(235,184,48,.16)}
+.tb-panel-count{font-size:11px;font-weight:800;color:#89929d;padding:7px 10px;border-radius:999px;background:#11161c;border:1px solid #29303a}
+.object-summary-row{position:relative;overflow:hidden;padding:20px !important;border:1px solid #2b333e !important;border-radius:17px !important;background:linear-gradient(135deg,#141a21,#10151b) !important;margin-bottom:12px;transition:.2s ease}
+.object-summary-row:hover{border-color:rgba(235,184,48,.38) !important;transform:translateY(-2px)}
+.object-summary-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.object-summary-name{font-size:16px;font-weight:900;color:#fff}
+.object-summary-meta{margin-top:5px;font-size:12px;color:#7f8995}
+.object-summary-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;margin-top:17px}
+.object-summary-stat{padding:11px 12px;border-radius:12px;background:#0d1218;border:1px solid #252d37}
+.object-summary-stat span{display:block;color:#707b87;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.object-summary-stat b{display:block;margin-top:5px;color:#f1f2f3;font-size:14px}
+.object-summary-stat:nth-child(2) b,.object-summary-stat:nth-child(4) b{color:#f2c64d}
+.tb-dashboard-activity{margin-top:18px;padding:24px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,#151b22,#0d1117)}
+.tb-activity-item{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid #252c34}
+.tb-activity-item:last-child{border-bottom:0}
+.tb-activity-dot{width:9px;height:9px;border-radius:50%;background:#e9b72f;box-shadow:0 0 12px rgba(233,183,47,.35);flex:0 0 auto}
+.tb-activity-main{min-width:0;flex:1}
+.tb-activity-title{font-size:13px;font-weight:800;color:#e9eaec;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-activity-meta{margin-top:3px;color:#737e8a;font-size:11px}
+.tb-activity-status{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;padding:6px 9px;border-radius:999px;background:#11161c;border:1px solid #2a313b;color:#9ea7b2}
+@media(max-width:1050px){.tb-dash-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.object-summary-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.tb-dash-grid{grid-template-columns:1fr;gap:12px}.tb-stat-card{min-height:145px;padding:20px}.tb-stat-number{font-size:32px}.tb-object-panel,.tb-dashboard-activity{padding:18px}.object-summary-top{display:block}.object-summary-top .btn2{margin-top:13px;width:100%}.object-summary-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 </style>
 
 <style>
@@ -1455,49 +1504,57 @@ date:a.created_at
 });
 
 box.innerHTML=
-  `<div class="dashboard">
+`<div class="tb-dash-grid">
 
-<div class="dash-card">
-<div class="dash-label">🏗️ Aktīvie objekti</div>
-<div class="dash-number">${active}</div>
-<div class="dash-sub">Kopā: ${objs.length}</div>
+<div class="tb-stat-card">
+  <div class="tb-stat-top"><div class="tb-stat-label">Aktīvie objekti</div><div class="tb-stat-icon">🏗️</div></div>
+  <div class="tb-stat-number gold">${active}</div>
+  <div class="tb-stat-sub">Kopā sistēmā: ${objs.length}</div>
+  <div class="tb-stat-bar"><span style="width:${objs.length ? Math.min(100, Math.round(active/objs.length*100)) : 0}%"></span></div>
 </div>
 
-<div class="dash-card">
-<div class="dash-label">⏳ Gaida saskaņošanu</div>
-<div class="dash-number">${waiting}</div>
-<div class="dash-sub">Papilddarbi</div>
+<div class="tb-stat-card waiting">
+  <div class="tb-stat-top"><div class="tb-stat-label">Gaida saskaņošanu</div><div class="tb-stat-icon">⏳</div></div>
+  <div class="tb-stat-number">${waiting}</div>
+  <div class="tb-stat-sub">Papilddarbi, kuriem vajadzīga darbība</div>
+  <div class="tb-stat-bar"><span style="width:${Math.min(100, waiting*12)}%"></span></div>
 </div>
 
-<div class="dash-card">
-<div class="dash-label">✅ Apstiprināti</div>
-<div class="dash-number">${approved}</div>
-<div class="dash-sub">Papilddarbi</div>
+<div class="tb-stat-card approved">
+  <div class="tb-stat-top"><div class="tb-stat-label">Apstiprināti</div><div class="tb-stat-icon">✓</div></div>
+  <div class="tb-stat-number">${approved}</div>
+  <div class="tb-stat-sub">Apstiprinātie papilddarbi</div>
+  <div class="tb-stat-bar"><span style="width:${Math.min(100, approved*12)}%"></span></div>
 </div>
 
-<div class="dash-card">
-<div class="dash-label">❌ Noraidīti</div>
-<div class="dash-number">${rejected}</div>
-<div class="dash-sub">Papilddarbi</div>
+<div class="tb-stat-card rejected">
+  <div class="tb-stat-top"><div class="tb-stat-label">Noraidīti</div><div class="tb-stat-icon">×</div></div>
+  <div class="tb-stat-number">${rejected}</div>
+  <div class="tb-stat-sub">Noraidītie papilddarbi</div>
+  <div class="tb-stat-bar"><span style="width:${Math.min(100, rejected*12)}%"></span></div>
 </div>
 
-<div class="dash-card">
-<div class="dash-label">💰 Ieņēmumi</div>
-<div class="dash-number">${money(revenue)}</div>
-<div class="dash-sub">Apstiprinātie darbi</div>
+<div class="tb-stat-card money">
+  <div class="tb-stat-top"><div class="tb-stat-label">Ieņēmumi</div><div class="tb-stat-icon">€</div></div>
+  <div class="tb-stat-number gold">${money(revenue)}</div>
+  <div class="tb-stat-sub">No apstiprinātajiem darbiem</div>
+  <div class="tb-stat-bar"><span style="width:78%"></span></div>
 </div>
 
-<div class="dash-card">
-<div class="dash-label">📈 Peļņa</div>
-<div class="dash-number">${money(profit)}</div>
-<div class="dash-sub">Ieņēmumi − izmaksas</div>
+<div class="tb-stat-card money">
+  <div class="tb-stat-top"><div class="tb-stat-label">Peļņa</div><div class="tb-stat-icon">↗</div></div>
+  <div class="tb-stat-number gold">${money(profit)}</div>
+  <div class="tb-stat-sub">Ieņēmumi − izmaksas</div>
+  <div class="tb-stat-bar"><span style="width:${revenue ? Math.max(0,Math.min(100,Math.round(profit/revenue*100))):0}%"></span></div>
 </div>
 
 </div>
 
-<div class="card object-summary">
-
-<h3>🏗️ Objektu pārskats</h3>
+<div class="tb-object-panel">
+<div class="tb-panel-head">
+  <div class="tb-panel-title"><span class="mini-icon">🏗️</span> Objektu pārskats</div>
+  <div class="tb-panel-count">${objs.length} objekti</div>
+</div>
 
 ${
 objs.length
@@ -1506,81 +1563,44 @@ objs.map(o=>{
 
 const x=
 byObj.get(o.id)||
-{
-total:0,
-cost:0,
-profit:0,
-waiting:0,
-approved:0,
-rejected:0,
-count:0
-};
+{total:0,cost:0,profit:0,waiting:0,approved:0,rejected:0,count:0};
 
 return `
-
 <div class="object-summary-row">
-
 <div class="object-summary-top">
-
 <div>
-
-<div class="object-summary-name">
-${esc(o.nosaukums)}
+<div class="object-summary-name">${esc(o.nosaukums)}</div>
+<div class="object-summary-meta">${esc(o.klients||'Bez klienta')} · ${esc(o.adrese||'Bez adreses')}</div>
 </div>
-
-<div class="object-summary-meta">
-${esc(o.klients||'Bez klienta')}
-·
-${esc(o.adrese||'Bez adreses')}
+<button class="btn2" onclick="openObjectFromDashboard('${escAttr(o.id)}')">Atvērt objektu →</button>
 </div>
-
-</div>
-
-<button
-class="btn2"
-onclick="openObjectFromDashboard('${escAttr(o.id)}')"
->
-Atvērt objektu
-</button>
-
-</div>
-
 <div class="object-summary-stats">
-
-<div class="object-summary-stat">
-<span>Darbi</span>
-<b>${x.count}</b>
+<div class="object-summary-stat"><span>Darbi</span><b>${x.count}</b></div>
+<div class="object-summary-stat"><span>Ieņēmumi</span><b>${money(x.total)}</b></div>
+<div class="object-summary-stat"><span>Izmaksas</span><b>${money(x.cost)}</b></div>
+<div class="object-summary-stat"><span>Peļņa</span><b>${money(x.profit)}</b></div>
+<div class="object-summary-stat"><span>Gaida</span><b>${x.waiting}</b></div>
+<div class="object-summary-stat"><span>Apstiprināti</span><b>${x.approved}</b></div>
+</div>
+</div>`;
+}).join('')
+:
+'<p class="small">Objektu vēl nav.</p>'
+}
 </div>
 
-<div class="object-summary-stat">
-<span>Ieņēmumi</span>
-<b>${money(x.total)}</b>
+<div class="tb-dashboard-activity">
+<div class="tb-panel-head">
+  <div class="tb-panel-title"><span class="mini-icon">🔔</span> Pēdējā aktivitāte</div>
+  <div class="tb-panel-count">${activities.length} ieraksti</div>
 </div>
-
-<div class="object-summary-stat">
-<span>Izmaksas</span>
-<b>${money(x.cost)}</b>
-</div>
-
-<div class="object-summary-stat">
-<span>Peļņa</span>
-<b>${money(x.profit)}</b>
-</div>
-
-<div class="object-summary-stat">
-<span>Gaida</span>
-<b>${x.waiting}</b>
-</div>
-
-<div class="object-summary-stat">
-<span>Apstiprināti</span>
-<b>${x.approved}</b>
-</div>
-
-</div>
-</div>
-
-`;
+${activities.length ? activities.map(a=>`
+<div class="tb-activity-item">
+  <span class="tb-activity-dot"></span>
+  <div class="tb-activity-main"><div class="tb-activity-title">${esc(a.title)}</div><div class="tb-activity-meta">${esc(a.meta)} · ${a.date ? new Date(a.date).toLocaleString('lv-LV') : ''}</div></div>
+  <span class="tb-activity-status">${esc(a.status)}</span>
+</div>`).join('') : '<p class="small">Pēdējās aktivitātes nav.</p>'}
+</div>`;
 
 }).join('')
 :
