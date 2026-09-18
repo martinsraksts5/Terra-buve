@@ -1990,6 +1990,70 @@ ${esc(note)}
 No zemes gabala līdz gatavai mājai
 </p>
 
+
+<script>
+/* TERRA BŪVE — SUPABASE CONNECT FIX */
+(function(){
+  function initSupabaseButton(){
+    const btn=document.querySelector('#system button[onclick="connectSupabase()"]');
+    const keyInput=document.getElementById('supabaseKey');
+    const status=document.getElementById('connectionStatus');
+    if(!btn || !keyInput || !status) return;
+
+    btn.type='button';
+    btn.removeAttribute('onclick');
+
+    btn.addEventListener('click', async function(){
+      const key=keyInput.value.trim();
+      if(!key){
+        status.className='small err';
+        status.textContent='Ievieto Supabase Publishable Key.';
+        return;
+      }
+      if(!window.supabase || !window.supabase.createClient){
+        status.className='small err';
+        status.textContent='Supabase bibliotēka nav ielādējusies. Pārlādē lapu.';
+        return;
+      }
+
+      btn.disabled=true;
+      btn.textContent='Savienojas...';
+      status.className='small';
+      status.textContent='Pārbaudu Supabase savienojumu...';
+
+      try{
+        const client=window.supabase.createClient(
+          'https://nmxdvvagdanajplzgyju.supabase.co',
+          key
+        );
+        const result=await client.from('objekti').select('id').limit(1);
+        if(result.error) throw result.error;
+
+        localStorage.setItem('terra_supabase_key',key);
+        window.sb=client;
+        status.className='small ok';
+        status.textContent='✓ Supabase savienojums izveidots.';
+        const content=document.getElementById('systemContent');
+        if(content) content.classList.remove('hidden');
+        if(typeof window.loadObjects==='function') await window.loadObjects();
+        if(typeof window.loadDashboard==='function') await window.loadDashboard();
+      }catch(e){
+        console.error(e);
+        status.className='small err';
+        status.textContent='Supabase kļūda: '+(e?.message || String(e));
+      }finally{
+        btn.disabled=false;
+        btn.textContent='Pieslēgt Supabase';
+      }
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initSupabaseButton);
+  }else{
+    initSupabaseButton();
+  }
+})();
+</script>
 </body>
 
 </html>
@@ -3670,6 +3734,70 @@ block:"start"
 
 }
 
+</script>
+
+<script>
+/* TERRA BŪVE — SUPABASE CONNECT FIX */
+(function(){
+  function initSupabaseButton(){
+    const btn=document.querySelector('#system button[onclick="connectSupabase()"]');
+    const keyInput=document.getElementById('supabaseKey');
+    const status=document.getElementById('connectionStatus');
+    if(!btn || !keyInput || !status) return;
+
+    btn.type='button';
+    btn.removeAttribute('onclick');
+
+    btn.addEventListener('click', async function(){
+      const key=keyInput.value.trim();
+      if(!key){
+        status.className='small err';
+        status.textContent='Ievieto Supabase Publishable Key.';
+        return;
+      }
+      if(!window.supabase || !window.supabase.createClient){
+        status.className='small err';
+        status.textContent='Supabase bibliotēka nav ielādējusies. Pārlādē lapu.';
+        return;
+      }
+
+      btn.disabled=true;
+      btn.textContent='Savienojas...';
+      status.className='small';
+      status.textContent='Pārbaudu Supabase savienojumu...';
+
+      try{
+        const client=window.supabase.createClient(
+          'https://nmxdvvagdanajplzgyju.supabase.co',
+          key
+        );
+        const result=await client.from('objekti').select('id').limit(1);
+        if(result.error) throw result.error;
+
+        localStorage.setItem('terra_supabase_key',key);
+        window.sb=client;
+        status.className='small ok';
+        status.textContent='✓ Supabase savienojums izveidots.';
+        const content=document.getElementById('systemContent');
+        if(content) content.classList.remove('hidden');
+        if(typeof window.loadObjects==='function') await window.loadObjects();
+        if(typeof window.loadDashboard==='function') await window.loadDashboard();
+      }catch(e){
+        console.error(e);
+        status.className='small err';
+        status.textContent='Supabase kļūda: '+(e?.message || String(e));
+      }finally{
+        btn.disabled=false;
+        btn.textContent='Pieslēgt Supabase';
+      }
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initSupabaseButton);
+  }else{
+    initSupabaseButton();
+  }
+})();
 </script>
 </body>
 </html>
