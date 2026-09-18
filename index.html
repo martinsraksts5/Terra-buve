@@ -3799,5 +3799,34 @@ block:"start"
   }
 })();
 </script>
+
+<script>
+/* TERRA BŪVE — AUTO CONNECT FROM SAVED SUPABASE KEY */
+(function(){
+  async function autoConnect(){
+    const key=localStorage.getItem('terra_supabase_key');
+    const keyInput=document.getElementById('supabaseKey');
+    const status=document.getElementById('connectionStatus');
+    if(keyInput && key) keyInput.value=key;
+    if(!key || !window.supabase?.createClient) return;
+    try{
+      sb=window.supabase.createClient(SUPABASE_URL,key);
+      const check=await sb.from('objekti').select('id').limit(1);
+      if(check.error) throw check.error;
+      window.sb=sb;
+      if(status){ status.className='small ok'; status.textContent='✓ Supabase savienojums izveidots.'; }
+      const content=document.getElementById('systemContent');
+      if(content) content.classList.remove('hidden');
+      if(typeof loadObjects==='function') await loadObjects();
+      if(typeof loadDashboard==='function') await loadDashboard();
+    }catch(e){
+      console.error('Supabase auto-connect:',e);
+      if(status){ status.className='small err'; status.textContent='Supabase kļūda: '+(e?.message||String(e)); }
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',autoConnect);
+  else autoConnect();
+})();
+</script>
 </body>
 </html>
