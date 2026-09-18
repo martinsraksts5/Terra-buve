@@ -3816,6 +3816,14 @@ document.addEventListener(
     }
 );
 
+    document.addEventListener('DOMContentLoaded',()=>{
+  const savedKey=localStorage.getItem('terra_supabase_key');
+  if(savedKey){
+    const input=document.getElementById('supabaseKey');
+    if(input) input.value=savedKey;
+    if(typeof connectSupabase==='function') connectSupabase();
+  }
+});
 </script>
 
 </body>
