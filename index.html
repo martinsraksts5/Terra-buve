@@ -1348,11 +1348,32 @@ function money(v){
 return (Number(v)||0).toFixed(2)+' €'
 }
 
+async function ensureSupabaseClient(){
+  if(sb) return sb;
+  if(window.sb) { sb=window.sb; return sb; }
+  try{
+    const key=(localStorage.getItem('terra_supabase_key') || '').trim();
+    if(!key || !window.supabase?.createClient) return null;
+    sb=window.supabase.createClient(SUPABASE_URL,key);
+    window.sb=sb;
+    return sb;
+  }catch(e){
+    console.error('Supabase client init:',e);
+    return null;
+  }
+}
+
 async function loadDashboard(){
 
 const box=$('dashboardContent');
 
-if(!box||!sb)return;
+if(!box)return;
+
+const client=await ensureSupabaseClient();
+if(!client){
+  box.innerHTML='<div class="card"><p class="small">Pieslēdz Supabase, lai ielādētu vadības paneli.</p></div>';
+  return;
+}
 
 box.innerHTML='<p class="small">Ielādē...</p>';
 
@@ -1360,7 +1381,7 @@ try{
 
 const [oR,wR,sR]=await Promise.all([
 
-sb.from('objekti')
+client.from('objekti')
 .select('id,nosaukums,klients,adrese,statuss,created_at')
 .order('created_at',{ascending:false}),
 
