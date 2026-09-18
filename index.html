@@ -3801,31 +3801,39 @@ block:"start"
 </script>
 
 <script>
-/* TERRA BŪVE — AUTO CONNECT FROM SAVED SUPABASE KEY */
+/* TERRA BŪVE — ROBUST SUPABASE AUTO CONNECT */
 (function(){
-  async function autoConnect(){
-    const key=localStorage.getItem('terra_supabase_key');
-    const keyInput=document.getElementById('supabaseKey');
-    const status=document.getElementById('connectionStatus');
-    if(keyInput && key) keyInput.value=key;
-    if(!key || !window.supabase?.createClient) return;
+  async function bootSupabase(){
     try{
-      sb=window.supabase.createClient(SUPABASE_URL,key);
-      const check=await sb.from('objekti').select('id').limit(1);
+      if(!window.supabase?.createClient) return;
+      const input=document.getElementById('supabaseKey');
+      const key=(localStorage.getItem('terra_supabase_key') || (input ? input.value.trim() : '')).trim();
+      if(!key) return;
+      if(input && input.value !== key) input.value=key;
+      const client=window.supabase.createClient(SUPABASE_URL,key);
+      const check=await client.from('objekti').select('id').limit(1);
       if(check.error) throw check.error;
-      window.sb=sb;
-      if(status){ status.className='small ok'; status.textContent='✓ Supabase savienojums izveidots.'; }
+      sb=client;
+      window.sb=client;
+      localStorage.setItem('terra_supabase_key',key);
       const content=document.getElementById('systemContent');
       if(content) content.classList.remove('hidden');
+      const status=document.getElementById('connectionStatus');
+      if(status){status.className='small ok';status.textContent='✓ Supabase savienojums izveidots.';}
       if(typeof loadObjects==='function') await loadObjects();
       if(typeof loadDashboard==='function') await loadDashboard();
     }catch(e){
       console.error('Supabase auto-connect:',e);
-      if(status){ status.className='small err'; status.textContent='Supabase kļūda: '+(e?.message||String(e)); }
     }
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',autoConnect);
-  else autoConnect();
+  function start(){
+    bootSupabase();
+    document.querySelectorAll('a[href="#dashboard"]').forEach(a=>{
+      a.addEventListener('click',()=>setTimeout(bootSupabase,50));
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start);
+  else start();
 })();
 </script>
 </body>
