@@ -729,7 +729,232 @@ section{
 }
 </style>
 </head>
+<!-- PDF TĀMES POGA -->
 
+<button
+  type="button"
+  class="btn btn-gold"
+  onclick="izveidotPDFTami()"
+  style="
+    width:100%;
+    margin-top:12px;
+  "
+>
+  📄 Izveidot PDF tāmi
+</button>
+
+
+<script>
+
+function izveidotPDFTami(){
+
+  if(
+    typeof terraEstimate === "undefined" ||
+    terraEstimate.length === 0
+  ){
+
+    alert(
+      "Vispirms pievieno vismaz vienu darbu tāmei."
+    );
+
+    return;
+
+  }
+
+
+  let teksts =
+    "TERRA BŪVE\n\n" +
+    "TĀME\n" +
+    "------------------------------\n\n";
+
+
+  terraEstimate.forEach(function(item){
+
+    const summa =
+      item.price * item.quantity;
+
+
+    teksts +=
+      item.name +
+      " | " +
+      item.quantity +
+      " " +
+      item.unit +
+      " | " +
+      summa.toFixed(2) +
+      " EUR\n";
+
+  });
+
+
+  const net =
+    terraEstimate.reduce(
+      function(sum,item){
+
+        return sum +
+          item.price *
+          item.quantity;
+
+      },
+      0
+    );
+
+
+  const vat =
+    net * 0.21;
+
+
+  const gross =
+    net + vat;
+
+
+  teksts +=
+    "\n------------------------------\n" +
+
+    "Darbi bez PVN: " +
+    net.toFixed(2) +
+    " EUR\n" +
+
+    "PVN 21%: " +
+    vat.toFixed(2) +
+    " EUR\n" +
+
+    "KOPĀ AR PVN: " +
+    gross.toFixed(2) +
+    " EUR\n\n" +
+
+    "Materiāli nav iekļauti.";
+
+
+  const logs =
+    window.open(
+      "",
+      "_blank"
+    );
+
+
+  if(!logs){
+
+    alert(
+      "Atļauj pārlūkprogrammā atvērt jaunu logu."
+    );
+
+    return;
+
+  }
+
+
+  logs.document.write(`
+
+    <!DOCTYPE html>
+
+    <html lang="lv">
+
+    <head>
+
+      <meta charset="UTF-8">
+
+      <title>Terra Būve — Tāme</title>
+
+      <style>
+
+        body{
+          font-family:Arial,sans-serif;
+          padding:40px;
+          color:#111;
+        }
+
+        h1{
+          margin-bottom:5px;
+        }
+
+        .gold{
+          color:#b88a18;
+        }
+
+        .line{
+          border-bottom:1px solid #ddd;
+          padding:10px 0;
+        }
+
+        .total{
+          margin-top:25px;
+          font-size:20px;
+          font-weight:bold;
+        }
+
+        .note{
+          margin-top:25px;
+          color:#666;
+        }
+
+        @media print{
+
+          button{
+            display:none;
+          }
+
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <h1>TERRA <span class="gold">BŪVE</span></h1>
+
+      <h2>Tāme</h2>
+
+      <div class="line">
+        Datums:
+        ${new Date().toLocaleDateString("lv-LV")}
+      </div>
+
+      <br>
+
+      <pre style="
+        font-family:Arial,sans-serif;
+        white-space:pre-wrap;
+      ">${teksts}</pre>
+
+      <div class="total">
+        Kopā ar PVN:
+        ${gross.toFixed(2)} EUR
+      </div>
+
+      <div class="note">
+        Materiāli nav iekļauti.
+      </div>
+
+      <br><br>
+
+      <button
+        onclick="window.print()"
+        style="
+          padding:12px 22px;
+          background:#d8a62a;
+          border:0;
+          border-radius:5px;
+          font-weight:bold;
+          cursor:pointer;
+        "
+      >
+        🖨️ Saglabāt PDF
+      </button>
+
+    </body>
+
+    </html>
+
+  `);
+
+
+  logs.document.close();
+
+}
+
+</script>
 <body>
 
 
