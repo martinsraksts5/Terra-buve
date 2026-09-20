@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terra Būve — Būvniecība un remonts</title>
+<title>Terra Būve — Būvējam rezultātu</title>
 
 <style>
 *{
@@ -19,9 +19,17 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0b;
+  background:#080808;
   color:#fff;
   line-height:1.5;
+}
+
+body,
+button,
+input,
+select,
+textarea{
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 a{
@@ -34,22 +42,27 @@ img{
   width:100%;
 }
 
-.container{
-  width:min(1200px,92%);
-  margin:auto;
+button{
+  font-family:inherit;
 }
 
-/* =========================
+.container{
+  width:min(1240px,92%);
+  margin:0 auto;
+}
+
+
+/* ==================================================
    HEADER
-========================= */
+================================================== */
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(8,8,8,.96);
-  border-bottom:1px solid #242424;
-  backdrop-filter:blur(12px);
+  background:rgba(7,7,7,.96);
+  border-bottom:1px solid #252525;
+  backdrop-filter:blur(14px);
 }
 
 .nav{
@@ -57,66 +70,68 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:30px;
+  gap:25px;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:15px;
+  flex-shrink:0;
 }
 
 .logo img{
-  width:190px;
-  max-height:76px;
+  width:205px;
+  height:auto;
+  max-height:82px;
   object-fit:contain;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:30px;
-  font-size:14px;
-  font-weight:700;
-  text-transform:uppercase;
+  gap:28px;
 }
 
 .nav-links a{
   color:#ddd;
-  transition:.25s;
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  transition:.2s;
 }
 
 .nav-links a:hover{
-  color:#d7a62a;
+  color:#d8a62a;
 }
 
 .nav-button{
-  background:#d7a62a;
+  background:#d8a62a;
   color:#111 !important;
-  padding:13px 20px;
-  border-radius:7px;
+  padding:13px 19px;
+  border-radius:6px;
 }
 
 .nav-button:hover{
-  background:#f0bd38;
+  background:#efbd3d;
 }
 
 .menu-btn{
   display:none;
-  border:0;
   background:none;
+  border:0;
   color:#fff;
-  font-size:30px;
+  font-size:29px;
   cursor:pointer;
 }
 
-/* =========================
+
+/* ==================================================
    HERO
-========================= */
+================================================== */
 
 .hero{
   position:relative;
-  min-height:680px;
+  min-height:700px;
   display:flex;
   align-items:center;
   overflow:hidden;
@@ -138,166 +153,168 @@ header{
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.88) 0%,
-      rgba(0,0,0,.65) 45%,
-      rgba(0,0,0,.18) 100%
+      rgba(0,0,0,.90) 0%,
+      rgba(0,0,0,.72) 40%,
+      rgba(0,0,0,.22) 100%
     );
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:720px;
-  padding:100px 0;
+  max-width:760px;
+  padding:110px 0;
 }
 
 .hero-label{
-  display:inline-block;
-  color:#d7a62a;
-  font-weight:800;
-  letter-spacing:3px;
+  color:#d8a62a;
   font-size:13px;
+  font-weight:900;
+  letter-spacing:4px;
   text-transform:uppercase;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
 .hero h1{
-  font-size:clamp(42px,6vw,78px);
-  line-height:.98;
-  text-transform:uppercase;
+  font-size:clamp(45px,6.5vw,82px);
+  line-height:.95;
   font-weight:900;
-  letter-spacing:-2px;
-  margin-bottom:25px;
+  letter-spacing:-3px;
+  text-transform:uppercase;
+  margin-bottom:27px;
 }
 
 .hero h1 span{
-  color:#d7a62a;
+  color:#d8a62a;
 }
 
 .hero p{
-  max-width:620px;
+  max-width:650px;
   color:#ddd;
   font-size:19px;
-  margin-bottom:35px;
+  margin-bottom:34px;
 }
 
 .hero-actions{
   display:flex;
-  gap:14px;
   flex-wrap:wrap;
+  gap:13px;
 }
 
 .btn{
+  min-height:52px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:52px;
   padding:0 25px;
-  border-radius:7px;
-  font-weight:800;
-  text-transform:uppercase;
-  font-size:13px;
-  transition:.25s;
+  border-radius:6px;
+  border:0;
   cursor:pointer;
-  border:none;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  transition:.2s;
 }
 
 .btn-gold{
-  background:#d7a62a;
+  background:#d8a62a;
   color:#111;
 }
 
 .btn-gold:hover{
-  background:#f0bd38;
+  background:#efbd3d;
   transform:translateY(-2px);
 }
 
 .btn-dark{
-  background:#171717;
-  border:1px solid #555;
+  background:#151515;
   color:#fff;
+  border:1px solid #555;
 }
 
 .btn-dark:hover{
-  border-color:#d7a62a;
-  color:#d7a62a;
+  border-color:#d8a62a;
+  color:#d8a62a;
 }
 
-/* =========================
-   SECTION
-========================= */
+
+/* ==================================================
+   SECTIONS
+================================================== */
 
 section{
   padding:90px 0;
 }
 
-.section-head{
-  margin-bottom:45px;
-}
-
 .section-label{
-  color:#d7a62a;
-  text-transform:uppercase;
+  color:#d8a62a;
+  font-size:11px;
+  font-weight:900;
   letter-spacing:3px;
-  font-weight:800;
-  font-size:12px;
+  text-transform:uppercase;
   margin-bottom:10px;
 }
 
 .section-title{
-  font-size:clamp(32px,4vw,50px);
-  line-height:1.05;
-  text-transform:uppercase;
+  font-size:clamp(34px,4.5vw,56px);
+  line-height:1;
   font-weight:900;
+  text-transform:uppercase;
 }
 
 .section-title span{
-  color:#d7a62a;
+  color:#d8a62a;
 }
 
 .section-text{
   max-width:700px;
-  color:#aaa;
-  margin-top:15px;
+  color:#999;
+  margin-top:17px;
 }
 
-/* =========================
-   SERVICES
-========================= */
+
+/* ==================================================
+   PAKALPOJUMI
+================================================== */
 
 .services{
   background:#0b0b0b;
 }
 
+.section-head{
+  margin-bottom:42px;
+}
+
 .services-grid{
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  gap:18px;
+  gap:17px;
 }
 
 .service-card{
   position:relative;
-  height:270px;
+  height:285px;
   overflow:hidden;
-  border-radius:9px;
   border:1px solid #292929;
+  border-radius:9px;
   background:#151515;
-  transition:.3s;
+  transition:.25s;
 }
 
 .service-card:hover{
-  transform:translateY(-5px);
-  border-color:#d7a62a;
+  border-color:#d8a62a;
+  transform:translateY(-4px);
 }
 
 .service-card img{
+  width:100%;
   height:100%;
   object-fit:cover;
   transition:.45s;
 }
 
 .service-card:hover img{
-  transform:scale(1.06);
+  transform:scale(1.07);
 }
 
 .service-overlay{
@@ -305,16 +322,17 @@ section{
   inset:0;
   display:flex;
   align-items:flex-end;
-  padding:22px;
+  padding:21px;
   background:
     linear-gradient(
-      transparent 30%,
+      transparent 25%,
       rgba(0,0,0,.92) 100%
     );
 }
 
 .service-name{
-  font-size:19px;
+  color:#fff;
+  font-size:18px;
   line-height:1.1;
   font-weight:900;
   text-transform:uppercase;
@@ -322,17 +340,283 @@ section{
 
 .service-name small{
   display:block;
-  color:#d7a62a;
+  color:#d8a62a;
   font-size:10px;
   letter-spacing:2px;
   margin-bottom:6px;
 }
 
-/* =========================
+
+/* ==================================================
+   TĀMES SISTĒMA
+================================================== */
+
+.estimate-section{
+  background:#111;
+}
+
+.estimate-layout{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:24px;
+  align-items:start;
+}
+
+.estimate-selector,
+.estimate-summary{
+  background:#161616;
+  border:1px solid #292929;
+  border-radius:12px;
+  padding:26px;
+}
+
+.estimate-box-title{
+  color:#fff;
+  font-size:20px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.estimate-categories{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-bottom:25px;
+}
+
+.estimate-category{
+  min-height:52px;
+  padding:12px 14px;
+  background:#0d0d0d;
+  border:1px solid #333;
+  border-radius:7px;
+  color:#ddd;
+  text-align:left;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:800;
+  transition:.2s;
+}
+
+.estimate-category:hover{
+  border-color:#d8a62a;
+  color:#d8a62a;
+}
+
+.estimate-category.active{
+  background:#d8a62a;
+  border-color:#d8a62a;
+  color:#111;
+}
+
+.estimate-works{
+  border-top:1px solid #292929;
+  padding-top:20px;
+}
+
+.work-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.work-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:15px;
+  align-items:center;
+  background:#0d0d0d;
+  border:1px solid #292929;
+  border-radius:8px;
+  padding:15px;
+}
+
+.work-name{
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+}
+
+.work-meta{
+  color:#777;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.work-price{
+  color:#d8a62a;
+  font-weight:900;
+  margin-top:4px;
+}
+
+.work-add{
+  border:0;
+  border-radius:6px;
+  padding:10px 15px;
+  background:#d8a62a;
+  color:#111;
+  cursor:pointer;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.work-add:hover{
+  background:#efbd3d;
+}
+
+.empty-estimate{
+  padding:25px 5px;
+  text-align:center;
+  color:#777;
+  font-size:14px;
+}
+
+
+/* ==================================================
+   TĀMES POZĪCIJAS
+================================================== */
+
+.estimate-items{
+  max-height:600px;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.estimate-item{
+  background:#0d0d0d;
+  border:1px solid #292929;
+  border-radius:8px;
+  padding:15px;
+}
+
+.estimate-item-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.estimate-item-name{
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+}
+
+.estimate-item-price{
+  color:#d8a62a;
+  font-size:13px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.estimate-remove{
+  background:none;
+  border:0;
+  color:#777;
+  font-size:21px;
+  cursor:pointer;
+}
+
+.estimate-remove:hover{
+  color:#d8a62a;
+}
+
+.estimate-quantity{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:13px;
+}
+
+.estimate-quantity input{
+  width:90px;
+  height:38px;
+  background:#171717;
+  color:#fff;
+  border:1px solid #333;
+  border-radius:6px;
+  padding:0 10px;
+  outline:none;
+}
+
+.estimate-quantity input:focus{
+  border-color:#d8a62a;
+}
+
+.estimate-unit{
+  color:#777;
+  font-size:13px;
+}
+
+.estimate-item-total{
+  margin-left:auto;
+  color:#fff;
+  font-weight:900;
+}
+
+
+/* ==================================================
+   KOPSUMMA
+================================================== */
+
+.estimate-total{
+  border-top:1px solid #333;
+  margin-top:24px;
+  padding-top:18px;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:7px 0;
+  color:#999;
+}
+
+.total-row strong{
+  color:#fff;
+}
+
+.total-final{
+  border-top:1px solid #333;
+  margin-top:10px;
+  padding-top:17px;
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+}
+
+.total-final strong{
+  color:#d8a62a;
+  font-size:26px;
+}
+
+.estimate-note{
+  margin-top:18px;
+  padding:14px;
+  border:1px solid #4c411c;
+  border-radius:7px;
+  background:#211d0e;
+  color:#999;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.estimate-request{
+  width:100%;
+  margin-top:17px;
+}
+
+
+/* ==================================================
    RESPONSIVE
-========================= */
+================================================== */
 
 @media(max-width:1050px){
+
   .services-grid{
     grid-template-columns:repeat(3,1fr);
   }
@@ -340,15 +624,25 @@ section{
   .nav-links{
     gap:16px;
   }
+
+}
+
+@media(max-width:850px){
+
+  .estimate-layout{
+    grid-template-columns:1fr;
+  }
+
 }
 
 @media(max-width:760px){
+
   .nav{
-    min-height:76px;
+    min-height:78px;
   }
 
   .logo img{
-    width:150px;
+    width:160px;
   }
 
   .menu-btn{
@@ -358,12 +652,12 @@ section{
   .nav-links{
     display:none;
     position:absolute;
-    top:76px;
+    top:78px;
     left:0;
     right:0;
-    background:#0b0b0b;
-    border-bottom:1px solid #292929;
     padding:20px;
+    background:#090909;
+    border-bottom:1px solid #292929;
     flex-direction:column;
     align-items:stretch;
   }
@@ -373,7 +667,7 @@ section{
   }
 
   .nav-links a{
-    padding:12px 5px;
+    padding:11px 4px;
   }
 
   .hero{
@@ -385,7 +679,7 @@ section{
   }
 
   .hero h1{
-    font-size:46px;
+    font-size:48px;
   }
 
   .hero p{
@@ -395,9 +689,11 @@ section{
   .services-grid{
     grid-template-columns:1fr 1fr;
   }
+
 }
 
-@media(max-width:520px){
+@media(max-width:560px){
+
   section{
     padding:65px 0;
   }
@@ -407,7 +703,19 @@ section{
   }
 
   .service-card{
-    height:240px;
+    height:245px;
+  }
+
+  .estimate-categories{
+    grid-template-columns:1fr;
+  }
+
+  .work-row{
+    grid-template-columns:1fr;
+  }
+
+  .work-add{
+    width:100%;
   }
 
   .hero-actions{
@@ -417,35 +725,63 @@ section{
   .btn{
     width:100%;
   }
+
 }
 </style>
 </head>
 
 <body>
 
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
 <header>
+
   <div class="container nav">
 
-    <a href="#sakums" class="logo">
+    <a
+      href="#sakums"
+      class="logo"
+    >
       <img
         src="terra_logo_real.jpg"
         alt="Terra Būve"
       >
     </a>
 
+
     <button
+      type="button"
       class="menu-btn"
       onclick="toggleMenu()"
-      aria-label="Atvērt izvēlni"
+      aria-label="Izvēlne"
     >
       ☰
     </button>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="#pakalpojumi">Pakalpojumi</a>
-      <a href="#kalkulators">Kalkulators</a>
-      <a href="#objekti">Objekti</a>
-      <a href="#kontakti">Kontakti</a>
+
+    <nav
+      class="nav-links"
+      id="navLinks"
+    >
+
+      <a href="#pakalpojumi">
+        Pakalpojumi
+      </a>
+
+      <a href="#kalkulators">
+        Tāme
+      </a>
+
+      <a href="#objekti">
+        Objekti
+      </a>
+
+      <a href="#kontakti">
+        Kontakti
+      </a>
 
       <a
         href="#pieteikt"
@@ -453,17 +789,20 @@ section{
       >
         Pieteikt darbu
       </a>
+
     </nav>
 
   </div>
+
 </header>
 
 
 <main>
 
-<!-- =========================
+
+<!-- ==================================================
      HERO
-========================= -->
+================================================== -->
 
 <section
   class="hero"
@@ -478,6 +817,7 @@ section{
 
   <div class="hero-overlay"></div>
 
+
   <div class="container">
 
     <div class="hero-content">
@@ -486,15 +826,19 @@ section{
         TERRA BŪVE
       </div>
 
+
       <h1>
         Būvējam<br>
         <span>rezultātu.</span>
       </h1>
 
+
       <p>
-        Būvniecība, remonts, teritorijas labiekārtošana
-        un inženiertīkli — viss vienuviet.
+        Būvniecība, remonts, teritorijas
+        labiekārtošana un inženiertīkli —
+        viss vienuviet.
       </p>
+
 
       <div class="hero-actions">
 
@@ -502,8 +846,9 @@ section{
           href="#kalkulators"
           class="btn btn-gold"
         >
-          Aprēķināt izmaksas
+          Izveidot tāmi
         </a>
+
 
         <a
           href="#pieteikt"
@@ -521,9 +866,9 @@ section{
 </section>
 
 
-<!-- =========================
-     SERVICES
-========================= -->
+<!-- ==================================================
+     PAKALPOJUMI
+================================================== -->
 
 <section
   class="services"
@@ -538,13 +883,15 @@ section{
         Terra Būve
       </div>
 
+
       <h2 class="section-title">
         Mūsu <span>pakalpojumi</span>
       </h2>
 
+
       <p class="section-text">
-        Pilns būvniecības darbu klāsts no zemes
-        sagatavošanas līdz gatavam objektam.
+        Pilns būvniecības darbu klāsts —
+        no zemes sagatavošanas līdz gatavam objektam.
       </p>
 
     </div>
@@ -557,17 +904,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="terra_service_1.jpg"
           alt="Zemes darbi"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>01</small>
+
             Zemes darbi
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -575,17 +929,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="terra_service_2.jpg"
           alt="Pamatu izbūve"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>02</small>
+
             Pamatu izbūve
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -593,17 +954,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="terra_service_5.jpg"
           alt="Māju būvniecība"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>03</small>
+
             Māju būvniecība
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -611,17 +979,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="terra_service_6.jpg"
           alt="Remontdarbi"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>04</small>
+
             Remontdarbi
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -629,17 +1004,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="service_5.jpg"
           alt="Labiekārtošana"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>05</small>
+
             Labiekārtošana
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -647,17 +1029,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="service_6.jpg"
           alt="Inženiertīkli"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>06</small>
+
             Inženiertīkli
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -665,17 +1054,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="service_7.jpg"
           alt="Jumta darbi"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>07</small>
+
             Jumta darbi
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -683,17 +1079,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="service_8.jpg"
           alt="Fasādes darbi"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>08</small>
+
             Fasādes darbi
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -701,17 +1104,24 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="service_9.jpg"
           alt="Žogi un vārti"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>09</small>
+
             Žogi un vārti
+
           </div>
+
         </div>
+
       </a>
 
 
@@ -719,153 +1129,178 @@ section{
         href="#kalkulators"
         class="service-card"
       >
+
         <img
           src="terra_service_8.jpg"
           alt="Demontāža"
         >
 
         <div class="service-overlay">
+
           <div class="service-name">
+
             <small>10</small>
+
             Demontāža
+
           </div>
+
         </div>
+
       </a>
 
 
     </div>
 
   </div>
-<!-- =========================
-     KALKULATORS
-========================= -->
+<!-- ==================================================
+     TĀME
+================================================== -->
 
-<section id="kalkulators" style="background:#101010;">
+<section
+  class="estimate-section"
+  id="kalkulators"
+>
 
   <div class="container">
 
     <div class="section-head">
-      <div class="section-label">Aprēķins</div>
+
+      <div class="section-label">
+        Terra Būve
+      </div>
 
       <h2 class="section-title">
-        Būvniecības <span>kalkulators</span>
+        Izveido savu <span>tāmi</span>
       </h2>
 
       <p class="section-text">
-        Izvēlies darbu, norādi apjomu un uzreiz redzi
-        provizoriskās izmaksas.
+        Izvēlies darbu kategoriju, pievieno nepieciešamos
+        darbus un norādi darbu apjomu.
       </p>
+
     </div>
 
 
-    <div class="calculator">
-
-      <div class="calc-left">
-
-        <label for="workCategory">
-          Darbu kategorija
-        </label>
-
-        <select id="workCategory">
-          <option value="zemes">Zemes darbi</option>
-          <option value="pamati">Pamatu izbūve</option>
-          <option value="majas">Māju būvniecība</option>
-          <option value="remonts">Remontdarbi</option>
-          <option value="labiekartosana">Labiekārtošana</option>
-          <option value="inzeniertikli">Inženiertīkli</option>
-          <option value="jumts">Jumta darbi</option>
-          <option value="fasade">Fasādes darbi</option>
-          <option value="zogi">Žogi un vārti</option>
-          <option value="demontaza">Demontāža</option>
-        </select>
+    <div class="estimate-layout">
 
 
-        <label for="workType">
-          Darbs
-        </label>
+      <!-- ==============================
+           KREISĀ PUSE
+      =============================== -->
 
-        <select id="workType">
-        </select>
+      <div class="estimate-selector">
 
-
-        <div class="quantity-row">
-
-          <div>
-            <label for="quantity">
-              Daudzums
-            </label>
-
-            <input
-              id="quantity"
-              type="number"
-              min="0"
-              step="0.01"
-              value="1"
-            >
-          </div>
-
-          <div>
-            <label for="unit">
-              Vienība
-            </label>
-
-            <div
-              id="unit"
-              class="unit-box"
-            >
-              m²
-            </div>
-          </div>
-
+        <div class="estimate-box-title">
+          1. Izvēlies darbu
         </div>
 
 
-        <label for="vat">
-          PVN
-        </label>
-
-        <select id="vat">
-          <option value="0">Bez PVN</option>
-          <option value="21" selected>PVN 21%</option>
-        </select>
+        <div
+          class="estimate-categories"
+          id="estimateCategories"
+        ></div>
 
 
-        <button
-          class="btn btn-gold calc-button"
-          onclick="calculatePrice()"
+        <div
+          class="estimate-works"
+          id="estimateWorks"
         >
-          Aprēķināt
-        </button>
+
+          <div class="empty-estimate">
+            Izvēlies kategoriju, lai apskatītu darbus.
+          </div>
+
+        </div>
 
       </div>
 
 
-      <div class="calc-result">
+      <!-- ==============================
+           LABĀ PUSE
+      =============================== -->
 
-        <div class="result-label">
-          Provizoriskā cena
+      <div class="estimate-summary">
+
+        <div class="estimate-box-title">
+          Tava tāme
         </div>
+
 
         <div
-          id="resultPrice"
-          class="result-price"
+          class="estimate-items"
+          id="estimateItems"
         >
-          0,00 €
+
+          <div class="empty-estimate">
+            Tāmē vēl nav pievienots neviens darbs.
+          </div>
+
         </div>
 
-        <div
-          id="resultInfo"
-          class="result-info"
+
+        <div class="estimate-total">
+
+
+          <div class="total-row">
+
+            <span>
+              Darbi bez PVN
+            </span>
+
+            <strong id="estimateNet">
+              0,00 €
+            </strong>
+
+          </div>
+
+
+          <div class="total-row">
+
+            <span>
+              PVN 21%
+            </span>
+
+            <strong id="estimateVat">
+              0,00 €
+            </strong>
+
+          </div>
+
+
+          <div class="total-row total-final">
+
+            <span>
+              Kopā ar PVN
+            </span>
+
+            <strong id="estimateGross">
+              0,00 €
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="estimate-note">
+
+          <strong>⚠️ Svarīgi:</strong><br>
+
+          Norādītajā cenā ir iekļauti
+          būvdarbi. Materiāli nav iekļauti
+          un tiek aprēķināti atsevišķi.
+
+        </div>
+
+
+        <a
+          href="#pieteikt"
+          class="btn btn-gold estimate-request"
         >
-          Izvēlies darbu un daudzumu.
-        </div>
-
-        <div class="result-line"></div>
-
-        <div class="result-note">
-          Gala cena tiek precizēta pēc objekta
-          apskates un darbu apjoma izvērtēšanas.
-        </div>
+          Pieteikt šo tāmi
+        </a>
 
       </div>
 
@@ -876,18 +1311,17 @@ section{
 </section>
 
 
-<!-- =========================
-     PRIEKŠROCĪBAS
-========================= -->
 
-<section
-  id="objekti"
-  style="background:#0b0b0b;"
->
+<!-- ==================================================
+     OBJEKTI
+================================================== -->
+
+<section id="objekti">
 
   <div class="container">
 
     <div class="section-head">
+
       <div class="section-label">
         Mūsu darbi
       </div>
@@ -897,146 +1331,241 @@ section{
       </h2>
 
       <p class="section-text">
-        Būvējam, remontējam un labiekārtojam
-        ar vienu mērķi — kvalitatīvs rezultāts.
+        Kvalitatīvi paveikti būvdarbi,
+        remonti un teritorijas labiekārtošana.
       </p>
-    </div>
-
-
-    <div class="projects-grid">
-
-
-      <div class="project-card">
-
-        <div class="project-image">
-          <img
-            src="terra_hero.jpg"
-            alt="Būvniecības objekts"
-          >
-        </div>
-
-        <div class="project-content">
-          <div class="project-tag">
-            BŪVNIECĪBA
-          </div>
-
-          <h3>
-            Privātmājas būvniecība
-          </h3>
-
-          <p>
-            Pamati un teritorijas sagatavošana.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-image">
-          <img
-            src="terra_service_5.jpg"
-            alt="Mājas būvniecība"
-          >
-        </div>
-
-        <div class="project-content">
-          <div class="project-tag">
-            MĀJA
-          </div>
-
-          <h3>
-            Privātmājas izbūve
-          </h3>
-
-          <p>
-            Konstrukciju un būvdarbu veikšana.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-image">
-          <img
-            src="service_5.jpg"
-            alt="Labiekārtošana"
-          >
-        </div>
-
-        <div class="project-content">
-          <div class="project-tag">
-            LABIEKĀRTOŠANA
-          </div>
-
-          <h3>
-            Teritorijas labiekārtošana
-          </h3>
-
-          <p>
-            Pagalma sagatavošana un segumu izbūve.
-          </p>
-        </div>
-
-      </div>
-
 
     </div>
 
-  </div>
 
-</section>
-
-
-<!-- =========================
-     CTA AR ĶIVERI
-========================= -->
-
-<section
-  id="pieteikt"
-  class="cta-section"
->
-
-  <div class="container">
-
-    <div class="cta-box">
-
-      <div class="cta-content">
-
-        <div class="section-label">
-          Sāksim projektu
-        </div>
-
-        <h2>
-          Tavs projekts —
-          <span>mūsu atbildība.</span>
-        </h2>
-
-        <p>
-          Pastāsti mums par savu ieceri.
-          Sazināsimies un vienosimies par nākamajiem
-          soļiem.
-        </p>
-
-        <a
-          href="#kontakti"
-          class="btn btn-gold"
-        >
-          Sazināties ar mums
-        </a>
-
-      </div>
+    <div class="services-grid">
 
 
-      <div class="cta-image">
+      <div class="service-card">
 
         <img
-          src="terra_cta_white_helmet.jpg"
-          alt="TERRA BŪVE balta ķivere"
+          src="terra_service_1.jpg"
+          alt="Terra Būve objekts"
         >
+
+        <div class="service-overlay">
+
+          <div class="service-name">
+            <small>OBJEKTS</small>
+            Zemes darbi
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <img
+          src="terra_service_2.jpg"
+          alt="Terra Būve pamati"
+        >
+
+        <div class="service-overlay">
+
+          <div class="service-name">
+            <small>OBJEKTS</small>
+            Pamatu izbūve
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <img
+          src="terra_service_3.jpg"
+          alt="Terra Būve labiekārtošana"
+        >
+
+        <div class="service-overlay">
+
+          <div class="service-name">
+            <small>OBJEKTS</small>
+            Labiekārtošana
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <img
+          src="terra_service_7.jpg"
+          alt="Terra Būve bruģēšana"
+        >
+
+        <div class="service-overlay">
+
+          <div class="service-name">
+            <small>OBJEKTS</small>
+            Bruģēšana
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     KONTAKTI / PIETEIKUMS
+================================================== -->
+
+<section id="pieteikt">
+
+  <div class="container">
+
+    <div class="estimate-layout">
+
+
+      <div>
+
+        <div class="section-label">
+          Sazinies ar mums
+        </div>
+
+        <h2 class="section-title">
+          Gatavs sākt <span>darbu?</span>
+        </h2>
+
+        <p class="section-text">
+          Nosūti mums sava projekta informāciju.
+          Sazināsimies ar Tevi un vienosimies
+          par nākamajiem soļiem.
+        </p>
+
+      </div>
+
+
+      <div
+        class="estimate-selector"
+        id="kontakti"
+      >
+
+        <div class="estimate-box-title">
+          Pieteikt darbu
+        </div>
+
+
+        <form
+          id="contactForm"
+        >
+
+
+          <div style="margin-bottom:14px;">
+
+            <input
+              id="contactName"
+              type="text"
+              placeholder="Vārds"
+              required
+              style="
+                width:100%;
+                height:48px;
+                padding:0 14px;
+                background:#0d0d0d;
+                color:#fff;
+                border:1px solid #333;
+                border-radius:6px;
+                outline:none;
+              "
+            >
+
+          </div>
+
+
+          <div style="margin-bottom:14px;">
+
+            <input
+              id="contactPhone"
+              type="tel"
+              placeholder="Tālrunis"
+              required
+              style="
+                width:100%;
+                height:48px;
+                padding:0 14px;
+                background:#0d0d0d;
+                color:#fff;
+                border:1px solid #333;
+                border-radius:6px;
+                outline:none;
+              "
+            >
+
+          </div>
+
+
+          <div style="margin-bottom:14px;">
+
+            <input
+              id="contactEmail"
+              type="email"
+              placeholder="E-pasts"
+              style="
+                width:100%;
+                height:48px;
+                padding:0 14px;
+                background:#0d0d0d;
+                color:#fff;
+                border:1px solid #333;
+                border-radius:6px;
+                outline:none;
+              "
+            >
+
+          </div>
+
+
+          <div style="margin-bottom:14px;">
+
+            <textarea
+              id="contactMessage"
+              placeholder="Īsi apraksti darbu vai objektu..."
+              rows="5"
+              style="
+                width:100%;
+                padding:14px;
+                background:#0d0d0d;
+                color:#fff;
+                border:1px solid #333;
+                border-radius:6px;
+                outline:none;
+                resize:vertical;
+              "
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn btn-gold"
+            style="width:100%;"
+          >
+            Nosūtīt pieteikumu
+          </button>
+
+
+        </form>
 
       </div>
 
@@ -1047,1144 +1576,1123 @@ section{
 </section>
 
 
-<!-- =========================
-     KONTAKTI
-========================= -->
 
-<section
-  id="kontakti"
-  style="background:#101010;"
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer
+  style="
+    background:#050505;
+    border-top:1px solid #242424;
+    padding:50px 0 25px;
+  "
 >
 
   <div class="container">
 
-    <div class="section-head">
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-start;
+        gap:30px;
+        flex-wrap:wrap;
+      "
+    >
+
+
+      <div>
 
-      <div class="section-label">
-        Sazinies ar mums
-      </div>
-
-      <h2 class="section-title">
-        <span>TERRA BŪVE</span>
-      </h2>
-
-      <p class="section-text">
-        Ja tev ir būvniecības projekts,
-        remonts vai teritorijas labiekārtošana —
-        sazinies ar mums.
-      </p>
-
-    </div>
-
-
-    <div class="contact-grid">
-
-
-      <div class="contact-card">
-
-        <div class="contact-icon">
-          ☎
-        </div>
-
-        <div>
-          <small>
-            Tālrunis
-          </small>
-
-          <strong>
-            +371 2X XXX XXX
-          </strong>
-        </div>
-
-      </div>
-
-
-      <div class="contact-card">
-
-        <div class="contact-icon">
-          ✉
-        </div>
-
-        <div>
-          <small>
-            E-pasts
-          </small>
-
-          <strong>
-            info@terrabuve.lv
-          </strong>
-        </div>
-
-      </div>
-
-
-      <div class="contact-card">
-
-        <div class="contact-icon">
-          ⌂
-        </div>
-
-        <div>
-          <small>
-            Darba zona
-          </small>
-
-          <strong>
-            Latvija
-          </strong>
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-  <!-- =========================
-     PAPILDU STILI
-========================= -->
-
-<style>
-
-/* =========================
-   KALKULATORS
-========================= */
-
-.calculator{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:24px;
-}
-
-.calc-left,
-.calc-result{
-  background:#161616;
-  border:1px solid #2b2b2b;
-  border-radius:12px;
-  padding:30px;
-}
-
-.calc-left label{
-  display:block;
-  margin:18px 0 8px;
-  color:#d7a62a;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  font-weight:800;
-}
-
-.calc-left label:first-child{
-  margin-top:0;
-}
-
-.calc-left select,
-.calc-left input{
-  width:100%;
-  min-height:52px;
-  background:#0d0d0d;
-  border:1px solid #333;
-  color:#fff;
-  border-radius:7px;
-  padding:0 14px;
-  font-size:15px;
-  outline:none;
-}
-
-.calc-left select:focus,
-.calc-left input:focus{
-  border-color:#d7a62a;
-}
-
-.quantity-row{
-  display:grid;
-  grid-template-columns:1fr 130px;
-  gap:15px;
-}
-
-.unit-box{
-  min-height:52px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#0d0d0d;
-  border:1px solid #333;
-  border-radius:7px;
-  font-weight:800;
-  color:#fff;
-}
-
-.calc-button{
-  width:100%;
-  margin-top:25px;
-}
-
-.calc-result{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:360px;
-}
-
-.result-label{
-  color:#aaa;
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-weight:700;
-}
-
-.result-price{
-  font-size:52px;
-  line-height:1;
-  color:#d7a62a;
-  font-weight:900;
-  margin:16px 0;
-}
-
-.result-info{
-  color:#ddd;
-  font-size:15px;
-}
-
-.result-line{
-  height:1px;
-  background:#333;
-  margin:25px 0;
-}
-
-.result-note{
-  color:#888;
-  font-size:13px;
-}
-
-
-/* =========================
-   OBJEKTI
-========================= */
-
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.project-card{
-  background:#151515;
-  border:1px solid #292929;
-  border-radius:10px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.project-card:hover{
-  transform:translateY(-4px);
-  border-color:#d7a62a;
-}
-
-.project-image{
-  height:250px;
-  overflow:hidden;
-}
-
-.project-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.4s;
-}
-
-.project-card:hover img{
-  transform:scale(1.04);
-}
-
-.project-content{
-  padding:22px;
-}
-
-.project-tag{
-  color:#d7a62a;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:2px;
-  margin-bottom:8px;
-}
-
-.project-content h3{
-  font-size:21px;
-  margin-bottom:8px;
-  text-transform:uppercase;
-}
-
-.project-content p{
-  color:#999;
-  font-size:14px;
-}
-
-
-/* =========================
-   CTA AR BALTO ĶIVERI
-========================= */
-
-.cta-section{
-  background:#0b0b0b;
-}
-
-.cta-box{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:stretch;
-  background:#151515;
-  border:1px solid #2b2b2b;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.cta-content{
-  padding:60px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
-}
-
-.cta-content h2{
-  font-size:clamp(34px,4vw,52px);
-  line-height:1.05;
-  text-transform:uppercase;
-  margin-bottom:22px;
-}
-
-.cta-content h2 span{
-  color:#d7a62a;
-}
-
-.cta-content p{
-  color:#aaa;
-  max-width:520px;
-  margin-bottom:30px;
-}
-
-.cta-image{
-  min-height:430px;
-  background:#111;
-}
-
-.cta-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-
-/* =========================
-   KONTAKTI
-========================= */
-
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.contact-card{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  background:#161616;
-  border:1px solid #2d2d2d;
-  border-radius:9px;
-  padding:24px;
-}
-
-.contact-icon{
-  width:48px;
-  height:48px;
-  min-width:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#d7a62a;
-  color:#111;
-  border-radius:7px;
-  font-size:21px;
-  font-weight:900;
-}
-
-.contact-card small{
-  display:block;
-  color:#888;
-  text-transform:uppercase;
-  font-size:10px;
-  letter-spacing:1.5px;
-  margin-bottom:4px;
-}
-
-.contact-card strong{
-  font-size:17px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#050505;
-  border-top:1px solid #242424;
-  padding:45px 0 25px;
-}
-
-.footer-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:30px;
-  padding-bottom:30px;
-}
-
-.footer-logo img{
-  width:180px;
-  max-height:80px;
-  object-fit:contain;
-}
-
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:24px;
-  color:#bbb;
-  font-size:13px;
-  text-transform:uppercase;
-  font-weight:700;
-}
-
-.footer-links a:hover{
-  color:#d7a62a;
-}
-
-.footer-bottom{
-  border-top:1px solid #222;
-  padding-top:22px;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:#666;
-  font-size:12px;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:900px){
-
-  .calculator{
-    grid-template-columns:1fr;
-  }
-
-  .projects-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .cta-box{
-    grid-template-columns:1fr;
-  }
-
-  .cta-image{
-    min-height:360px;
-  }
-
-  .contact-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:620px){
-
-  .projects-grid{
-    grid-template-columns:1fr;
-  }
-
-  .quantity-row{
-    grid-template-columns:1fr;
-  }
-
-  .result-price{
-    font-size:40px;
-  }
-
-  .cta-content{
-    padding:35px 25px;
-  }
-
-  .footer-top,
-  .footer-bottom{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-}
-</style>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-  <div class="container">
-
-    <div class="footer-top">
-
-      <a
-        href="#sakums"
-        class="footer-logo"
-      >
         <img
           src="terra_logo_real.jpg"
           alt="Terra Būve"
+          style="
+            width:190px;
+            max-width:100%;
+            margin-bottom:15px;
+          "
         >
-      </a>
 
-
-      <div class="footer-links">
-
-        <a href="#pakalpojumi">
-          Pakalpojumi
-        </a>
-
-        <a href="#kalkulators">
-          Kalkulators
-        </a>
-
-        <a href="#objekti">
-          Objekti
-        </a>
-
-        <a href="#kontakti">
-          Kontakti
-        </a>
+        <p
+          style="
+            color:#777;
+            font-size:13px;
+          "
+        >
+          IDEJAS. RISINĀJUMI. REZULTĀTS.
+        </p>
 
       </div>
+
+
+      <div>
+
+        <div
+          style="
+            color:#d8a62a;
+            font-size:11px;
+            font-weight:900;
+            letter-spacing:2px;
+            margin-bottom:9px;
+          "
+        >
+          KONTAKTI
+        </div>
+
+        <div
+          style="
+            color:#bbb;
+            font-size:14px;
+            line-height:1.9;
+          "
+        >
+          Latvija<br>
+          Tālrunis: +371 XXXXXXXX<br>
+          E-pasts: info@terrabuve.lv
+        </div>
+
+      </div>
+
 
     </div>
 
 
-    <div class="footer-bottom">
-
-      <div>
-        © 2026 TERRA BŪVE
-      </div>
-
-      <div>
-        IDEJAS. RISINĀJUMI. REZULTĀTS.
-      </div>
-
+    <div
+      style="
+        border-top:1px solid #222;
+        margin-top:35px;
+        padding-top:20px;
+        color:#555;
+        font-size:11px;
+      "
+    >
+      © 2026 Terra Būve. Visas tiesības aizsargātas.
     </div>
 
   </div>
 
 </footer>
+  <script>
 
-</main>
-  <!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-/* =========================
-   MOBILE MENU
-========================= */
+/* ==================================================
+   MOBILĀ IZVĒLNE
+================================================== */
 
 function toggleMenu(){
 
   const menu = document.getElementById("navLinks");
 
-  if(menu){
-    menu.classList.toggle("open");
-  }
+  if(!menu) return;
+
+  menu.classList.toggle("open");
 
 }
 
 
-/* =========================
-   KALKULATORA DATI
-========================= */
+/* ==================================================
+   TĀMES DATI
+================================================== */
 
-const calculatorData = {
+const terraEstimateData = {
 
-  zemes: [
-    {
-      name:"Ekskavatora darbs",
-      unit:"h",
-      price:75
-    },
-    {
-      name:"Mini ekskavators",
-      unit:"h",
-      price:55
-    },
-    {
-      name:"Bobcat mini iekrāvējs",
-      unit:"h",
-      price:55
-    },
-    {
-      name:"Teritorijas planēšana",
-      unit:"m²",
-      price:2.50
-    },
-    {
-      name:"Tranšejas rakšana",
-      unit:"m",
-      price:7
-    },
-    {
-      name:"Grunts pārvietošana",
-      unit:"m³",
-      price:12
-    },
-    {
-      name:"Grunts izvešana",
-      unit:"m³",
-      price:22
-    }
+  "Remontdarbi": [
+
+    ["Sienu špaktelēšana","m²",12.50],
+
+    ["Sienu slīpēšana","m²",5.50],
+
+    ["Sienu gruntēšana","m²",3.50],
+
+    ["Sienu krāsošana 2 kārtās","m²",8.50],
+
+    ["Griestu špaktelēšana","m²",14.00],
+
+    ["Griestu slīpēšana","m²",6.00],
+
+    ["Griestu gruntēšana","m²",4.00],
+
+    ["Griestu krāsošana 2 kārtās","m²",9.50],
+
+    ["Tapešu līmēšana","m²",9.50],
+
+    ["Ģipškartona starpsiena","m²",22.00],
+
+    ["Ģipškartona griesti","m²",24.00],
+
+    ["Iekšdurvju montāža","gab.",121.00],
+
+    ["Flīzēšana","m²",45.00],
+
+    ["Lamināta ieklāšana","m²",11.00],
+
+    ["Demontāžas darbi","m²",14.00]
+
   ],
 
 
-  pamati: [
-    {
-      name:"Pamatu rakšanas darbi",
-      unit:"h",
-      price:75
-    },
-    {
-      name:"Veidņi",
-      unit:"m²",
-      price:18
-    },
-    {
-      name:"Armatūra",
-      unit:"m²",
-      price:28
-    },
-    {
-      name:"Betonēšanas darbi",
-      unit:"m³",
-      price:115
-    },
-    {
-      name:"Hidroizolācija",
-      unit:"m²",
-      price:10
-    },
-    {
-      name:"Pamatu siltināšana",
-      unit:"m²",
-      price:12
-    },
-    {
-      name:"Drenāža pie pamatiem",
-      unit:"m",
-      price:40
-    },
-    {
-      name:"Kompleksie pamati",
-      unit:"m³",
-      price:230
-    }
+  "Pamati": [
+
+    ["Pamatu rakšanas darbi","m³",55.00],
+
+    ["Veidņu izgatavošana","m²",15.00],
+
+    ["Armatūras darbi","m²",25.00],
+
+    ["Betonēšanas darbi","m³",115.00],
+
+    ["Pamatu hidroizolācija","m²",8.50],
+
+    ["Pamatu siltināšana","m²",10.00],
+
+    ["Drenāža pie pamatiem","m",35.00],
+
+    ["Kompleksie pamati","m³",230.00]
+
   ],
 
 
-  majas: [
-    {
-      name:"Pamatu izbūve",
-      unit:"m³",
-      price:230
-    },
-    {
-      name:"Betonēšanas darbi",
-      unit:"m³",
-      price:115
-    },
-    {
-      name:"Armatūras darbi",
-      unit:"m²",
-      price:28
-    },
-    {
-      name:"Hidroizolācija",
-      unit:"m²",
-      price:10
-    }
+  "Sienu būvniecība": [
+
+    ["Ķieģeļu sienu mūrēšana","m³",120.00],
+
+    ["Gāzbetona bloku mūrēšana","m³",95.00],
+
+    ["FIBO bloku mūrēšana","m³",100.00],
+
+    ["Koka karkasa sienas izbūve","m²",20.00],
+
+    ["Sendvičpaneļu montāža","m²",30.00],
+
+    ["Monolītas betona sienas","m³",150.00],
+
+    ["Ailu pārsedzes","t/m",30.00]
+
   ],
 
 
-  remonts: [
-    {
-      name:"Dzīvokļa remonta darbi",
-      unit:"h",
-      price:60
-    },
-    {
-      name:"Demontāžas darbi",
-      unit:"m²",
-      price:14
-    }
+  "Māju būvniecība": [
+
+    ["Koka karkasa konstrukcija","m²",25.00],
+
+    ["Ārsienu izbūve","m²",30.00],
+
+    ["Iekšsienu izbūve","m²",22.00],
+
+    ["Mājas konstrukciju montāža","m²",35.00],
+
+    ["Starpsienas","m²",22.00]
+
   ],
 
 
-  labiekartosana: [
-    {
-      name:"Teritorijas planēšana",
-      unit:"m²",
-      price:2.50
-    },
-    {
-      name:"Smilts / šķembas pamatne",
-      unit:"m³",
-      price:35
-    },
-    {
-      name:"Ģeotekstils",
-      unit:"m²",
-      price:5
-    },
-    {
-      name:"Drenāža",
-      unit:"m",
-      price:35
-    },
-    {
-      name:"Grunts pārvietošana",
-      unit:"m³",
-      price:12
-    },
-    {
-      name:"Grunts izvešana",
-      unit:"m³",
-      price:22
-    }
+  "Griestu apdare": [
+
+    ["Griestu špaktelēšana + slīpēšana","m²",20.00],
+
+    ["Griestu gruntēšana","m²",4.00],
+
+    ["Griestu krāsošana 2 kārtās","m²",9.50],
+
+    ["Stiklašķiedras tapešu līmēšana","m²",10.20],
+
+    ["Armstrong piekaramie griesti","m²",28.21],
+
+    ["Ģipškartona griesti","m²",24.00]
+
   ],
 
 
-  inzeniertikli: [
-    {
-      name:"Kanalizācijas cauruļvadi",
-      unit:"m",
-      price:40
-    },
-    {
-      name:"Tranšejas rakšana",
-      unit:"m",
-      price:7
-    },
-    {
-      name:"Grunts aizbēršana",
-      unit:"m³",
-      price:12
-    },
-    {
-      name:"Teritorijas sakārtošana",
-      unit:"m²",
-      price:2.50
-    }
+  "Grīdas": [
+
+    ["Grīdas sagatavošana","m²",12.00],
+
+    ["Grīdas flīzēšana","m²",42.00],
+
+    ["Lamināta ieklāšana","m²",11.00],
+
+    ["Parketa ieklāšana","m²",37.00],
+
+    ["Linoleja ieklāšana","m²",11.50],
+
+    ["Siltās grīdas ierīkošana","m²",22.00]
+
   ],
 
 
-  jumts: [
-    {
-      name:"Jumta montāžas darbi",
-      unit:"m²",
-      price:35
-    },
-    {
-      name:"Jumta konstrukcija",
-      unit:"m²",
-      price:45
-    },
-    {
-      name:"Jumta seguma montāža",
-      unit:"m²",
-      price:25
-    }
+  "Elektroinstalācija": [
+
+    ["Kabeļu kanālu štrobēšana","t/m",6.00],
+
+    ["Kabeļu ieguldīšana","t/m",3.00],
+
+    ["Jauna elektrības punkta ierīkošana","gab.",20.00],
+
+    ["Rozetes montāža","gab.",12.00],
+
+    ["Slēdža montāža","gab.",12.00],
+
+    ["Gaismekļa montāža","gab.",40.00],
+
+    ["LED lentes montāža","t/m",22.00],
+
+    ["Sadales skapja uzstādīšana","gab.",350.00]
+
   ],
 
 
-  fasade: [
-    {
-      name:"Fasādes sagatavošana",
-      unit:"m²",
-      price:12
-    },
-    {
-      name:"Siltināšana",
-      unit:"m²",
-      price:25
-    },
-    {
-      name:"Fasādes apmetums",
-      unit:"m²",
-      price:22
-    }
+  "Santehnika": [
+
+    ["Ūdens cauruļvadu montāža","t/m",12.00],
+
+    ["Kanalizācijas cauruļvadi","t/m",30.00],
+
+    ["WC poda montāža","gab.",120.00],
+
+    ["Piekaramā WC montāža","gab.",200.00],
+
+    ["Vannas montāža","gab.",220.00],
+
+    ["Dušas kabīnes montāža","gab.",300.00],
+
+    ["Izlietnes montāža","gab.",110.00],
+
+    ["Jaucējkrāna montāža","gab.",35.00],
+
+    ["Radiatora montāža","gab.",145.00]
+
   ],
 
 
-  zogi: [
-    {
-      name:"Žoga montāža",
-      unit:"m",
-      price:30
-    },
-    {
-      name:"Vārtu montāža",
-      unit:"gab.",
-      price:150
-    },
-    {
-      name:"Žoga pamati",
-      unit:"m",
-      price:25
-    }
+  "Logi un durvis": [
+
+    ["Iekšdurvju montāža","gab.",121.00],
+
+    ["Durvju demontāža","gab.",17.00],
+
+    ["PVC loga montāža","m²",42.00],
+
+    ["Palodzes montāža","t/m",13.00],
+
+    ["Logu aiļu apdare","t/m",16.50]
+
   ],
 
 
-  demontaza: [
-    {
-      name:"Demontāžas darbi",
-      unit:"m²",
-      price:14
-    },
-    {
-      name:"Konstrukciju demontāža",
-      unit:"h",
-      price:60
-    },
-    {
-      name:"Būvgružu izvešana",
-      unit:"m³",
-      price:35
-    }
+  "Jumta darbi": [
+
+    ["Mauerlata montāža","t/m",17.00],
+
+    ["Jumta koka konstrukcija","m²",25.00],
+
+    ["Difūzijas membrāna","m²",4.00],
+
+    ["Latojums","m²",9.00],
+
+    ["OSB montāža","m²",10.00],
+
+    ["Bitumena dakstiņu montāža","m²",11.00],
+
+    ["Metāla dakstiņu montāža","m²",12.50],
+
+    ["Māla dakstiņu montāža","m²",22.00],
+
+    ["Valcprofila montāža","m²",16.00],
+
+    ["Jumta seguma demontāža","m²",8.00],
+
+    ["Jumta siltināšana","m²",11.00],
+
+    ["Jumta loga montāža","gab.",200.00],
+
+    ["Noteksistēmas montāža","t/m",10.00]
+
+  ],
+
+
+  "Fasādes darbi": [
+
+    ["Putupolistirola montāža","m²",10.00],
+
+    ["Minerālvates montāža","m²",12.00],
+
+    ["Armējošā sieta līmēšana","m²",8.00],
+
+    ["Fasādes gruntēšana","m²",4.50],
+
+    ["Dekoratīvais apmetums","m²",11.50],
+
+    ["Fasādes špaktelēšana","m²",18.00],
+
+    ["Fasādes krāsošana","m²",9.50],
+
+    ["Ķieģeļflīžu montāža","m²",35.00],
+
+    ["Ventilējamā fasāde","m²",55.00],
+
+    ["Saiding","m²",14.00]
+
+  ],
+
+
+  "Apzaļumošana un labiekārtošana": [
+
+    ["Bruģēšana","m²",18.00],
+
+    ["Trotuāra plākšņu klāšana","m²",12.00],
+
+    ["Apmales uzstādīšana","t/m",8.00],
+
+    ["Teritorijas planēšana","m²",3.00],
+
+    ["Melnzemes iestrāde","m²",4.00],
+
+    ["Zāliena ierīkošana","m²",3.00],
+
+    ["Koku stādīšana","gab.",25.00],
+
+    ["Ģeotekstila ieklāšana","m²",4.00],
+
+    ["Vecā bruģa demontāža","m²",7.00]
+
+  ],
+
+
+  "Žogi un vārti": [
+
+    ["Žoga posmu montāža","t/m",26.00],
+
+    ["Koka žoga izgatavošana","m²",35.00],
+
+    ["Žoga stabu betonēšana","gab.",32.00],
+
+    ["Žoga sieta montāža","t/m",6.00],
+
+    ["Iebraukšanas vārtu montāža","gab.",300.00],
+
+    ["Gājēju vārtu montāža","gab.",190.00]
+
+  ],
+
+
+  "Inženierkomunikācijas": [
+
+    ["Drenāžas sistēmas izbūve","t/m",30.00],
+
+    ["Kanalizācijas cauruļvadu izbūve","t/m",40.00],
+
+    ["Kanalizācijas akas montāža","gab.",120.00],
+
+    ["Elektrības kabeļa ierakšana","t/m",15.00],
+
+    ["Tranšejas rakšana","t/m",7.00],
+
+    ["Grunts aizbēršana","m³",12.00],
+
+    ["Būvgružu izvešana","m³",30.00]
+
+  ],
+
+
+  "Demontāža": [
+
+    ["Sienu demontāža","m²",14.00],
+
+    ["Griestu demontāža","m²",12.00],
+
+    ["Grīdas demontāža","m²",10.00],
+
+    ["Flīžu demontāža","m²",12.00],
+
+    ["Starpsienu demontāža","m²",18.00],
+
+    ["Durvju demontāža","gab.",17.00],
+
+    ["Būvgružu savākšana","m³",20.00],
+
+    ["Būvgružu izvešana","m³",35.00]
+
+  ],
+
+
+  "Citi celtniecības darbi": [
+
+    ["Iekraušanas darbi","h",35.00],
+
+    ["Palīgstrādnieka darbs","h",25.00],
+
+    ["Celtniecības tehnikas darbs","h",55.00],
+
+    ["Materiālu pārvietošana objektā","h",35.00],
+
+    ["Objekta sakārtošana","h",30.00]
+
   ]
 
 };
 
 
-/* =========================
-   ELEMENTI
-========================= */
+/* ==================================================
+   TĀMES MAINĪGIE
+================================================== */
 
-const categoryElement =
-  document.getElementById("workCategory");
+let activeEstimateCategory = null;
 
-const workElement =
-  document.getElementById("workType");
-
-const quantityElement =
-  document.getElementById("quantity");
-
-const unitElement =
-  document.getElementById("unit");
-
-const vatElement =
-  document.getElementById("vat");
-
-const resultPrice =
-  document.getElementById("resultPrice");
-
-const resultInfo =
-  document.getElementById("resultInfo");
+let terraEstimate = [];
 
 
-/* =========================
-   IELĀDĒ DARBUS
-========================= */
+/* ==================================================
+   EIRO FORMĀTS
+================================================== */
 
-function loadWorkTypes(){
+function terraEuro(value){
 
-  if(!categoryElement || !workElement){
-    return;
-  }
+  return Number(value || 0)
+    .toLocaleString("lv-LV",{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }) + " €";
 
-  const category =
-    categoryElement.value;
+}
 
-  const works =
-    calculatorData[category] || [];
 
-  workElement.innerHTML = "";
+/* ==================================================
+   KATEGORIJU ATTĒLOŠANA
+================================================== */
 
-  works.forEach((work,index)=>{
+function renderEstimateCategories(){
 
-    const option =
-      document.createElement("option");
+  const container =
+    document.getElementById("estimateCategories");
 
-    option.value = index;
+  if(!container) return;
 
-    option.textContent =
-      `${work.name} — ${work.price.toFixed(2)} € / ${work.unit}`;
 
-    workElement.appendChild(option);
+  container.innerHTML = "";
+
+
+  const categories =
+    Object.keys(terraEstimateData);
+
+
+  categories.forEach((category,index)=>{
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+
+    button.className =
+      "estimate-category";
+
+
+    if(
+      activeEstimateCategory === category
+    ){
+
+      button.classList.add("active");
+
+    }
+
+
+    button.textContent =
+      category;
+
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        activeEstimateCategory =
+          category;
+
+        renderEstimateCategories();
+
+        renderEstimateWorks();
+
+      }
+    );
+
+
+    container.appendChild(button);
 
   });
 
-  updateUnit();
-
 }
 
 
-/* =========================
-   VIENĪBA
-========================= */
+/* ==================================================
+   DARBU ATTĒLOŠANA
+================================================== */
 
-function updateUnit(){
+function renderEstimateWorks(){
 
-  if(!categoryElement || !workElement){
+  const container =
+    document.getElementById("estimateWorks");
+
+  if(!container) return;
+
+
+  if(!activeEstimateCategory){
+
+    container.innerHTML = `
+      <div class="empty-estimate">
+        Izvēlies kategoriju, lai apskatītu darbus.
+      </div>
+    `;
+
     return;
+
   }
 
-  const category =
-    categoryElement.value;
-
-  const index =
-    Number(workElement.value || 0);
 
   const works =
-    calculatorData[category] || [];
+    terraEstimateData[
+      activeEstimateCategory
+    ] || [];
 
-  const work =
-    works[index];
 
-  if(work && unitElement){
+  let html = `
+    <div class="work-list">
+  `;
 
-    unitElement.textContent =
-      work.unit;
 
-  }
+  works.forEach((work,index)=>{
+
+    const name = work[0];
+
+    const unit = work[1];
+
+    const price = work[2];
+
+
+    html += `
+
+      <div class="work-row">
+
+        <div>
+
+          <div class="work-name">
+            ${name}
+          </div>
+
+          <div class="work-meta">
+            Cena par ${unit}
+          </div>
+
+          <div class="work-price">
+            ${terraEuro(price)}
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="work-add"
+          onclick="
+            addEstimateItem(
+              '${escapeJs(activeEstimateCategory)}',
+              ${index}
+            )
+          "
+        >
+          + Pievienot
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  html += `
+    </div>
+  `;
+
+
+  container.innerHTML = html;
 
 }
 
 
-/* =========================
-   CENAS APRĒĶINS
-========================= */
+/* ==================================================
+   DROŠA TEKSTA IEVIETOŠANA ONCLICK
+================================================== */
 
-function calculatePrice(){
+function escapeJs(value){
 
-  const category =
-    categoryElement.value;
+  return String(value)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
 
-  const index =
-    Number(workElement.value || 0);
+}
 
-  const quantity =
-    Number(quantityElement.value || 0);
+
+/* ==================================================
+   POZĪCIJAS PIEVIENOŠANA TĀMEI
+================================================== */
+
+function addEstimateItem(
+  category,
+  workIndex
+){
+
+  const work =
+    terraEstimateData[
+      category
+    ][workIndex];
+
+
+  if(!work) return;
+
+
+  const name = work[0];
+
+  const unit = work[1];
+
+  const price = Number(work[2]);
+
+
+  const existing =
+    terraEstimate.find(
+      item =>
+        item.category === category &&
+        item.workIndex === workIndex
+    );
+
+
+  if(existing){
+
+    existing.quantity += 1;
+
+  }else{
+
+    terraEstimate.push({
+
+      id:
+        Date.now() +
+        Math.random(),
+
+      category:
+        category,
+
+      workIndex:
+        workIndex,
+
+      name:
+        name,
+
+      unit:
+        unit,
+
+      price:
+        price,
+
+      quantity:
+        1
+
+    });
+
+  }
+
+
+  renderEstimateItems();
+
+  updateEstimateTotals();
+
+}
+
+
+/* ==================================================
+   TĀMES POZĪCIJU ATTĒLOŠANA
+================================================== */
+
+function renderEstimateItems(){
+
+  const container =
+    document.getElementById("estimateItems");
+
+  if(!container) return;
+
+
+  if(terraEstimate.length === 0){
+
+    container.innerHTML = `
+      <div class="empty-estimate">
+        Tāmē vēl nav pievienots neviens darbs.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  let html = "";
+
+
+  terraEstimate.forEach(item=>{
+
+    const lineTotal =
+      item.price *
+      item.quantity;
+
+
+    html += `
+
+      <div class="estimate-item">
+
+        <div class="estimate-item-top">
+
+          <div>
+
+            <div class="estimate-item-name">
+              ${item.name}
+            </div>
+
+            <div class="estimate-item-price">
+              ${terraEuro(item.price)} / ${item.unit}
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="estimate-remove"
+            onclick="
+              removeEstimateItem('${item.id}')
+            "
+            aria-label="Dzēst"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <div class="estimate-quantity">
+
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value="${item.quantity}"
+            onchange="
+              changeEstimateQuantity(
+                '${item.id}',
+                this.value
+              )
+            "
+          >
+
+          <span class="estimate-unit">
+            ${item.unit}
+          </span>
+
+
+          <span class="estimate-item-total">
+            ${terraEuro(lineTotal)}
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  container.innerHTML = html;
+
+}
+
+
+/* ==================================================
+   DAUDZUMA MAINĪŠANA
+================================================== */
+
+function changeEstimateQuantity(
+  id,
+  value
+){
+
+  const item =
+    terraEstimate.find(
+      item => String(item.id) === String(id)
+    );
+
+
+  if(!item) return;
+
+
+  let quantity =
+    parseFloat(value);
+
+
+  if(!Number.isFinite(quantity) ||
+     quantity <= 0){
+
+    quantity = 1;
+
+  }
+
+
+  item.quantity =
+    quantity;
+
+
+  renderEstimateItems();
+
+  updateEstimateTotals();
+
+}
+
+
+/* ==================================================
+   POZĪCIJAS DZĒŠANA
+================================================== */
+
+function removeEstimateItem(id){
+
+  terraEstimate =
+    terraEstimate.filter(
+      item =>
+        String(item.id) !== String(id)
+    );
+
+
+  renderEstimateItems();
+
+  updateEstimateTotals();
+
+}
+
+
+/* ==================================================
+   KOPSUMMAS APRĒĶINS
+================================================== */
+
+function updateEstimateTotals(){
+
+  let net = 0;
+
+
+  terraEstimate.forEach(item=>{
+
+    net +=
+      item.price *
+      item.quantity;
+
+  });
+
 
   const vat =
-    Number(vatElement.value || 0);
-
-  const works =
-    calculatorData[category] || [];
-
-  const work =
-    works[index];
-
-  if(!work){
-
-    resultPrice.textContent =
-      "0,00 €";
-
-    resultInfo.textContent =
-      "Izvēlies darbu.";
-
-    return;
-
-  }
+    net * 0.21;
 
 
-  if(quantity <= 0){
+  const gross =
+    net + vat;
 
-    resultPrice.textContent =
-      "0,00 €";
 
-    resultInfo.textContent =
-      "Ievadi daudzumu.";
+  const netElement =
+    document.getElementById(
+      "estimateNet"
+    );
 
-    return;
+  const vatElement =
+    document.getElementById(
+      "estimateVat"
+    );
+
+  const grossElement =
+    document.getElementById(
+      "estimateGross"
+    );
+
+
+  if(netElement){
+
+    netElement.textContent =
+      terraEuro(net);
 
   }
 
 
-  const base =
-    work.price * quantity;
+  if(vatElement){
 
-  const total =
-    base * (1 + vat / 100);
+    vatElement.textContent =
+      terraEuro(vat);
 
-
-  resultPrice.textContent =
-    total
-      .toFixed(2)
-      .replace(".",",") + " €";
+  }
 
 
-  resultInfo.textContent =
-    `${work.name}: ${quantity} ${work.unit} × ${work.price
-      .toFixed(2)
-      .replace(".",",")} €`;
+  if(grossElement){
 
+    grossElement.textContent =
+      terraEuro(gross);
+
+  }
 
 }
 
 
-/* =========================
-   NOTIKUMI
-========================= */
+/* ==================================================
+   PIETEIKUMA FORMA
+================================================== */
 
-if(categoryElement){
+const contactForm =
+  document.getElementById(
+    "contactForm"
+  );
 
-  categoryElement.addEventListener(
-    "change",
-    loadWorkTypes
+
+if(contactForm){
+
+  contactForm.addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      const name =
+        document.getElementById(
+          "contactName"
+        ).value.trim();
+
+
+      const phone =
+        document.getElementById(
+          "contactPhone"
+        ).value.trim();
+
+
+      const email =
+        document.getElementById(
+          "contactEmail"
+        ).value.trim();
+
+
+      const message =
+        document.getElementById(
+          "contactMessage"
+        ).value.trim();
+
+
+      let estimateText =
+        "";
+
+
+      terraEstimate.forEach(item=>{
+
+        estimateText +=
+          "\n" +
+          item.name +
+          " — " +
+          item.quantity +
+          " " +
+          item.unit +
+          " — " +
+          terraEuro(
+            item.price *
+            item.quantity
+          );
+
+      });
+
+
+      const net =
+        terraEstimate.reduce(
+          (sum,item)=>
+            sum +
+            item.price *
+            item.quantity,
+          0
+        );
+
+
+      const vat =
+        net * 0.21;
+
+
+      const gross =
+        net + vat;
+
+
+      const subject =
+        encodeURIComponent(
+          "Terra Būve — darba pieteikums"
+        );
+
+
+      const body =
+        encodeURIComponent(
+
+          "Vārds: " +
+          name +
+
+          "\nTālrunis: " +
+          phone +
+
+          "\nE-pasts: " +
+          email +
+
+          "\n\nZiņa:\n" +
+          message +
+
+          "\n\n--- TĀME ---" +
+
+          estimateText +
+
+          "\n\nDarbi bez PVN: " +
+          terraEuro(net) +
+
+          "\nPVN 21%: " +
+          terraEuro(vat) +
+
+          "\nKopā ar PVN: " +
+          terraEuro(gross)
+
+        );
+
+
+      window.location.href =
+        "mailto:info@terrabuve.lv" +
+        "?subject=" +
+        subject +
+        "&body=" +
+        body;
+
+    }
   );
 
 }
 
 
-if(workElement){
-
-  workElement.addEventListener(
-    "change",
-    updateUnit
-  );
-
-}
-
-
-if(quantityElement){
-
-  quantityElement.addEventListener(
-    "input",
-    calculatePrice
-  );
-
-}
-
-
-if(vatElement){
-
-  vatElement.addEventListener(
-    "change",
-    calculatePrice
-  );
-
-}
-
-
-/* =========================
-   SĀKUMA IESTATĪŠANA
-========================= */
+/* ==================================================
+   START
+================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
   function(){
 
-    loadWorkTypes();
+    renderEstimateCategories();
+
+    renderEstimateWorks();
+
+    renderEstimateItems();
+
+    updateEstimateTotals();
 
   }
-);
-
-
-/* =========================
-   AIZVER MOBILO IZVĒLNI
-========================= */
-
-document.querySelectorAll(
-  ".nav-links a"
-).forEach(link=>{
-
-  link.addEventListener(
-    "click",
-    function(){
-
-      const menu =
-        document.getElementById("navLinks");
-
-      if(menu){
-        menu.classList.remove("open");
-      }
-
-    }
-  );
-
-});
-
-
-/* =========================
-   KONTAKTU FORMA
-========================= */
-
-function sendRequest(){
-
-  const name =
-    document.getElementById("clientName")?.value || "";
-
-  const phone =
-    document.getElementById("clientPhone")?.value || "";
-
-  const message =
-    document.getElementById("clientMessage")?.value || "";
-
-
-  if(!name || !phone){
-
-    alert(
-      "Lūdzu, ievadi vārdu un tālruņa numuru."
-    );
-
-    return;
-
-  }
-
-
-  const subject =
-    encodeURIComponent(
-      "Terra Būve — jauns pieteikums"
-    );
-
-
-  const body =
-    encodeURIComponent(
-      `Vārds: ${name}\n` +
-      `Tālrunis: ${phone}\n\n` +
-      `${message}`
-    );
-
-
-  window.location.href =
-    `mailto:info@terrabuve.lv?subject=${subject}&body=${body}`;
-
-}
-
-
-/* =========================
-   KONSOLE
-========================= */
-
-console.log(
-  "Terra Būve — mājaslapa ielādēta."
 );
 
 </script>
-
-
-</body>
+  </body>
 </html>
 </section>
