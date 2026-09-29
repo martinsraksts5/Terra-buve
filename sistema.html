@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra Būve — Sistēma</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: #080808;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid #333;
+      border-radius: 12px;
+      background: #111;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #1b1b1b;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>Terra Būve</h1>
+    <p>Terra Būve sistēma</p>
+
+    <div id="status" class="status">
+      Savienojums tiek pārbaudīts...
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL =
+      "https://nmxdvvagdanajplzgyju.supabase.co";
+
+    const SUPABASE_KEY = "sb_publishable_yBJcNlu7WA0iOdImYTUemg_QHCcrRlc";
+  
+    
+
+   async function parbauditSupabase() {
+      const status = document.getElementById("status");
+
+      try {
+        const response = await fetch(
+          SUPABASE_URL + "/rest/v1/tames?select=id&limit=1",
+          {
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization": "Bearer " + SUPABASE_KEY
+            }
+          }
+        );
+
+        if (response.ok) {
+          status.textContent = "✅ Supabase savienojums darbojas!";
+        } else {
+          status.textContent =
+            "❌ Supabase atbildēja ar kļūdu: " + response.status;
+        }
+
+      } catch (error) {
+        status.textContent =
+          "❌ Savienojuma kļūda.";
+        console.error(error);
+      }
+    }
+
+    parbauditSupabase();
+  </script>
+
+</body>
+</html>
